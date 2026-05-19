@@ -27,7 +27,11 @@ class Paradise_Soundcloud_Widget extends Paradise_Widget_Base {
 
     public function get_name(): string    { return 'paradise_soundcloud'; }
     public function get_title(): string   { return esc_html__( 'SoundCloud', 'paradise-widgets-for-elementor' ); }
-    public function get_icon(): string    { return 'eicon-soundcloud'; }
+    // Brand icon from Font Awesome 5 (bundled with Elementor's editor). All
+    // other Paradise widgets use eicon-*, but SoundCloud is the first
+    // brand-specific widget — the recognisable cloud logo is a much faster
+    // visual cue in the widget panel than a generic 'eicon-headphones'.
+    public function get_icon(): string    { return 'fab fa-soundcloud'; }
     public function get_keywords(): array { return [ 'soundcloud', 'audio', 'music', 'podcast', 'embed', 'player' ]; }
 
     // SoundCloud's brand orange — also the player's documented default.
