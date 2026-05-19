@@ -477,6 +477,24 @@ class Paradise_Custom_Fields {
         update_option( self::OPTION_KEY, $data );
     }
 
+    // ── Export ────────────────────────────────────────────────────────────────
+
+    /**
+     * Snapshot of the stored data, in a shape that save() accepts directly.
+     * Used by the Paradise_Import_Export class to bundle custom fields
+     * into the same JSON payload as Site Info + widget settings.
+     *
+     * No normalisation step — unlike Site Info (which merges default hours
+     * into each location for export-time completeness), custom fields are
+     * already in their canonical form on disk. A round-trip
+     * `save( export() )` is idempotent.
+     */
+    public static function export(): array {
+        return [
+            'groups' => self::get_groups(),
+        ];
+    }
+
     // ── Shortcode ─────────────────────────────────────────────────────────────
 
     public static function register_shortcode(): void {
