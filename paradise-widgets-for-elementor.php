@@ -45,6 +45,10 @@ final class Paradise_Elementor_Widgets
         add_action('plugins_loaded', [ $this, 'load_custom_fields' ]);
         add_action('plugins_loaded', [ $this, 'load_admin' ]);
         add_action('plugins_loaded', [ $this, 'check_elementor_loaded' ], 20);
+        // FAQ CPT registration calls feature_enabled(), which reads translated
+        // labels via __(). Defer to `init` so the textdomain is loaded first;
+        // priority 5 still fires before register_post_type at default priority.
+        add_action('init', [ $this, 'load_faq_cpt_if_enabled' ], 5);
         add_action('elementor/init', [ $this, 'init' ]);
     }
 
@@ -87,7 +91,10 @@ final class Paradise_Elementor_Widgets
 
         require_once PARADISE_EW_DIR . 'admin/class-paradise-import-export.php';
         Paradise_Import_Export::init();
+    }
 
+    public function load_faq_cpt_if_enabled(): void
+    {
         require_once PARADISE_EW_DIR . 'includes/class-paradise-faq-cpt.php';
         if ( Paradise_EW_Admin::feature_enabled( 'faq_cpt' ) ) {
             Paradise_FAQ_CPT::init();
