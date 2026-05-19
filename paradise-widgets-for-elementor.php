@@ -122,7 +122,28 @@ final class Paradise_Elementor_Widgets
         add_action('elementor/widgets/register', [ $this, 'register_widgets' ]);
         add_action('elementor/frontend/after_enqueue_styles', [ $this, 'enqueue_assets' ]);
         add_action('elementor/editor/after_enqueue_styles', [ $this, 'enqueue_assets' ]);
+        add_action('elementor/editor/after_enqueue_styles', [ $this, 'enqueue_editor_font_awesome' ]);
         add_action('elementor/dynamic_tags/register', [ $this, 'register_dynamic_tags' ]);
+    }
+
+    /**
+     * Load Font Awesome in the Elementor editor so brand-icon widget panel
+     * icons (e.g. SoundCloud's 'fab fa-soundcloud') render. Elementor itself
+     * only enqueues Font Awesome when an on-canvas icon control needs it,
+     * which is too late for the widget panel sidebar — its icons render
+     * before any widget is dragged onto the canvas. The cost is one extra
+     * CSS file (~80 KB) in the editor only — frontend pages are unaffected.
+     */
+    public function enqueue_editor_font_awesome(): void {
+        if ( ! defined( 'ELEMENTOR_ASSETS_URL' ) ) {
+            return;
+        }
+        wp_enqueue_style(
+            'paradise-ew-editor-fa',
+            ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/all.min.css',
+            [],
+            '5.15.3'
+        );
     }
 
     public function notice_missing_elementor(): void
