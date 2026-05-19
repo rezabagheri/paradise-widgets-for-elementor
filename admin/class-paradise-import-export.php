@@ -47,10 +47,11 @@ class Paradise_Import_Export {
         check_admin_referer( self::NONCE_EXPORT );
 
         $payload = [
-            'version'     => PARADISE_EW_VERSION,
-            'exported_at' => gmdate( 'c' ),
-            'site_info'   => Paradise_Site_Info::export(),
-            'ew_settings' => get_option( Paradise_EW_Admin::OPTION_KEY, [] ),
+            'version'       => PARADISE_EW_VERSION,
+            'exported_at'   => gmdate( 'c' ),
+            'site_info'     => Paradise_Site_Info::export(),
+            'custom_fields' => Paradise_Custom_Fields::export(),
+            'ew_settings'   => get_option( Paradise_EW_Admin::OPTION_KEY, [] ),
         ];
 
         $json     = wp_json_encode( $payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
@@ -107,6 +108,15 @@ class Paradise_Import_Export {
         if ( isset( $data['site_info'] ) && is_array( $data['site_info'] ) ) {
             Paradise_Site_Info::save( $data['site_info'] );
             $imported[] = 'site_info';
+        }
+
+        // Import Custom Fields — through save() for type-aware sanitization.
+        // Backward-compatible: JSON files exported before custom fields existed
+        // (pre-v3.1.x payloads) don't carry this key, so the isset() check
+        // silently skips this branch for them.
+        if ( isset( $data['custom_fields'] ) && is_array( $data['custom_fields'] ) ) {
+            Paradise_Custom_Fields::save( $data['custom_fields'] );
+            $imported[] = 'custom_fields';
         }
 
         // Import widget enable/disable settings — through sanitize_settings()

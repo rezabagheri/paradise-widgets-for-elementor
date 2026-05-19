@@ -35,6 +35,7 @@ and a fresh empty `## [Unreleased]` replaces it.
 ### Fixed
 
 - **Clicking "Paradise" in the admin menu no longer opens the FAQs list page** when the FAQ post-type feature is on. WordPress treats the first submenu registered under a parent as the landing page (not whichever submenu's slug matches the parent), and core's `_add_post_type_submenus` runs at `admin_menu` priority 10. Our `register_menus` now hooks at priority 9 so our submenus land first, restoring the expected "click Paradise → see Widgets" behaviour. The same fix applies to any other CPT registered with `show_in_menu => 'paradise-widgets'`.
+- **Import / Export now round-trips Custom Fields** (groups and field values). Custom Fields shipped in v2.8 but the Import / Export class — written when the plugin only stored Site Info — was never extended to bundle them, so the exported JSON silently omitted the `paradise_custom_fields` option and a restored site lost every custom field. The fix adds `Paradise_Custom_Fields::export()` (mirroring `Paradise_Site_Info::export()`) and a matching branch in `Paradise_Import_Export::handle_import()`. Old exports without the new key keep working (the import skips the missing branch).
 
 ### Notes
 

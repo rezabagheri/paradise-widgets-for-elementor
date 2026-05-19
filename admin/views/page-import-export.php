@@ -38,7 +38,7 @@ $error_messages = [
             <h2><?php esc_html_e( 'Export', 'paradise-widgets-for-elementor' ); ?></h2>
         </div>
         <div class="inside">
-            <p><?php esc_html_e( 'Download a backup of your Site Info (locations, phones, emails, addresses, social links, business hours) and widget settings as a JSON file.', 'paradise-widgets-for-elementor' ); ?></p>
+            <p><?php esc_html_e( 'Download a backup of your Site Info (locations, phones, emails, addresses, social links, business hours), Custom Fields (groups and field values), and widget settings as a JSON file.', 'paradise-widgets-for-elementor' ); ?></p>
             <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
                 <?php wp_nonce_field( Paradise_Import_Export::NONCE_EXPORT ); ?>
                 <input type="hidden" name="action" value="paradise_export_data">
@@ -57,7 +57,7 @@ $error_messages = [
         <div class="inside">
             <p><?php esc_html_e( 'Upload a previously exported Paradise JSON file to restore your data.', 'paradise-widgets-for-elementor' ); ?></p>
             <div class="notice notice-warning inline">
-                <p><?php esc_html_e( 'This will overwrite your current Site Info and widget settings. Export first if you want to keep the existing data.', 'paradise-widgets-for-elementor' ); ?></p>
+                <p><?php esc_html_e( 'This will overwrite your current Site Info, Custom Fields, and widget settings. Export first if you want to keep the existing data.', 'paradise-widgets-for-elementor' ); ?></p>
             </div>
             <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" enctype="multipart/form-data">
                 <?php wp_nonce_field( Paradise_Import_Export::NONCE_IMPORT ); ?>
