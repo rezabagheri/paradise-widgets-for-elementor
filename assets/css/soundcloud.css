@@ -1,0 +1,18 @@
+/**
+ * Paradise SoundCloud — frontend styles.
+ *
+ * The iframe itself does its own visual work (player UI lives inside the
+ * SoundCloud-hosted page). All we own on this side is the wrapper sizing
+ * and the iframe's outer chrome — border, radius, overflow.
+ */
+
+.paradise-soundcloud-wrap {
+    width: 100%;
+}
+
+.paradise-soundcloud-frame {
+    display: block;
+    width: 100%;
+    border: 0;
+    overflow: hidden;
+}

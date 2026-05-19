@@ -115,6 +115,10 @@ class Paradise_EW_Admin {
                 'description' => __( 'Collapsible Q&A list with accordion or multi-expand mode. Supports Schema.org FAQPage markup for Google rich results.', 'paradise-widgets-for-elementor' ),
                 'js'          => true,
             ],
+            'soundcloud' => [
+                'label'       => __( 'SoundCloud', 'paradise-widgets-for-elementor' ),
+                'description' => __( 'Embeds a SoundCloud single track or playlist (Set) via the official player iframe. Choose Visual (with artwork) or Classic (compact mini) player style, set the accent colour, and toggle auto-play, comments, related tracks, and uploader name. URL field supports Elementor Dynamic Tags, so ACF Pro users can bind it to a post field.', 'paradise-widgets-for-elementor' ),
+            ],
 
             // ---- Examples (developer learning material) -------------------------
             // These widgets live in the "Paradise Examples" category in the editor,
