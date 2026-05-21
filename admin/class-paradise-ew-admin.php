@@ -234,17 +234,42 @@ class Paradise_EW_Admin {
     }
 
     /**
-     * Sanitize the entire settings array before it is saved to the database.
+     * Sanitize the settings array before it is saved to the database.
+     *
+     * Only the section identified by the hidden `_section` marker is rewritten;
+     * the other section is preserved from the existing stored value. This is
+     * what stops the Widgets page from wiping all features (and vice versa)
+     * just because its form happens to omit those fields — unchecked HTML
+     * checkboxes don't post anything, so "missing" can't mean "set to false".
+     *
+     * Import/Export calls this with `_section => 'all'` so it can rewrite both
+     * sections in one shot from a JSON payload.
+     *
      * Any key not in the registries is discarded.
      */
     public static function sanitize_settings( mixed $input ): array {
-        $clean = [];
-        foreach ( array_keys( self::widget_registry() ) as $key ) {
-            $clean['widgets'][ $key ] = ! empty( $input['widgets'][ $key ] );
+        $section  = $input['_section'] ?? '';
+        $existing = (array) get_option( self::OPTION_KEY, [] );
+
+        // Start from existing values so unrelated sections aren't touched.
+        $clean = [
+            'widgets'  => (array) ( $existing['widgets']  ?? [] ),
+            'features' => (array) ( $existing['features'] ?? [] ),
+        ];
+
+        if ( 'widgets' === $section || 'all' === $section ) {
+            $clean['widgets'] = [];
+            foreach ( array_keys( self::widget_registry() ) as $key ) {
+                $clean['widgets'][ $key ] = ! empty( $input['widgets'][ $key ] );
+            }
         }
-        foreach ( array_keys( self::feature_registry() ) as $key ) {
-            $clean['features'][ $key ] = ! empty( $input['features'][ $key ] );
+        if ( 'features' === $section || 'all' === $section ) {
+            $clean['features'] = [];
+            foreach ( array_keys( self::feature_registry() ) as $key ) {
+                $clean['features'][ $key ] = ! empty( $input['features'][ $key ] );
+            }
         }
+
         return $clean;
     }
 

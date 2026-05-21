@@ -31,6 +31,10 @@ require_once PARADISE_EW_DIR . 'admin/views/partials/render-toggle-card.php';
     <form method="post" action="options.php">
         <?php settings_fields( Paradise_EW_Admin::OPTION_KEY . '_group' ); ?>
 
+        <input type="hidden"
+               name="<?php echo esc_attr( Paradise_EW_Admin::OPTION_KEY ); ?>[_section]"
+               value="features">
+
         <?php paradise_ew_render_toggle_card(
             'features',
             esc_html__( 'Features', 'paradise-widgets-for-elementor' ),

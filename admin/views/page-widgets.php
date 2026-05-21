@@ -57,6 +57,10 @@ foreach ( Paradise_EW_Admin::get_widget_registry() as $key => $widget ) {
     <form method="post" action="options.php">
         <?php settings_fields( Paradise_EW_Admin::OPTION_KEY . '_group' ); ?>
 
+        <input type="hidden"
+               name="<?php echo esc_attr( Paradise_EW_Admin::OPTION_KEY ); ?>[_section]"
+               value="widgets">
+
         <?php paradise_ew_render_toggle_card(
             'widgets-production',
             esc_html__( 'Widgets', 'paradise-widgets-for-elementor' ),
