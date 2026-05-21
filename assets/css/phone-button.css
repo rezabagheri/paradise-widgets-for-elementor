@@ -27,7 +27,7 @@
 
 /* ── Icon ──────────────────────────────────────── */
 .paradise-pbn-icon {
-    display: inline-flex;
+    display: var(--paradise-pbn-icon-display, inline-flex);
     align-items: center;
     flex-shrink: 0;
     line-height: 1;
@@ -47,5 +47,6 @@
 
 /* ── Text ──────────────────────────────────────── */
 .paradise-pbn-text {
+    display: var(--paradise-pbn-text-display, inline);
     line-height: 1.3;
 }

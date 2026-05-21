@@ -136,6 +136,31 @@ class Paradise_Phone_Button_Widget extends Paradise_Widget_Base {
             'condition'   => [ 'text_mode' => 'custom' ],
         ] );
 
+        // ── Layout Mode (responsive: hide icon or text per device) ──
+        // Sets two CSS variables on the widget wrapper that the static rules
+        // in phone-button.css consume via `display: var(--...)`. Elementor
+        // wraps the variable assignments in media queries automatically.
+        $this->add_responsive_control( 'layout_mode', [
+            'label'                => esc_html__( 'Layout Mode', 'paradise-widgets-for-elementor' ),
+            'type'                 => Controls_Manager::SELECT,
+            'default'              => 'icon_text',
+            'options'              => [
+                'icon_text' => esc_html__( 'Icon + Text', 'paradise-widgets-for-elementor' ),
+                'icon_only' => esc_html__( 'Icon Only', 'paradise-widgets-for-elementor' ),
+                'text_only' => esc_html__( 'Text Only', 'paradise-widgets-for-elementor' ),
+            ],
+            'description'          => esc_html__( 'Set per-device. Useful for showing only the icon on smaller screens.', 'paradise-widgets-for-elementor' ),
+            'separator'            => 'before',
+            'selectors_dictionary' => [
+                'icon_text' => '--paradise-pbn-text-display: inline; --paradise-pbn-icon-display: inline-flex',
+                'icon_only' => '--paradise-pbn-text-display: none; --paradise-pbn-icon-display: inline-flex',
+                'text_only' => '--paradise-pbn-text-display: inline; --paradise-pbn-icon-display: none',
+            ],
+            'selectors'            => [
+                '{{WRAPPER}}' => '{{VALUE}};',
+            ],
+        ] );
+
         $this->end_controls_section();
     }
 
