@@ -128,6 +128,55 @@ class Paradise_Soundcloud_Widget extends Paradise_Widget_Base {
             'condition'   => [ 'source' => 'acf_repeater' ],
         ] );
 
+        // ── Manual List (Mode 4) — Elementor Repeater Control ────────────────
+        // Same four fields as Mode 3's ACF sub-fields, so the schema is
+        // identical conceptually. URL is TEXT (not URL type) because the
+        // URL control stores an array — overkill for a plain SoundCloud
+        // URL where we don't need is_external / nofollow / show_external.
+        // Dynamic Tags stay enabled per-row so single-track URLs can still
+        // bind to ACF Pro dynamic fields.
+
+        $this->add_control( 'manual_tracks', [
+            'label'       => esc_html__( 'Tracks', 'paradise-widgets-for-elementor' ),
+            'type'        => \Elementor\Controls_Manager::REPEATER,
+            'condition'   => [ 'source' => 'manual_list' ],
+            'title_field' => '{{{ track_title || track_url }}}',
+            'fields'      => [
+                [
+                    'name'        => 'track_url',
+                    'label'       => esc_html__( 'SoundCloud URL', 'paradise-widgets-for-elementor' ),
+                    'type'        => \Elementor\Controls_Manager::TEXT,
+                    'placeholder' => 'https://soundcloud.com/artist/track',
+                    'label_block' => true,
+                    'dynamic'     => [ 'active' => true ],
+                ],
+                [
+                    'name'        => 'track_title',
+                    'label'       => esc_html__( 'Title', 'paradise-widgets-for-elementor' ),
+                    'type'        => \Elementor\Controls_Manager::TEXT,
+                    'label_block' => true,
+                    'dynamic'     => [ 'active' => true ],
+                ],
+                [
+                    'name'    => 'track_artist',
+                    'label'   => esc_html__( 'Artist', 'paradise-widgets-for-elementor' ),
+                    'type'    => \Elementor\Controls_Manager::TEXT,
+                    'dynamic' => [ 'active' => true ],
+                ],
+                [
+                    'name'        => 'track_description',
+                    'label'       => esc_html__( 'Description', 'paradise-widgets-for-elementor' ),
+                    'type'        => \Elementor\Controls_Manager::TEXTAREA,
+                    'rows'        => 2,
+                    'description' => esc_html__( 'Optional. Empty descriptions are skipped at render.', 'paradise-widgets-for-elementor' ),
+                    'dynamic'     => [ 'active' => true ],
+                ],
+            ],
+            'default'     => [
+                [ 'track_url' => '', 'track_title' => '', 'track_artist' => '', 'track_description' => '' ],
+            ],
+        ] );
+
         $this->add_control( 'player_mode', [
             'label'   => esc_html__( 'Player Style', 'paradise-widgets-for-elementor' ),
             'type'    => \Elementor\Controls_Manager::SELECT,
@@ -215,6 +264,11 @@ class Paradise_Soundcloud_Widget extends Paradise_Widget_Base {
 
         if ( 'acf_repeater' === $source ) {
             $this->render_acf_repeater_mode( $settings );
+            return;
+        }
+
+        if ( 'manual_list' === $source ) {
+            $this->render_playlist( $this->read_manual_list_tracks( $settings ), $settings );
             return;
         }
 
@@ -327,6 +381,39 @@ class Paradise_Soundcloud_Widget extends Paradise_Widget_Base {
                 'title'       => trim( (string) ( $row[ $sub_title ]  ?? '' ) ),
                 'artist'      => trim( (string) ( $row[ $sub_artist ] ?? '' ) ),
                 'description' => trim( (string) ( $row[ $sub_desc ]   ?? '' ) ),
+            ];
+        }
+        return $tracks;
+    }
+
+    // ── Mode 4: Manual List ───────────────────────────────────────────────────
+
+    /**
+     * Normalize the in-widget Repeater rows into our shared track shape.
+     * Same skip-bad-row policy as Mode 3 — invalid rows drop silently,
+     * `render_playlist()` shows the empty-state placeholder only if ALL
+     * rows are unusable.
+     */
+    private function read_manual_list_tracks( array $settings ): array {
+        $rows = $settings['manual_tracks'] ?? [];
+        if ( ! is_array( $rows ) || empty( $rows ) ) {
+            return [];
+        }
+
+        $tracks = [];
+        foreach ( $rows as $row ) {
+            if ( ! is_array( $row ) ) {
+                continue;
+            }
+            $url = trim( (string) ( $row['track_url'] ?? '' ) );
+            if ( '' === $url || ! $this->is_valid_soundcloud_url( $url ) ) {
+                continue;
+            }
+            $tracks[] = [
+                'url'         => $url,
+                'title'       => trim( (string) ( $row['track_title']       ?? '' ) ),
+                'artist'      => trim( (string) ( $row['track_artist']      ?? '' ) ),
+                'description' => trim( (string) ( $row['track_description'] ?? '' ) ),
             ];
         }
         return $tracks;
