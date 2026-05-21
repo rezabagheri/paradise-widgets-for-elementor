@@ -312,10 +312,20 @@ class Paradise_EW_Admin {
 
     /**
      * Returns true if a specific feature flag is enabled.
+     *
+     * Reads the stored option directly instead of going through self::get(),
+     * because get() walks widget_registry() which calls __() on widget labels.
+     * Some callers (e.g. CPT loaders bound to plugins_loaded) hit this before
+     * the textdomain is ready, and would otherwise trigger _doing_it_wrong
+     * notices for "Translation loading triggered too early" (WP 6.7+).
      */
     public static function feature_enabled( string $key ): bool {
-        $settings = self::get();
-        return $settings['features'][ $key ] ?? ( self::$feature_defaults[ $key ] ?? false );
+        $stored = get_option( self::OPTION_KEY, [] );
+        $value  = $stored['features'][ $key ] ?? null;
+        if ( $value !== null ) {
+            return (bool) $value;
+        }
+        return self::$feature_defaults[ $key ] ?? false;
     }
 
     // -------------------------------------------------------------------------
