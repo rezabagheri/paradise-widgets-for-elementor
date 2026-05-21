@@ -2,23 +2,32 @@
 /**
  * Paradise SoundCloud Widget
  *
- * Embeds a SoundCloud track or Set (playlist) via SoundCloud's official
- * player iframe. SoundCloud's player auto-detects whether the URL points
- * to a single track or a Set and renders the appropriate UI — track URLs
- * get a single-track player, /sets/ URLs get a playlist player with track
- * list and continuous playback. So Mode 1 (single) and Mode 2 (playlist
- * URL) share the same render path; only the URL differs.
+ * Embeds a SoundCloud single track, a Set (playlist), or a curated playlist
+ * assembled from per-post fields or an in-widget list. A single SELECT at
+ * the top — `source` — picks the mode:
  *
- * The URL control has Elementor Dynamic Tags enabled. Users with ACF Pro
- * (or any provider that registers an Elementor URL/text dynamic tag) can
- * bind the field to a custom field on the current post — no ACF awareness
- * inside this widget. That keeps the coupling loose and forward-compatible
- * with whatever per-post field system the user adopts later.
+ *   single        Mode 1 + 2: one SoundCloud URL (track or /sets/...).
+ *                 SoundCloud's player auto-detects which is which, so
+ *                 both share the same iframe render. The URL control has
+ *                 Elementor Dynamic Tags enabled, so ACF Pro (or any URL
+ *                 tag provider) can bind it to a custom field on the
+ *                 current post without this widget knowing about ACF.
  *
- * Phase 2 (separate session) will add a third "Custom Playlist" mode that
- * accepts an array of track URLs (from an ACF Repeater, or a manual list)
- * and renders a unified player using SoundCloud's Widget API JS. That mode
- * needs JS, so the registry entry will gain 'js' => true at that point.
+ *   acf_repeater  Mode 3: read a Repeater field on the current post (via
+ *                 `get_field()` if ACF is active, else `get_post_meta()`
+ *                 fallback) for a curated list of tracks. Field name +
+ *                 four sub-field names (url, title, artist, description)
+ *                 are configurable; defaults match a sensible schema.
+ *
+ *   manual_list   Mode 4: a list of tracks built directly in the widget
+ *                 via an Elementor Repeater Control. No external dep —
+ *                 works on any site without ACF. Same four sub-fields
+ *                 (URL, title, artist, description) for schema parity
+ *                 with Mode 3, so a user can move data between modes.
+ *
+ * Modes 3 + 4 share a render path: one iframe at the top, then a list of
+ * `<button>`s underneath; clicking a track loads it into the iframe via
+ * SoundCloud's Widget API JS (no fresh ~500 KB player per track).
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -53,6 +62,18 @@ class Paradise_Soundcloud_Widget extends Paradise_Widget_Base {
             'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
         ] );
 
+        $this->add_control( 'source', [
+            'label'       => esc_html__( 'Source', 'paradise-widgets-for-elementor' ),
+            'type'        => \Elementor\Controls_Manager::SELECT,
+            'default'     => 'single',
+            'options'     => [
+                'single'       => esc_html__( 'Single Track or Set URL', 'paradise-widgets-for-elementor' ),
+                'acf_repeater' => esc_html__( 'ACF Repeater Playlist', 'paradise-widgets-for-elementor' ),
+                'manual_list'  => esc_html__( 'Manual List Playlist', 'paradise-widgets-for-elementor' ),
+            ],
+            'description' => esc_html__( 'Single = one SoundCloud track or Set, auto-detected. ACF Repeater = read a list of tracks from a Repeater field on the current post. Manual List = build the track list directly in the widget.', 'paradise-widgets-for-elementor' ),
+        ] );
+
         $this->add_control( 'url', [
             'label'         => esc_html__( 'Track or Playlist URL', 'paradise-widgets-for-elementor' ),
             'type'          => \Elementor\Controls_Manager::URL,
@@ -61,6 +82,7 @@ class Paradise_Soundcloud_Widget extends Paradise_Widget_Base {
             'default'       => [ 'url' => '', 'is_external' => false, 'nofollow' => false ],
             'dynamic'       => [ 'active' => true ],
             'description'   => esc_html__( 'Paste a SoundCloud track URL or a Set (playlist) URL. Both are auto-detected.', 'paradise-widgets-for-elementor' ),
+            'condition'     => [ 'source' => 'single' ],
         ] );
 
         $this->add_control( 'player_mode', [
@@ -146,7 +168,16 @@ class Paradise_Soundcloud_Widget extends Paradise_Widget_Base {
 
     protected function render(): void {
         $settings = $this->get_settings_for_display();
-        $raw_url  = trim( $settings['url']['url'] ?? '' );
+        $source   = $settings['source'] ?? 'single';
+
+        if ( 'single' !== $source ) {
+            $this->render_editor_placeholder(
+                esc_html__( 'No tracks to play yet. Add data for the selected source mode.', 'paradise-widgets-for-elementor' )
+            );
+            return;
+        }
+
+        $raw_url = trim( $settings['url']['url'] ?? '' );
 
         if ( $raw_url === '' ) {
             $this->render_editor_placeholder(
