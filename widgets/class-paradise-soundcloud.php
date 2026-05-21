@@ -85,6 +85,49 @@ class Paradise_Soundcloud_Widget extends Paradise_Widget_Base {
             'condition'     => [ 'source' => 'single' ],
         ] );
 
+        // ── ACF Repeater (Mode 3) — field-name controls ──────────────────────
+        // Sub-field defaults follow a sensible Repeater schema. All four are
+        // overridable per widget so users with existing field names don't have
+        // to rename anything in ACF. Description is optional at render time —
+        // empty rows just skip that line.
+
+        $this->add_control( 'acf_field_name', [
+            'label'       => esc_html__( 'Repeater Field Name', 'paradise-widgets-for-elementor' ),
+            'type'        => \Elementor\Controls_Manager::TEXT,
+            'default'     => 'tracks',
+            'description' => esc_html__( 'Name of the ACF Repeater field on the current post. Read via get_field() with a get_post_meta() fallback if ACF is inactive.', 'paradise-widgets-for-elementor' ),
+            'condition'   => [ 'source' => 'acf_repeater' ],
+        ] );
+
+        $this->add_control( 'acf_sub_url', [
+            'label'     => esc_html__( 'URL Sub-field', 'paradise-widgets-for-elementor' ),
+            'type'      => \Elementor\Controls_Manager::TEXT,
+            'default'   => 'url',
+            'condition' => [ 'source' => 'acf_repeater' ],
+        ] );
+
+        $this->add_control( 'acf_sub_title', [
+            'label'     => esc_html__( 'Title Sub-field', 'paradise-widgets-for-elementor' ),
+            'type'      => \Elementor\Controls_Manager::TEXT,
+            'default'   => 'title',
+            'condition' => [ 'source' => 'acf_repeater' ],
+        ] );
+
+        $this->add_control( 'acf_sub_artist', [
+            'label'     => esc_html__( 'Artist Sub-field', 'paradise-widgets-for-elementor' ),
+            'type'      => \Elementor\Controls_Manager::TEXT,
+            'default'   => 'artist',
+            'condition' => [ 'source' => 'acf_repeater' ],
+        ] );
+
+        $this->add_control( 'acf_sub_description', [
+            'label'       => esc_html__( 'Description Sub-field', 'paradise-widgets-for-elementor' ),
+            'type'        => \Elementor\Controls_Manager::TEXT,
+            'default'     => 'description',
+            'description' => esc_html__( 'Optional. Rows with no value here just skip the description line.', 'paradise-widgets-for-elementor' ),
+            'condition'   => [ 'source' => 'acf_repeater' ],
+        ] );
+
         $this->add_control( 'player_mode', [
             'label'   => esc_html__( 'Player Style', 'paradise-widgets-for-elementor' ),
             'type'    => \Elementor\Controls_Manager::SELECT,
@@ -170,6 +213,11 @@ class Paradise_Soundcloud_Widget extends Paradise_Widget_Base {
         $settings = $this->get_settings_for_display();
         $source   = $settings['source'] ?? 'single';
 
+        if ( 'acf_repeater' === $source ) {
+            $this->render_acf_repeater_mode( $settings );
+            return;
+        }
+
         if ( 'single' !== $source ) {
             $this->render_editor_placeholder(
                 esc_html__( 'No tracks to play yet. Add data for the selected source mode.', 'paradise-widgets-for-elementor' )
@@ -209,6 +257,144 @@ class Paradise_Soundcloud_Widget extends Paradise_Widget_Base {
                 loading="lazy"
                 title="<?php echo esc_attr__( 'SoundCloud audio player', 'paradise-widgets-for-elementor' ); ?>"
             ></iframe>
+        </div>
+        <?php
+    }
+
+    // ── Mode 3: ACF Repeater ──────────────────────────────────────────────────
+
+    /**
+     * Mode 3 entry point: pull the Repeater field off the current post and
+     * hand the normalized track array to the shared playlist renderer.
+     */
+    private function render_acf_repeater_mode( array $settings ): void {
+        $post_id = (int) get_the_ID();
+
+        if ( $post_id <= 0 ) {
+            $this->render_editor_placeholder(
+                esc_html__( 'No current post — this mode reads tracks from a Repeater field on the current post. Place the widget inside a single-post template, or use Manual List mode instead.', 'paradise-widgets-for-elementor' )
+            );
+            return;
+        }
+
+        $tracks = $this->read_acf_repeater_tracks( $post_id, $settings );
+        $this->render_playlist( $tracks, $settings );
+    }
+
+    /**
+     * Read the configured Repeater field on $post_id and normalize each row
+     * into our `{ url, title, artist, description }` shape. Rows with an
+     * empty or invalid SoundCloud URL are skipped silently (no error UI for
+     * malformed individual rows — the editor placeholder only fires when
+     * *every* row is unusable).
+     *
+     * Loose coupling: prefers ACF's `get_field()` (which returns a proper
+     * array of rows), falls back to `get_post_meta()` for the rare case
+     * where the data exists but ACF is inactive. We do NOT walk numbered
+     * postmeta rows (`tracks_0_url`, `tracks_0_title`, …) without ACF —
+     * that's deep ACF-internals territory and not worth the complexity.
+     */
+    private function read_acf_repeater_tracks( int $post_id, array $settings ): array {
+        $field_name = trim( $settings['acf_field_name'] ?? 'tracks' );
+        if ( '' === $field_name ) {
+            return [];
+        }
+
+        $rows = function_exists( 'get_field' )
+            ? get_field( $field_name, $post_id )
+            : get_post_meta( $post_id, $field_name, true );
+
+        if ( ! is_array( $rows ) || empty( $rows ) ) {
+            return [];
+        }
+
+        $sub_url    = trim( $settings['acf_sub_url']         ?? 'url' );
+        $sub_title  = trim( $settings['acf_sub_title']       ?? 'title' );
+        $sub_artist = trim( $settings['acf_sub_artist']      ?? 'artist' );
+        $sub_desc   = trim( $settings['acf_sub_description'] ?? 'description' );
+
+        $tracks = [];
+        foreach ( $rows as $row ) {
+            if ( ! is_array( $row ) ) {
+                continue;
+            }
+            $url = trim( (string) ( $row[ $sub_url ] ?? '' ) );
+            if ( '' === $url || ! $this->is_valid_soundcloud_url( $url ) ) {
+                continue;
+            }
+            $tracks[] = [
+                'url'         => $url,
+                'title'       => trim( (string) ( $row[ $sub_title ]  ?? '' ) ),
+                'artist'      => trim( (string) ( $row[ $sub_artist ] ?? '' ) ),
+                'description' => trim( (string) ( $row[ $sub_desc ]   ?? '' ) ),
+            ];
+        }
+        return $tracks;
+    }
+
+    // ── Shared playlist renderer (Mode 3 + Mode 4) ────────────────────────────
+
+    /**
+     * Render the playlist UI: one iframe playing the first track, plus a
+     * `<ol>` of `<button>`s for each track. Buttons carry data-url so the
+     * Widget API JS (commit 4 of Phase 2) can swap tracks into the same
+     * player without re-loading SoundCloud's ~500 KB player JS per track.
+     *
+     * Until the JS lands, the list is static — buttons render but clicking
+     * does nothing functional. The first track plays in the iframe; clicks
+     * become interactive once `assets/js/soundcloud.js` is enqueued.
+     */
+    private function render_playlist( array $tracks, array $settings ): void {
+        if ( empty( $tracks ) ) {
+            $this->render_editor_placeholder(
+                esc_html__( 'No valid SoundCloud tracks found. Check that the URLs point to soundcloud.com (not on.soundcloud.com).', 'paradise-widgets-for-elementor' )
+            );
+            return;
+        }
+
+        $is_visual = 'visual' === ( $settings['player_mode'] ?? 'visual' );
+        $height    = $is_visual ? self::HEIGHT_VISUAL : self::HEIGHT_CLASSIC;
+        $first_url = $tracks[0]['url'];
+        $embed_url = $this->build_embed_url( $first_url, $settings, $is_visual );
+        ?>
+        <div class="paradise-soundcloud-wrap paradise-soundcloud-playlist" data-paradise-sc-list>
+            <iframe
+                class="paradise-soundcloud-frame"
+                src="<?php echo esc_url( $embed_url ); ?>"
+                width="100%"
+                height="<?php echo (int) $height; ?>"
+                scrolling="no"
+                frameborder="no"
+                allow="autoplay"
+                loading="lazy"
+                title="<?php echo esc_attr__( 'SoundCloud audio player', 'paradise-widgets-for-elementor' ); ?>"
+            ></iframe>
+            <ol class="paradise-soundcloud-tracks">
+                <?php foreach ( $tracks as $i => $track ) : ?>
+                    <li class="paradise-soundcloud-track-item">
+                        <button
+                            type="button"
+                            class="paradise-soundcloud-track<?php echo 0 === $i ? ' is-playing' : ''; ?>"
+                            data-url="<?php echo esc_attr( $track['url'] ); ?>"
+                            data-index="<?php echo (int) $i; ?>"
+                            aria-current="<?php echo 0 === $i ? 'true' : 'false'; ?>"
+                        >
+                            <span class="paradise-soundcloud-track-num"><?php echo (int) ( $i + 1 ); ?></span>
+                            <span class="paradise-soundcloud-track-meta">
+                                <?php if ( '' !== $track['title'] ) : ?>
+                                    <span class="paradise-soundcloud-track-title"><?php echo esc_html( $track['title'] ); ?></span>
+                                <?php endif; ?>
+                                <?php if ( '' !== $track['artist'] ) : ?>
+                                    <span class="paradise-soundcloud-track-artist"><?php echo esc_html( $track['artist'] ); ?></span>
+                                <?php endif; ?>
+                                <?php if ( '' !== $track['description'] ) : ?>
+                                    <span class="paradise-soundcloud-track-description"><?php echo esc_html( $track['description'] ); ?></span>
+                                <?php endif; ?>
+                            </span>
+                        </button>
+                    </li>
+                <?php endforeach; ?>
+            </ol>
         </div>
         <?php
     }
