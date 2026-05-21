@@ -4,6 +4,11 @@
  * The iframe itself does its own visual work (player UI lives inside the
  * SoundCloud-hosted page). All we own on this side is the wrapper sizing
  * and the iframe's outer chrome — border, radius, overflow.
+ *
+ * Playlist styles (Modes 3 + 4) start at `.paradise-soundcloud-playlist`.
+ * They sit BELOW the iframe; the iframe and track list visually attach via
+ * the radius on the bottom of the `<ol>` and the squared bottom of the
+ * iframe (Elementor's border-radius control overrides this if set).
  */
 
 .paradise-soundcloud-wrap {
@@ -15,4 +20,94 @@
     width: 100%;
     border: 0;
     overflow: hidden;
+}
+
+/* ── Playlist ─────────────────────────────────────────────────────────────── */
+
+.paradise-soundcloud-playlist .paradise-soundcloud-frame {
+    border-radius: 4px 4px 0 0;
+}
+
+.paradise-soundcloud-tracks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.paradise-soundcloud-track-item + .paradise-soundcloud-track-item {
+    border-top: 1px solid #f0f0f0;
+}
+
+.paradise-soundcloud-track {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding: 10px 14px;
+    background: transparent;
+    border: 0;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.paradise-soundcloud-track:hover {
+    background: #f7f7f7;
+}
+
+.paradise-soundcloud-track:focus-visible {
+    outline: none;
+    background: #f7f7f7;
+    box-shadow: inset 0 0 0 2px #ff5500;
+}
+
+.paradise-soundcloud-track.is-playing {
+    background: #fff7f0;
+    border-left-color: #ff5500;
+}
+
+.paradise-soundcloud-track-num {
+    flex-shrink: 0;
+    min-width: 20px;
+    color: #888;
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+}
+
+.paradise-soundcloud-track.is-playing .paradise-soundcloud-track-num {
+    color: #ff5500;
+}
+
+.paradise-soundcloud-track-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.paradise-soundcloud-track-title {
+    font-weight: 600;
+    color: #222;
+    line-height: 1.35;
+}
+
+.paradise-soundcloud-track-artist {
+    font-size: 0.875em;
+    color: #666;
+}
+
+.paradise-soundcloud-track-description {
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 4px;
+    line-height: 1.45;
 }

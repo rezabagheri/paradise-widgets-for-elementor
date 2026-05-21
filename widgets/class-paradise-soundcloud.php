@@ -43,6 +43,13 @@ class Paradise_Soundcloud_Widget extends Paradise_Widget_Base {
     public function get_icon(): string    { return 'fab fa-soundcloud'; }
     public function get_keywords(): array { return [ 'soundcloud', 'audio', 'music', 'podcast', 'embed', 'player' ]; }
 
+    // get_style_depends() is inherited (default handle). Override JS depends
+    // because playlist modes need our JS to wire track-switching via
+    // SoundCloud's Widget API. Loaded on every page that has the widget,
+    // even Mode 1+2 (single) instances — the JS is small (<1 KB minified)
+    // and a no-op if no `.paradise-soundcloud-playlist` is on the page.
+    public function get_script_depends(): array { return [ $this->get_default_handle() ]; }
+
     // SoundCloud's brand orange — also the player's documented default.
     private const DEFAULT_COLOR = '#ff5500';
 

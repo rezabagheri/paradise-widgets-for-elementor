@@ -117,7 +117,8 @@ class Paradise_EW_Admin {
             ],
             'soundcloud' => [
                 'label'       => __( 'SoundCloud', 'paradise-widgets-for-elementor' ),
-                'description' => __( 'Embeds a SoundCloud single track or playlist (Set) via the official player iframe. Choose Visual (with artwork) or Classic (compact mini) player style, set the accent colour, and toggle auto-play, comments, related tracks, and uploader name. URL field supports Elementor Dynamic Tags, so ACF Pro users can bind it to a post field.', 'paradise-widgets-for-elementor' ),
+                'description' => __( 'Embeds a SoundCloud single track or playlist (Set) via the official player iframe. Choose Visual (with artwork) or Classic (compact mini) player style, set the accent colour, and toggle auto-play, comments, related tracks, and uploader name. URL field supports Elementor Dynamic Tags, so ACF Pro users can bind it to a post field. Also ships two playlist modes: ACF Repeater (reads a per-post Repeater) and Manual List (build the list inside the widget).', 'paradise-widgets-for-elementor' ),
+                'js'          => true,
             ],
 
             // ---- Examples (developer learning material) -------------------------
