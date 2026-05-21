@@ -119,9 +119,15 @@ class Paradise_Import_Export {
             $imported[] = 'custom_fields';
         }
 
-        // Import widget enable/disable settings — through sanitize_settings()
+        // Import widget enable/disable settings — through sanitize_settings().
+        // sanitize_settings() partial-updates by default (driven by the hidden
+        // _section marker that the admin forms post), so we explicitly tag
+        // this payload as 'all' — an import is authoritative and rewrites
+        // both the widgets and features sections in one shot.
         if ( isset( $data['ew_settings'] ) && is_array( $data['ew_settings'] ) ) {
-            $clean = Paradise_EW_Admin::sanitize_settings( $data['ew_settings'] );
+            $payload = $data['ew_settings'];
+            $payload['_section'] = 'all';
+            $clean = Paradise_EW_Admin::sanitize_settings( $payload );
             update_option( Paradise_EW_Admin::OPTION_KEY, $clean );
             $imported[] = 'ew_settings';
         }
