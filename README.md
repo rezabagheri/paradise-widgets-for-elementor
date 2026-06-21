@@ -5,7 +5,7 @@
 [![WordPress](https://img.shields.io/badge/WordPress-6.1%2B-blue.svg)](https://wordpress.org)
 [![Elementor](https://img.shields.io/badge/Elementor-3.5%2B-orange.svg)](https://elementor.com)
 [![PHP](https://img.shields.io/badge/PHP-8.0%2B-777BB4.svg)](https://www.php.net)
-[![Version](https://img.shields.io/badge/Version-2.7.0-green.svg)](https://github.com/rezabagheri/paradise-elementor-widgets/releases)
+[![Version](https://img.shields.io/badge/Version-3.1.0-green.svg)](https://github.com/rezabagheri/paradise-widgets-for-elementor/releases)
 [![License](https://img.shields.io/badge/License-GPL--2.0%2B-green.svg)](LICENSE)
 
 ---
@@ -133,7 +133,7 @@ Phone Link, Google Map, Social Links, Business Hours, and LocalBusiness Schema a
 
 ```bash
 cd wp-content/plugins/
-git clone https://github.com/rezabagheri/paradise-elementor-widgets.git
+git clone https://github.com/rezabagheri/paradise-widgets-for-elementor.git
 ```
 
 2. Activate the plugin from **WordPress Admin → Plugins**.
@@ -195,7 +195,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Paradise_My_Widget_Widget extends Paradise_Widget_Base {
 
     public function get_name(): string    { return 'paradise_my_widget'; }
-    public function get_title(): string   { return esc_html__( 'My Widget', 'paradise-elementor-widgets' ); }
+    public function get_title(): string   { return esc_html__( 'My Widget', 'paradise-widgets-for-elementor' ); }
     public function get_icon(): string    { return 'eicon-star'; }
     public function get_keywords(): array { return [ 'my', 'widget' ]; }
 
@@ -285,71 +285,23 @@ The example widget lives in its own **Paradise Examples** editor category (separ
 
 ## Version History
 
-### v2.7.0 (May 2026)
+Current version: **3.1.0**. The full, per-release changelog (1.0.0 → 3.1.0) lives in
+[CHANGELOG.md](CHANGELOG.md), and tagged releases are on the
+[Releases page](https://github.com/rezabagheri/paradise-widgets-for-elementor/releases).
 
-- Feature Card example widget — heavily-commented reference for developers in its own "Paradise Examples" category, disabled by default
-- New optional registry flags: `example` (metadata) and `default` (per-widget enabled-by-default state)
-- Site Info admin page rebuilt — distinct location cards, sub-section dividers, icon-only Remove/Add buttons, intro rewritten as a two-method callout (Dynamic Tags + shortcode)
-- Per-row Copy Shortcode buttons on phones / emails / socials with "Copied!" toast feedback; brand-coloured platform icons next to each social select
-- Settings page grouped into Production / Developer Examples / Features cards with Enable all / Disable all bulk actions and a live filter input; "Off by default" badge
-- "Unsaved changes" pill in admin headers with `beforeunload` guard
-- Fixed: Copy Shortcode now works on plain HTTP (Valet `*.test`) via `execCommand` fallback; Google Maps preview validates the embed URL before loading
+**Highlights:**
 
-### v2.6.0 (May 2026)
-
-- `Paradise_Widget_Base` abstract class — small shared base inherited by every bundled widget; provides default `get_categories()`, conventional `paradise-{slug}` asset handle naming from `get_name()`, and a `get_default_handle()` helper
-- All 15 bundled widgets migrated to extend `Paradise_Widget_Base`, dropping repeated `get_categories()` and `get_style_depends()` overrides
-
-### v2.5.0 (May 2026)
-
-- Registry-driven asset registration — `enqueue_assets()` reduced from ~170 hardcoded calls to a single loop over the widget registry
-- Asset handle naming normalized to `paradise-{slug}` for both CSS and JS of each widget
-- Minimum PHP raised from 7.4 to 8.0 to match the codebase
-- Elementor compatibility admin notices — shown when Elementor is missing or older than 3.5.0; widget/asset registration is skipped on outdated Elementor to avoid fatals
-- Fixed: Bottom Navigation Bar asset handle mismatch left the widget unstyled and non-interactive on the frontend
-- Fixed: Floating Call Button corner offsets now apply to the position-fixed inner wrapper (not the static outer wrapper)
-- Fixed: FAQ Accordion — closed items no longer leak the first line of the answer (`grid-template-rows: minmax(0, 0fr)`); no more `TypeError` on canvas templates where `elementorFrontend.hooks` is not yet ready
-- README gains a Screenshots section with seven viewport-correct widget screenshots
-
-### v2.4.0 (April 2026)
-
-- FAQ Accordion widget — accordion/multi-expand, Elementor icon picker (closed/open), icon position, Schema.org FAQPage JSON-LD, full style controls
-- FAQ Post Type — each post is a "FAQ Set" with unlimited Q&A items stored in meta; TinyMCE rich text editor for answers; toggle on/off in plugin settings
-- Fixed: Elementor editor CSS appearing as visible text when FAQ CPT source was active (caused by `apply_filters('the_content', …)` inside widget render)
-
-### v2.3.0 (April 2026)
-
-- Site Info centralized data store with shortcode and Dynamic Tags
-- 9 new widgets: Business Hours, LocalBusiness Schema, Google Map, Social Links, Announcement Bar, Cookie Consent Bar, Back to Top, Off-Canvas Menu, Sticky Header
-- Widget registry as single source of truth — adding a widget now requires one registry entry
-
-### v2.2.0 (April 2026)
-
-- WhatsApp support in Phone Link and Phone Button
-- WooCommerce cart badge in Bottom Nav
-- Schema.org Person markup on Author Card
-- JS Hook system for Bottom Nav center button
-
-### v2.1.0 (April 2026)
-
-- Rebranded from Glenar to Paradise
-- Elementor native responsive visibility for Bottom Nav
-- Pixel-perfect editor preview
-
-### v2.0.0 (January 2025)
-
-- Removed all `!important` from CSS
-- CSS variables for theming
-
-### v1.0.0 (January 2024)
-
-- Initial release: Phone Link, Bottom Navigation Bar
+- **3.x** — Admin Dashboard landing page, two-page admin split (Widgets / Settings), Developer Mode feature flag, plugin slug aligned to `paradise-widgets-for-elementor`
+- **2.5–2.7** — `Paradise_Widget_Base` abstract class, registry-driven asset registration, Feature Card reference widget, Site Info admin rebuild
+- **2.3–2.4** — Site Info centralized data store (shortcode + Dynamic Tags), FAQ Accordion + FAQ Post Type, 9 new widgets
+- **2.0–2.2** — Rebranded Glenar → Paradise, pixel-perfect editor preview, WhatsApp + WooCommerce support, CSS variables for theming
+- **1.0** — Initial release: Phone Link, Bottom Navigation Bar
 
 ---
 
 ## Support & Contact
 
-- **Issues**: [GitHub Issues](https://github.com/rezabagheri/paradise-elementor-widgets/issues)
+- **Issues**: [GitHub Issues](https://github.com/rezabagheri/paradise-widgets-for-elementor/issues)
 - **Website**: [https://paradisecyber.com](https://paradisecyber.com)
 - **Email**: rezabagheri@gmail.com
 
