@@ -102,23 +102,42 @@ trait Paradise_Phone_Helper {
      * @param string $link_type  'tel' or 'whatsapp'.
      */
     protected function build_phone_href( string $raw, string $cc, string $link_type = 'tel' ): string {
-        if ( 'whatsapp' === $link_type ) {
-            $digits = preg_replace( '/[^0-9]/', '', $raw );
-            if ( strpos( $raw, '+' ) === false ) {
-                $digits = $cc . ltrim( $digits, '0' );
-            }
-            return 'https://wa.me/' . $digits;
+        $digits = $this->normalize_intl_digits( $raw, $cc );
+        if ( '' === $digits ) {
+            return ''; // no dialable digits → caller should render text without a link
+        }
+        return ( 'whatsapp' === $link_type )
+            ? 'https://wa.me/' . $digits
+            : 'tel:+' . $digits;
+    }
+
+    /**
+     * Reduce raw phone input to full international digits (country code + national),
+     * without ever doubling the country code when the user already typed it.
+     */
+    protected function normalize_intl_digits( string $raw, string $cc ): string {
+        $digits = preg_replace( '/[^0-9]/', '', $raw );
+        if ( '' === $digits ) {
+            return '';
+        }
+        $cc = ltrim( $cc, '+' );
+
+        // A leading "+" means the user already wrote the full international number.
+        if ( strpos( $raw, '+' ) !== false ) {
+            return $digits;
         }
 
-        // tel:
-        $digits   = preg_replace( '/[^0-9]/', '', $raw );
-        $has_plus = strpos( $raw, '+' ) !== false;
-
-        if ( $has_plus ) {
-            return 'tel:+' . $digits;
+        $digits = ltrim( $digits, '0' ); // drop the national trunk prefix
+        if ( '' === $digits ) {
+            return '';
         }
 
-        return 'tel:+' . ltrim( $cc, '+' ) . ltrim( $digits, '0' );
+        // If the number already starts with the country code, don't prepend it again.
+        if ( '' !== $cc && strpos( $digits, $cc ) === 0 && strlen( $digits ) > strlen( $cc ) ) {
+            return $digits;
+        }
+
+        return $cc . $digits;
     }
 
     /**

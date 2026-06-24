@@ -430,16 +430,16 @@ class Paradise_Announcement_Bar_Widget extends Paradise_Widget_Base {
         $bar_position = $settings['bar_position'] ?? 'top';
 
         ?>
-        <div class="paradise-ab-wrap"<?php echo $data; ?>>
+        <div class="paradise-ab-wrap"<?php echo $data; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>>
             <div class="paradise-ab-inner">
 
-                <?php echo $icon_html; ?>
+                <?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor-rendered icon HTML ?>
 
                 <span class="paradise-ab-message"><?php echo wp_kses_post( $message ); ?></span>
 
                 <?php if ( $cta_text && $cta_url ) : ?>
                 <a href="<?php echo esc_url( $cta_url ); ?>"
-                   class="paradise-ab-cta"<?php echo $cta_target . $cta_nofollow; ?>>
+                   class="paradise-ab-cta"<?php echo $cta_target . $cta_nofollow; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>>
                     <?php echo esc_html( $cta_text ); ?>
                 </a>
                 <?php endif; ?>

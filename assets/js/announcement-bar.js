@@ -14,34 +14,44 @@
 
     var STORAGE_PREFIX = 'paradise-ab-';
 
+    // Storage can throw (Safari private mode, disabled cookies, partitioned
+    // iframes). Never let that abort init — fall back to safe defaults.
+    function ls(method, key, val) {
+        try { return localStorage[method](key, val); } catch (e) { return null; }
+    }
+    function ss(method, key, val) {
+        try { return sessionStorage[method](key, val); } catch (e) { return null; }
+    }
+
     /**
      * Return true if the bar with this id has been dismissed.
      */
     function isDismissed(id) {
         var key = STORAGE_PREFIX + id;
 
+        var stored = ls('getItem', key);
+
         // Forever
-        if (localStorage.getItem(key) === 'forever') {
+        if (stored === 'forever') {
             return true;
         }
 
         // Days (JSON with expires timestamp)
-        var stored = localStorage.getItem(key);
-        if (stored && stored !== 'forever') {
+        if (stored) {
             try {
                 var data = JSON.parse(stored);
                 if (data && data.expires && Date.now() < data.expires) {
                     return true;
                 }
                 // Expired — clean up
-                localStorage.removeItem(key);
+                ls('removeItem', key);
             } catch (e) {
-                localStorage.removeItem(key);
+                ls('removeItem', key);
             }
         }
 
         // Session
-        if (sessionStorage.getItem(key) === '1') {
+        if (ss('getItem', key) === '1') {
             return true;
         }
 
@@ -55,13 +65,13 @@
         var key = STORAGE_PREFIX + id;
 
         if (duration === 'forever') {
-            localStorage.setItem(key, 'forever');
+            ls('setItem', key, 'forever');
         } else if (duration === 'days') {
             var expires = Date.now() + (parseInt(days, 10) || 7) * 24 * 60 * 60 * 1000;
-            localStorage.setItem(key, JSON.stringify({ expires: expires }));
+            ls('setItem', key, JSON.stringify({ expires: expires }));
         } else {
             // session (default)
-            sessionStorage.setItem(key, '1');
+            ss('setItem', key, '1');
         }
     }
 

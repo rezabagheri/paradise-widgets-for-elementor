@@ -188,9 +188,12 @@ class Paradise_Local_Business_Schema_Widget extends Paradise_Widget_Base {
             }
         }
 
-        $json = wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT );
+        // Note: do NOT use JSON_UNESCAPED_SLASHES here. Escaping "/" as "\/" keeps a
+        // literal "</script>" inside any value (name, description, sameAs URL…) from
+        // breaking out of this inline <script> block. Still valid JSON-LD.
+        $json = wp_json_encode( $schema, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT );
 
-        echo '<script type="application/ld+json">' . $json . '</script>';
+        echo '<script type="application/ld+json">' . $json . '</script>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_json_encode() output
 
         if ( $is_editor ) {
             echo '<div class="paradise-lbs-editor-notice">'

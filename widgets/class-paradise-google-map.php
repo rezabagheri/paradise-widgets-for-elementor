@@ -268,14 +268,14 @@ class Paradise_Google_Map_Widget extends Paradise_Widget_Base {
         // Already a /maps/embed?q= URL (no pb) — convert to maps.google.com format
         // so that zoom and geocoding work correctly.
         if ( strpos( $url, '/maps/embed' ) !== false ) {
-            parse_str( (string) parse_url( $url, PHP_URL_QUERY ), $params );
+            parse_str( (string) wp_parse_url( $url, PHP_URL_QUERY ), $params );
             if ( ! empty( $params['q'] ) ) {
                 return 'https://maps.google.com/maps?q=' . rawurlencode( $params['q'] ) . '&output=embed';
             }
         }
 
         // URL has a ?q= parameter — use it directly.
-        parse_str( (string) parse_url( $url, PHP_URL_QUERY ), $params );
+        parse_str( (string) wp_parse_url( $url, PHP_URL_QUERY ), $params );
         if ( ! empty( $params['q'] ) ) {
             return 'https://maps.google.com/maps?q=' . rawurlencode( $params['q'] ) . '&output=embed';
         }
@@ -325,7 +325,7 @@ class Paradise_Google_Map_Widget extends Paradise_Widget_Base {
                     : ( $from_si
                         ? esc_html__( 'The selected address has no Map URL. Go to Paradise → Site Info and add a Google Maps link.', 'paradise-widgets-for-elementor' )
                         : esc_html__( 'Enter a Google Maps URL in the Place settings.', 'paradise-widgets-for-elementor' ) );
-                echo '<div class="paradise-gmap-placeholder">' . $msg . '</div>';
+                echo '<div class="paradise-gmap-placeholder">' . esc_html( $msg ) . '</div>';
             }
             return;
         }

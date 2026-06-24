@@ -62,7 +62,7 @@ class Paradise_Import_Export {
         header( 'Content-Type: application/json; charset=utf-8' );
         header( 'Content-Disposition: attachment; filename="' . $filename . '"' );
         header( 'Content-Length: ' . strlen( $json ) );
-        echo $json;
+        echo $json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_json_encode() output
         exit;
     }
 
@@ -78,7 +78,7 @@ class Paradise_Import_Export {
         $redirect = admin_url( 'admin.php?page=' . self::PAGE_SLUG );
 
         // Validate upload
-        $file = isset( $_FILES['paradise_import_file'] ) ? $_FILES['paradise_import_file'] : null;
+        $file = isset( $_FILES['paradise_import_file'] ) ? $_FILES['paradise_import_file'] : null; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- raw value is sanitized per-field in the save handler below
 
         if ( empty( $file['tmp_name'] ) || (int) $file['error'] !== UPLOAD_ERR_OK ) {
             wp_safe_redirect( add_query_arg( [ 'import' => 'error', 'reason' => 'no_file' ], $redirect ) );

@@ -76,7 +76,7 @@ class Paradise_Custom_Fields_Admin {
         check_admin_referer( self::NONCE );
 
         $raw = isset( $_POST['paradise_custom_fields'] ) && is_array( $_POST['paradise_custom_fields'] )
-            ? wp_unslash( $_POST['paradise_custom_fields'] )
+            ? wp_unslash( $_POST['paradise_custom_fields'] ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- raw value is sanitized per-field in the save handler below
             : [];
 
         Paradise_Custom_Fields::save( $raw );

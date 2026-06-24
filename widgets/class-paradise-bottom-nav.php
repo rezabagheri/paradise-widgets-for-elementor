@@ -863,7 +863,7 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
 
         $dir = $is_rtl ? 'rtl' : 'ltr';
         ?>
-        <nav class="<?php echo $wrapper_classes; ?>"
+        <nav class="<?php echo $wrapper_classes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>"
              dir="<?php echo esc_attr($dir); ?>"
              aria-label="<?php esc_attr_e('Bottom navigation', 'paradise-widgets-for-elementor'); ?>"
              data-paradise-bn='<?php echo wp_json_encode($data); ?>'>
@@ -913,7 +913,7 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
                 $dial_classes = 'paradise-bn-speed-dial' . ($is_edit ? ' paradise-bn-speed-dial--open' : '');
                 $dial_hidden  = $is_edit ? 'false' : 'true';
                 ?>
-                <div class="<?php echo $dial_classes; ?>" aria-hidden="<?php echo $dial_hidden; ?>" role="menu">
+                <div class="<?php echo $dial_classes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>" aria-hidden="<?php echo $dial_hidden; ?>" role="menu">
                     <?php foreach (array_reverse($s['speed_dial_items'] ?? []) as $dial) :
                         $d_url = $dial['dial_url']['url'] ?? '';
                         $d_ext = ! empty($dial['dial_url']['is_external']);
@@ -923,9 +923,9 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
                            role="menuitem"
                            <?php echo $d_ext ? 'target="_blank" rel="noopener noreferrer"' : ''; ?>>
                             <span class="paradise-bn-dial-icon" aria-hidden="true">
-                                <?php Icons_Manager::render_icon($dial['dial_icon'], [ 'aria-hidden' => 'true' ]); ?>
+                                <?php Icons_Manager::render_icon($dial['dial_icon'] ?? [], [ 'aria-hidden' => 'true' ]); ?>
                             </span>
-                            <span class="paradise-bn-dial-label"><?php echo esc_html($dial['dial_label']); ?></span>
+                            <span class="paradise-bn-dial-label"><?php echo esc_html($dial['dial_label'] ?? ''); ?></span>
                         </a>
                     <?php endforeach; ?>
                 </div>
@@ -961,18 +961,18 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
 
         printf(
             '<span class="paradise-bn-badge"%s%s>%s</span>',
-            $hide_attr,
-            $data_attrs,
+            $hide_attr, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above
+            $data_attrs, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above
             $source !== 'js' ? esc_html($value > 99 ? '99+' : (string) $value) : ''
         );
     }
 
     private function render_item_repeater(array $item, bool $show_labels, string $current_url, array $s): void
     {
-        $url       = $item['item_url']['url'] ?? '';
-        $url       = $url ?: site_url('/');
+        $raw_url   = $item['item_url']['url'] ?? '';
+        $url       = $raw_url ?: site_url('/');
         $ext       = ! empty($item['item_url']['is_external']);
-        $active    = trailingslashit($url) === trailingslashit($current_url);
+        $active    = $this->is_active_url($raw_url, $current_url);
         $id_attr   = ! empty($item['item_custom_id']) ? ' id="' . esc_attr($item['item_custom_id']) . '"' : '';
         $ind_style = $s['indicator_style'] ?? 'top_bar';
 
@@ -984,20 +984,20 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
             $classes .= ' paradise-bn-pill';
         }
         ?>
-        <a<?php echo $id_attr; ?>
+        <a<?php echo $id_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>
            href="<?php echo esc_url($url); ?>"
            class="<?php echo esc_attr($classes); ?>"
            <?php echo $ext ? 'target="_blank" rel="noopener noreferrer"' : ''; ?>
-           aria-current="<?php echo $active ? 'page' : 'false'; ?>">
+           <?php echo $active ? 'aria-current="page"' : ''; ?>>
             <span class="paradise-bn-item-icon" aria-hidden="true">
-                <?php Icons_Manager::render_icon($item['item_icon'], [ 'aria-hidden' => 'true' ]); ?>
+                <?php Icons_Manager::render_icon($item['item_icon'] ?? [], [ 'aria-hidden' => 'true' ]); ?>
                 <?php $this->render_badge($item); ?>
             </span>
             <?php if ($ind_style === 'dot') : ?>
                 <span class="paradise-bn-dot" aria-hidden="true"></span>
             <?php endif; ?>
             <?php if ($show_labels) : ?>
-                <span class="paradise-bn-label"><?php echo esc_html($item['item_label']); ?></span>
+                <span class="paradise-bn-label"><?php echo esc_html($item['item_label'] ?? ''); ?></span>
             <?php endif; ?>
         </a>
         <?php
@@ -1005,14 +1005,14 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
 
     private function render_item_wp_menu(object $item, bool $show_labels, string $current_url): void
     {
-        $url    = $item->url;
-        $active = trailingslashit($url) === trailingslashit($current_url);
+        $url    = $item->url ?? '';
+        $active = $this->is_active_url($url, $current_url);
         $classes_raw = trim(implode(' ', array_filter((array) $item->classes)));
         $icon_data   = $this->css_class_to_icon_data($classes_raw ?: 'fas fa-circle');
         ?>
         <a href="<?php echo esc_url($url); ?>"
            class="paradise-bn-item<?php echo $active ? ' paradise-bn-item--active' : ''; ?>"
-           aria-current="<?php echo $active ? 'page' : 'false'; ?>">
+           <?php echo $active ? 'aria-current="page"' : ''; ?>>
             <span class="paradise-bn-item-icon" aria-hidden="true">
                 <?php Icons_Manager::render_icon($icon_data, [ 'aria-hidden' => 'true' ]); ?>
             </span>
@@ -1051,14 +1051,14 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
         }
         ?>
         <div class="paradise-bn-center-wrap">
-            <<?php echo $tag; ?> <?php echo $href_attr; ?> <?php echo $ext_attr; ?> <?php echo $data_attr; ?>
+            <<?php echo $tag; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?> <?php echo $href_attr; ?> <?php echo $ext_attr; ?> <?php echo $data_attr; ?>
                 class="paradise-bn-center-btn"
                 aria-label="<?php echo esc_attr($label); ?>"
                 aria-expanded="false">
                 <span class="paradise-bn-center-icon" aria-hidden="true">
-                    <?php Icons_Manager::render_icon($s['center_icon'], [ 'aria-hidden' => 'true' ]); ?>
+                    <?php Icons_Manager::render_icon($s['center_icon'] ?? [], [ 'aria-hidden' => 'true' ]); ?>
                 </span>
-            </<?php echo $tag; ?>>
+            </<?php echo $tag; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>>
             <?php if ($show_labels && $label) : ?>
                 <span class="paradise-bn-label paradise-bn-center-label"><?php echo esc_html($label); ?></span>
             <?php endif; ?>
@@ -1101,5 +1101,30 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
         return is_array($items)
             ? array_values(array_filter($items, fn ($i) => empty($i->menu_item_parent)))
             : [];
+    }
+
+    /**
+     * Normalize a URL to a comparable path: leading slash, no trailing slash,
+     * host and query string dropped. Mirrors the frontend JS normalizeUrl().
+     */
+    private function url_path(string $url): string
+    {
+        $path = wp_parse_url($url, PHP_URL_PATH);
+        if (! is_string($path) || '' === $path) {
+            return '/';
+        }
+        return '/' . trim($path, '/');
+    }
+
+    /**
+     * Whether $url points at the current page (path comparison). An empty URL
+     * never matches, so placeholder items don't all light up on the home page.
+     */
+    private function is_active_url(string $url, string $current_url): bool
+    {
+        if ('' === $url) {
+            return false;
+        }
+        return $this->url_path($url) === $this->url_path($current_url);
     }
 }

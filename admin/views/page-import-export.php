@@ -5,8 +5,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-$import_status = isset( $_GET['import'] ) ? sanitize_key( $_GET['import'] ) : '';
-$import_reason = isset( $_GET['reason'] ) ? sanitize_key( $_GET['reason'] ) : '';
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Admin view template; loop/local vars are scoped to the render include.
+
+$import_status = isset( $_GET['import'] ) ? sanitize_key( $_GET['import'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only UI flag
+$import_reason = isset( $_GET['reason'] ) ? sanitize_key( $_GET['reason'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only UI flag
 
 $error_messages = [
     'no_file'      => esc_html__( 'No file was uploaded. Please choose a JSON file and try again.', 'paradise-widgets-for-elementor' ),
@@ -28,7 +30,7 @@ $error_messages = [
     </div>
     <?php elseif ( 'error' === $import_status ) : ?>
     <div class="notice notice-error is-dismissible">
-        <p><?php echo $error_messages[ $import_reason ] ?? esc_html__( 'Import failed. Please try again.', 'paradise-widgets-for-elementor' ); ?></p>
+        <p><?php echo $error_messages[ $import_reason ] ?? esc_html__( 'Import failed. Please try again.', 'paradise-widgets-for-elementor' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- values are pre-escaped via esc_html__() ?></p>
     </div>
     <?php endif; ?>
 

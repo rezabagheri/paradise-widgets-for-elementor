@@ -473,9 +473,13 @@ class Paradise_Floating_Call_Btn_Widget extends Paradise_Widget_Base
         $display_text = $this->format_phone_display($raw_phone, $settings);
 
         // aria-label uses the displayed text
+        /* translators: %s: the displayed phone number or contact label */
+        $wa_aria = esc_html__('WhatsApp %s', 'paradise-widgets-for-elementor');
+        /* translators: %s: the displayed phone number or contact label */
+        $call_aria = esc_html__('Call %s', 'paradise-widgets-for-elementor');
         $aria = 'whatsapp' === $link_type
-            ? sprintf(esc_html__('WhatsApp %s', 'paradise-widgets-for-elementor'), $display_text)
-            : sprintf(esc_html__('Call %s', 'paradise-widgets-for-elementor'), $display_text);
+            ? sprintf($wa_aria, $display_text)
+            : sprintf($call_aria, $display_text);
 
         $show_label  = 'yes' === ($settings['show_label'] ?? '');
         $pulse       = 'yes' === ($settings['pulse_enabled'] ?? 'yes');
@@ -509,8 +513,8 @@ class Paradise_Floating_Call_Btn_Widget extends Paradise_Widget_Base
         <div class="paradise-fcb-wrap">
             <a href="<?php echo esc_url($href); ?>"
                class="<?php echo esc_attr(implode(' ', $btn_classes)); ?>"
-               aria-label="<?php echo esc_attr($aria); ?>"<?php echo $target_attr; ?>>
-                <?php echo $icon_html; ?>
+               aria-label="<?php echo esc_attr($aria); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>"<?php echo $target_attr; ?>>
+                <?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor-rendered icon HTML ?>
                 <?php if ($show_label) : ?>
                 <span class="paradise-fcb-label">
                     <?php echo esc_html($label_text); ?>

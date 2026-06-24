@@ -10,6 +10,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Admin view template; loop/local vars are scoped to the render include.
+
 $groups   = Paradise_Custom_Fields::get_groups();
 $types    = Paradise_Custom_Fields::get_types();
 $type_opts = Paradise_Custom_Fields::get_type_options();
@@ -231,16 +233,16 @@ function paradise_cf_render_group( $group_idx, array $group, array $type_opts ):
     $label  = $group['label']  ?? '';
     $fields = $group['fields'] ?? [];
     ?>
-    <div class="paradise-cf-group" data-group="<?php echo $group_idx; ?>">
+    <div class="paradise-cf-group" data-group="<?php echo esc_attr( $group_idx ); ?>">
 
         <div class="paradise-cf-group-header">
             <span class="paradise-cf-group-handle dashicons dashicons-menu" title="<?php esc_attr_e( 'Drag to reorder', 'paradise-widgets-for-elementor' ); ?>"></span>
             <input type="text" class="paradise-cf-group-label"
-                name="paradise_custom_fields[groups][<?php echo $group_idx; ?>][label]"
+                name="paradise_custom_fields[groups][<?php echo esc_attr( $group_idx ); ?>][label]"
                 value="<?php echo esc_attr( $label ); ?>"
                 placeholder="<?php esc_attr_e( 'Group label (e.g. Footer)', 'paradise-widgets-for-elementor' ); ?>">
             <input type="text" class="paradise-cf-group-slug"
-                name="paradise_custom_fields[groups][<?php echo $group_idx; ?>][slug]"
+                name="paradise_custom_fields[groups][<?php echo esc_attr( $group_idx ); ?>][slug]"
                 value="<?php echo esc_attr( $slug ); ?>"
                 placeholder="<?php esc_attr_e( 'slug', 'paradise-widgets-for-elementor' ); ?>">
             <button type="button" class="paradise-cf-group-toggle button-link" aria-expanded="true">
@@ -268,7 +270,7 @@ function paradise_cf_render_group( $group_idx, array $group, array $type_opts ):
                 </tbody>
             </table>
             <p>
-                <button type="button" class="button paradise-cf-add-field" data-group="<?php echo $group_idx; ?>">
+                <button type="button" class="button paradise-cf-add-field" data-group="<?php echo esc_attr( $group_idx ); ?>">
                     <span class="dashicons dashicons-plus-alt2" aria-hidden="true"></span><?php esc_html_e( 'Add Field', 'paradise-widgets-for-elementor' ); ?>
                 </button>
             </p>
@@ -300,7 +302,7 @@ function paradise_cf_render_group( $group_idx, array $group, array $type_opts ):
         </ul>
     </div>
 
-    <?php if ( isset( $_GET['saved'] ) ) : ?>
+    <?php if ( isset( $_GET['saved'] ) ) : // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only UI flag ?>
     <div class="notice notice-success is-dismissible"><p><?php esc_html_e( 'Custom fields saved.', 'paradise-widgets-for-elementor' ); ?></p></div>
     <?php endif; ?>
 
@@ -332,12 +334,12 @@ function paradise_cf_render_group( $group_idx, array $group, array $type_opts ):
 
 <template id="paradise-cf-tpl-field-row">
     <?php paradise_cf_render_field_row( '__GROUP__', '__INDEX__', [
-        'key' => '', 'label' => __( '', 'paradise-widgets-for-elementor' ), 'type' => 'text', 'value' => '',
+        'key' => '', 'label' => '', 'type' => 'text', 'value' => '',
     ], $type_opts ); ?>
 </template>
 
 <template id="paradise-cf-tpl-group">
     <?php paradise_cf_render_group( '__GROUP__', [
-        'slug' => '', 'label' => __( '', 'paradise-widgets-for-elementor' ), 'fields' => [],
+        'slug' => '', 'label' => '', 'fields' => [],
     ], $type_opts ); ?>
 </template>
