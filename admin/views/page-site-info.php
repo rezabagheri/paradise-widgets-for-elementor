@@ -17,7 +17,7 @@ $def_hours = Paradise_Site_Info::default_hours();
 
 if ( empty( $locations ) ) {
     $locations = [
-        [ 'label' => __( '', 'paradise-widgets-for-elementor' ), 'phones' => [], 'emails' => [], 'address' => '', 'map_url' => '', 'hours' => [] ],
+        [ 'label' => '', 'phones' => [], 'emails' => [], 'address' => '', 'map_url' => '', 'hours' => [] ],
     ];
 }
 
@@ -385,7 +385,7 @@ function paradise_si_render_location( $loc_idx, array $loc, array $hours, array 
 
 <template id="paradise-si-tpl-location">
     <?php paradise_si_render_location( '__LOC__', [
-        'label'   => __( '', 'paradise-widgets-for-elementor' ),
+        'label'   => '',
         'phones'  => [],
         'emails'  => [],
         'address' => '',

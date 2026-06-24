@@ -6,7 +6,7 @@
  * Description:       Advanced custom Elementor widgets by Paradise. Phone Link, Bottom Navigation Bar, and more.
  * Version:           3.1.0
  * Requires at least: 6.1
- * Tested up to:      6.9
+ * Tested up to:      7.0
  * Requires PHP:      8.0
  * Requires Plugins:  elementor
  * Author:            Reza Bagheri

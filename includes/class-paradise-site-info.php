@@ -447,7 +447,7 @@ class Paradise_Site_Info {
         $atts = shortcode_atts( [
             'type'     => 'phone',
             'index'    => 0,
-            'label'    => __( '', 'paradise-widgets-for-elementor' ),
+            'label'    => '',
             'location' => '',
         ], $atts, 'paradise_site_info' );
 

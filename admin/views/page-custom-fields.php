@@ -332,12 +332,12 @@ function paradise_cf_render_group( $group_idx, array $group, array $type_opts ):
 
 <template id="paradise-cf-tpl-field-row">
     <?php paradise_cf_render_field_row( '__GROUP__', '__INDEX__', [
-        'key' => '', 'label' => __( '', 'paradise-widgets-for-elementor' ), 'type' => 'text', 'value' => '',
+        'key' => '', 'label' => '', 'type' => 'text', 'value' => '',
     ], $type_opts ); ?>
 </template>
 
 <template id="paradise-cf-tpl-group">
     <?php paradise_cf_render_group( '__GROUP__', [
-        'slug' => '', 'label' => __( '', 'paradise-widgets-for-elementor' ), 'fields' => [],
+        'slug' => '', 'label' => '', 'fields' => [],
     ], $type_opts ); ?>
 </template>

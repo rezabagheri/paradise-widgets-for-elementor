@@ -473,9 +473,13 @@ class Paradise_Floating_Call_Btn_Widget extends Paradise_Widget_Base
         $display_text = $this->format_phone_display($raw_phone, $settings);
 
         // aria-label uses the displayed text
+        /* translators: %s: the displayed phone number or contact label */
+        $wa_aria = esc_html__('WhatsApp %s', 'paradise-widgets-for-elementor');
+        /* translators: %s: the displayed phone number or contact label */
+        $call_aria = esc_html__('Call %s', 'paradise-widgets-for-elementor');
         $aria = 'whatsapp' === $link_type
-            ? sprintf(esc_html__('WhatsApp %s', 'paradise-widgets-for-elementor'), $display_text)
-            : sprintf(esc_html__('Call %s', 'paradise-widgets-for-elementor'), $display_text);
+            ? sprintf($wa_aria, $display_text)
+            : sprintf($call_aria, $display_text);
 
         $show_label  = 'yes' === ($settings['show_label'] ?? '');
         $pulse       = 'yes' === ($settings['pulse_enabled'] ?? 'yes');

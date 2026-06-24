@@ -2,7 +2,7 @@
 Contributors: rezabagheri
 Tags: elementor, widgets, bottom navigation, phone link, google map, social links, business hours, schema, local seo, announcement bar, cookie consent, sticky header, off canvas menu, back to top
 Requires at least: 6.1
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 8.0
 Stable tag: 3.1.0
 License: GPL-2.0+

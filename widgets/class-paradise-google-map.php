@@ -268,14 +268,14 @@ class Paradise_Google_Map_Widget extends Paradise_Widget_Base {
         // Already a /maps/embed?q= URL (no pb) — convert to maps.google.com format
         // so that zoom and geocoding work correctly.
         if ( strpos( $url, '/maps/embed' ) !== false ) {
-            parse_str( (string) parse_url( $url, PHP_URL_QUERY ), $params );
+            parse_str( (string) wp_parse_url( $url, PHP_URL_QUERY ), $params );
             if ( ! empty( $params['q'] ) ) {
                 return 'https://maps.google.com/maps?q=' . rawurlencode( $params['q'] ) . '&output=embed';
             }
         }
 
         // URL has a ?q= parameter — use it directly.
-        parse_str( (string) parse_url( $url, PHP_URL_QUERY ), $params );
+        parse_str( (string) wp_parse_url( $url, PHP_URL_QUERY ), $params );
         if ( ! empty( $params['q'] ) ) {
             return 'https://maps.google.com/maps?q=' . rawurlencode( $params['q'] ) . '&output=embed';
         }
