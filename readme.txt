@@ -137,13 +137,13 @@ The badge is computed in the visitor's browser using the site's timezone (from W
 
 == Screenshots ==
 
-1. Site Info admin page — phones, addresses, social links, and business hours
-2. Google Map widget — Place mode with satellite type
-3. Social Links widget — brand color icon row
-4. Business Hours widget with live Open Now badge
-5. Bottom Navigation Bar — frontend on mobile
-6. Announcement Bar with dismiss button
-7. Widget panel — Paradise Widgets category
+1. A real landing page — the Announcement Bar, a gradient hero, and a WhatsApp Phone Button working together.
+2. Google Map widget — a live map pulled automatically from Site Info (no embed code to paste).
+3. Social Links widget — a brand-coloured social icon row.
+4. Business Hours widget — the weekly schedule with a live "Open Now / Closed" badge and today highlighted.
+5. Bottom Navigation Bar on mobile — icons, labels, and a floating Speed Dial center button.
+6. Announcement Bar — a dismissible promo banner with a call-to-action.
+7. Author Card — photo, bio, credentials, and a custom profile field.
 
 == Changelog ==
 
