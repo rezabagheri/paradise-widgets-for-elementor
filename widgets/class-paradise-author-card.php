@@ -105,7 +105,7 @@ class Paradise_Author_Card_Widget extends Paradise_Widget_Base {
             'options'   => [
                 'paradise' => esc_html__( 'Paradise Profile Photo', 'paradise-widgets-for-elementor' ),
                 'gravatar' => esc_html__( 'Gravatar / WordPress Avatar', 'paradise-widgets-for-elementor' ),
-                'meta_key' => esc_html__( 'Custom Meta Key', 'paradise-widgets-for-elementor' ),
+                'meta_key' => esc_html__( 'Custom Meta Key', 'paradise-widgets-for-elementor' ), // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- not a query; SELECT control option label
                 'static'   => esc_html__( 'Static Image', 'paradise-widgets-for-elementor' ),
             ],
             'condition' => [ 'show_photo' => 'yes' ],
@@ -1150,13 +1150,13 @@ class Paradise_Author_Card_Widget extends Paradise_Widget_Base {
                         <?php if ( 'link' === $f_type ) : ?>
                         <a href="<?php echo esc_url( $f['value'] ); ?>"
                            class="paradise-author-card__field-value paradise-author-card__field-link"
-                           target="<?php echo esc_attr( $f_target ); ?>"<?php echo $f_rel; ?>>
+                           target="<?php echo esc_attr( $f_target ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>"<?php echo $f_rel; ?>>
                             <?php echo esc_html( $f['link_label'] ?: $f['value'] ); ?>
                         </a>
                         <?php elseif ( 'email' === $f_type ) : ?>
                         <a href="mailto:<?php echo esc_attr( sanitize_email( $f['value'] ) ); ?>"
                            class="paradise-author-card__field-value paradise-author-card__field-link"
-                           target="<?php echo esc_attr( $f_target ); ?>"<?php echo $f_rel; ?>>
+                           target="<?php echo esc_attr( $f_target ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>"<?php echo $f_rel; ?>>
                             <?php echo esc_html( $f['value'] ); ?>
                         </a>
                         <?php elseif ( 'badge' === $f_type ) : ?>
@@ -1176,7 +1176,7 @@ class Paradise_Author_Card_Widget extends Paradise_Widget_Base {
                 <?php if ( $social_items ) :
                     $social_display = esc_attr( $settings['social_display'] ?? 'icon_only' );
                 ?>
-                <div class="paradise-author-card__social paradise-author-card__social--<?php echo $social_display; ?>">
+                <div class="paradise-author-card__social paradise-author-card__social--<?php echo esc_attr( $social_display ); ?>">
                     <?php foreach ( $social_items as $s ) : ?>
                     <a href="<?php echo esc_url( $s['href'] ); ?>"
                        class="paradise-author-card__social-link"

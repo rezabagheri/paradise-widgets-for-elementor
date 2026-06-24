@@ -9,16 +9,18 @@
  *   $system_status array — shape defined by Paradise_EW_Admin::get_dashboard_system_status()
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Admin view template; loop/local vars are scoped to the render include.
+
 $status_icons = [
     'ok'      => 'dashicons-yes-alt',
     'warning' => 'dashicons-warning',
     'fail'    => 'dashicons-dismiss',
     'info'    => 'dashicons-info',
 ];
-
-if ( ! defined( 'ABSPATH' ) ) {
-    exit;
-}
 
 $widgets_enabled  = (int) ( $stats['widgets']['enabled']  ?? 0 );
 $widgets_total    = (int) ( $stats['widgets']['total']    ?? 0 );
@@ -57,7 +59,7 @@ $features_total   = (int) ( $stats['features']['total']   ?? 0 );
                     printf(
                         /* translators: %d = total number of widgets */
                         esc_html__( 'of %d widgets enabled', 'paradise-widgets-for-elementor' ),
-                        $widgets_total
+                        (int) $widgets_total
                     );
                 ?></span>
             </li>
@@ -67,7 +69,7 @@ $features_total   = (int) ( $stats['features']['total']   ?? 0 );
                     printf(
                         /* translators: %d = total number of features */
                         esc_html__( 'of %d features enabled', 'paradise-widgets-for-elementor' ),
-                        $features_total
+                        (int) $features_total
                     );
                 ?></span>
             </li>

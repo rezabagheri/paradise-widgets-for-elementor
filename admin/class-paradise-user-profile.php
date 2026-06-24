@@ -237,7 +237,7 @@ class Paradise_User_Profile {
             if ( ! isset( $_POST[ $meta_key ] ) ) {
                 continue;
             }
-            $raw = wp_unslash( $_POST[ $meta_key ] );
+            $raw = wp_unslash( $_POST[ $meta_key ] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- raw value is sanitized per-field in the save handler below
             if ( 'email' === $platform['type'] ) {
                 $clean = sanitize_email( $raw );
             } else {

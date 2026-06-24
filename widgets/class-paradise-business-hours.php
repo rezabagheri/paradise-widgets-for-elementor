@@ -225,7 +225,7 @@ class Paradise_Business_Hours_Widget extends Paradise_Widget_Base {
                         <?php if ( $is_open ) : ?>
                             <?php echo esc_html( $from_str . ' – ' . $to_str ); ?>
                         <?php else : ?>
-                            <?php echo $closed_label; ?>
+                            <?php echo esc_html( $closed_label ); ?>
                         <?php endif; ?>
                     </td>
                 </tr>

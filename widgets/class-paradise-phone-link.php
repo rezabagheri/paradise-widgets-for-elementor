@@ -560,6 +560,6 @@ class Paradise_Phone_Link_Widget extends Paradise_Widget_Base {
             );
         }
 
-        echo $wrapper_open . $inner_html . $wrapper_close;
+        echo $wrapper_open . $inner_html . $wrapper_close; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above
     }
 }

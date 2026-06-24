@@ -513,8 +513,8 @@ class Paradise_Floating_Call_Btn_Widget extends Paradise_Widget_Base
         <div class="paradise-fcb-wrap">
             <a href="<?php echo esc_url($href); ?>"
                class="<?php echo esc_attr(implode(' ', $btn_classes)); ?>"
-               aria-label="<?php echo esc_attr($aria); ?>"<?php echo $target_attr; ?>>
-                <?php echo $icon_html; ?>
+               aria-label="<?php echo esc_attr($aria); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>"<?php echo $target_attr; ?>>
+                <?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor-rendered icon HTML ?>
                 <?php if ($show_label) : ?>
                 <span class="paradise-fcb-label">
                     <?php echo esc_html($label_text); ?>

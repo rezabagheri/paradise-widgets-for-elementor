@@ -325,7 +325,7 @@ class Paradise_Google_Map_Widget extends Paradise_Widget_Base {
                     : ( $from_si
                         ? esc_html__( 'The selected address has no Map URL. Go to Paradise → Site Info and add a Google Maps link.', 'paradise-widgets-for-elementor' )
                         : esc_html__( 'Enter a Google Maps URL in the Place settings.', 'paradise-widgets-for-elementor' ) );
-                echo '<div class="paradise-gmap-placeholder">' . $msg . '</div>';
+                echo '<div class="paradise-gmap-placeholder">' . esc_html( $msg ) . '</div>';
             }
             return;
         }

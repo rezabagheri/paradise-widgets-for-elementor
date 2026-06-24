@@ -863,7 +863,7 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
 
         $dir = $is_rtl ? 'rtl' : 'ltr';
         ?>
-        <nav class="<?php echo $wrapper_classes; ?>"
+        <nav class="<?php echo $wrapper_classes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>"
              dir="<?php echo esc_attr($dir); ?>"
              aria-label="<?php esc_attr_e('Bottom navigation', 'paradise-widgets-for-elementor'); ?>"
              data-paradise-bn='<?php echo wp_json_encode($data); ?>'>
@@ -913,7 +913,7 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
                 $dial_classes = 'paradise-bn-speed-dial' . ($is_edit ? ' paradise-bn-speed-dial--open' : '');
                 $dial_hidden  = $is_edit ? 'false' : 'true';
                 ?>
-                <div class="<?php echo $dial_classes; ?>" aria-hidden="<?php echo $dial_hidden; ?>" role="menu">
+                <div class="<?php echo $dial_classes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>" aria-hidden="<?php echo $dial_hidden; ?>" role="menu">
                     <?php foreach (array_reverse($s['speed_dial_items'] ?? []) as $dial) :
                         $d_url = $dial['dial_url']['url'] ?? '';
                         $d_ext = ! empty($dial['dial_url']['is_external']);
@@ -961,8 +961,8 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
 
         printf(
             '<span class="paradise-bn-badge"%s%s>%s</span>',
-            $hide_attr,
-            $data_attrs,
+            $hide_attr, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above
+            $data_attrs, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above
             $source !== 'js' ? esc_html($value > 99 ? '99+' : (string) $value) : ''
         );
     }
@@ -984,7 +984,7 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
             $classes .= ' paradise-bn-pill';
         }
         ?>
-        <a<?php echo $id_attr; ?>
+        <a<?php echo $id_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>
            href="<?php echo esc_url($url); ?>"
            class="<?php echo esc_attr($classes); ?>"
            <?php echo $ext ? 'target="_blank" rel="noopener noreferrer"' : ''; ?>
@@ -1051,14 +1051,14 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
         }
         ?>
         <div class="paradise-bn-center-wrap">
-            <<?php echo $tag; ?> <?php echo $href_attr; ?> <?php echo $ext_attr; ?> <?php echo $data_attr; ?>
+            <<?php echo $tag; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?> <?php echo $href_attr; ?> <?php echo $ext_attr; ?> <?php echo $data_attr; ?>
                 class="paradise-bn-center-btn"
                 aria-label="<?php echo esc_attr($label); ?>"
                 aria-expanded="false">
                 <span class="paradise-bn-center-icon" aria-hidden="true">
                     <?php Icons_Manager::render_icon($s['center_icon'] ?? [], [ 'aria-hidden' => 'true' ]); ?>
                 </span>
-            </<?php echo $tag; ?>>
+            </<?php echo $tag; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>>
             <?php if ($show_labels && $label) : ?>
                 <span class="paradise-bn-label paradise-bn-center-label"><?php echo esc_html($label); ?></span>
             <?php endif; ?>

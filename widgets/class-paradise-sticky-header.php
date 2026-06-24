@@ -170,7 +170,7 @@ class Paradise_Sticky_Header_Widget extends Paradise_Widget_Base {
         }
 
         ?>
-        <div class="paradise-shdr-ctrl" <?php echo $data; ?>></div>
+        <div class="paradise-shdr-ctrl" <?php echo $data; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>></div>
 
         <?php if ( $is_editor ) : ?>
         <div class="paradise-shdr-editor-notice">

@@ -103,7 +103,7 @@ final class Paradise_Elementor_Widgets
 
     public function load_textdomain(): void
     {
-        load_plugin_textdomain(
+        load_plugin_textdomain( // phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- loads local /languages during development; WordPress.org auto-loads once hosted.
             'paradise-widgets-for-elementor',
             false,
             dirname(plugin_basename(__FILE__)) . '/languages'

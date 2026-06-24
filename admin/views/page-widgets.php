@@ -11,6 +11,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Admin view template; loop/local vars are scoped to the render include.
 
 require_once PARADISE_EW_DIR . 'admin/views/partials/render-toggle-card.php';
 

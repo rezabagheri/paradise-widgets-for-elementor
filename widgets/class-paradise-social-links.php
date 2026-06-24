@@ -318,7 +318,7 @@ class Paradise_Social_Links_Widget extends Paradise_Widget_Base {
                 $msg = $from_si
                     ? esc_html__( 'No social links saved in Site Info. Go to Paradise → Site Info to add them.', 'paradise-widgets-for-elementor' )
                     : esc_html__( 'Add social links in the widget settings.', 'paradise-widgets-for-elementor' );
-                echo '<div class="paradise-sl-placeholder">' . $msg . '</div>';
+                echo '<div class="paradise-sl-placeholder">' . esc_html( $msg ) . '</div>';
             }
             return;
         }

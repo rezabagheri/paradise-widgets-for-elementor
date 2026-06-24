@@ -1,6 +1,6 @@
 === Paradise Widgets for Elementor ===
 Contributors: rezabagheri
-Tags: elementor, widgets, bottom navigation, phone link, google map, social links, business hours, schema, local seo, announcement bar, cookie consent, sticky header, off canvas menu, back to top
+Tags: elementor, mobile navigation, business hours, local seo, schema
 Requires at least: 6.1
 Tested up to: 7.0
 Requires PHP: 8.0
