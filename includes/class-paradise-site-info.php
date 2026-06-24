@@ -251,11 +251,29 @@ class Paradise_Site_Info {
         $hours = self::get_hours( $location );
         $entry = $hours[ $day ] ?? null;
 
-        if ( ! $entry || ! $entry['open'] || empty( $entry['from'] ) || empty( $entry['to'] ) ) {
-            return false;
+        if ( $entry && ! empty( $entry['open'] ) && ! empty( $entry['from'] ) && ! empty( $entry['to'] )
+            && self::time_in_range( $time, $entry['from'], $entry['to'] ) ) {
+            return true;
         }
 
-        return $time >= $entry['from'] && $time <= $entry['to'];
+        // Overnight span that began the previous day (e.g. yesterday 22:00 → today 02:00).
+        $prev_day = strtolower( ( clone $now )->modify( '-1 day' )->format( 'l' ) );
+        $prev     = $hours[ $prev_day ] ?? null;
+        if ( $prev && ! empty( $prev['open'] ) && ! empty( $prev['from'] ) && ! empty( $prev['to'] )
+            && $prev['from'] > $prev['to'] && $time <= $prev['to'] ) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Whether H:i $time is within [$from, $to], handling overnight ranges
+     * (from > to means the span crosses midnight, e.g. 22:00 → 02:00).
+     */
+    private static function time_in_range( string $time, string $from, string $to ): bool {
+        return ( $from <= $to ) ? ( $time >= $from && $time <= $to )
+                                : ( $time >= $from || $time <= $to );
     }
 
     /** @return array<string, string>  slug → display name */

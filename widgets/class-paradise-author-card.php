@@ -1178,7 +1178,7 @@ class Paradise_Author_Card_Widget extends Paradise_Widget_Base {
                 ?>
                 <div class="paradise-author-card__social paradise-author-card__social--<?php echo $social_display; ?>">
                     <?php foreach ( $social_items as $s ) : ?>
-                    <a href="<?php echo esc_attr( $s['href'] ); ?>"
+                    <a href="<?php echo esc_url( $s['href'] ); ?>"
                        class="paradise-author-card__social-link"
                        title="<?php echo esc_attr( $s['label'] ); ?>"
                        itemprop="<?php echo strpos( $s['href'], 'mailto:' ) === 0 ? 'email' : 'sameAs'; ?>"

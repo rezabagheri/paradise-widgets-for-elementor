@@ -14,11 +14,18 @@
 
     var STORAGE_PREFIX = 'paradise-ccb-';
 
+    // Storage can throw (Safari private mode, disabled cookies, partitioned
+    // iframes). Never let that abort init — fall back to safe defaults so the
+    // Accept/Decline buttons still get wired.
+    function ls(method, key, val) {
+        try { return localStorage[method](key, val); } catch (e) { return null; }
+    }
+
     /**
      * Return the stored consent record for a bar id, or null if absent/expired.
      */
     function getConsent(id) {
-        var raw = localStorage.getItem(STORAGE_PREFIX + id);
+        var raw = ls('getItem', STORAGE_PREFIX + id);
         if (!raw) return null;
         try {
             var data = JSON.parse(raw);
@@ -26,9 +33,9 @@
                 return data;
             }
             // Expired — clean up
-            localStorage.removeItem(STORAGE_PREFIX + id);
+            ls('removeItem', STORAGE_PREFIX + id);
         } catch (e) {
-            localStorage.removeItem(STORAGE_PREFIX + id);
+            ls('removeItem', STORAGE_PREFIX + id);
         }
         return null;
     }
@@ -38,7 +45,7 @@
      */
     function saveConsent(id, accepted, expiryDays) {
         var expires = Date.now() + (parseInt(expiryDays, 10) || 365) * 24 * 60 * 60 * 1000;
-        localStorage.setItem(STORAGE_PREFIX + id, JSON.stringify({ accepted: accepted, expires: expires }));
+        ls('setItem', STORAGE_PREFIX + id, JSON.stringify({ accepted: accepted, expires: expires }));
     }
 
     /**

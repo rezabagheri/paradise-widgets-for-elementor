@@ -162,10 +162,11 @@ class Paradise_Business_Hours_Widget extends Paradise_Widget_Base {
         if ( empty( $time24 ) ) return '';
         if ( '24h' === $format ) return $time24;
 
-        [ $h, $m ] = explode( ':', $time24 );
-        $h    = (int) $h;
-        $ampm = $h >= 12 ? 'PM' : 'AM';
-        $h12  = $h % 12 ?: 12;
+        $parts = explode( ':', $time24 );
+        $h     = (int) ( $parts[0] ?? 0 );
+        $m     = $parts[1] ?? '00';
+        $ampm  = $h >= 12 ? 'PM' : 'AM';
+        $h12   = $h % 12 ?: 12;
         return $h12 . ':' . $m . ' ' . $ampm;
     }
 
