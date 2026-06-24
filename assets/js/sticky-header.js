@@ -35,6 +35,16 @@
 
         if (!section) return;
 
+        // Snapshot the section's original inline styles so the "not scrolled"
+        // state restores exactly what Elementor set (e.g. responsive padding),
+        // instead of blanking them after the first scroll cycle.
+        section._pshOrig = {
+            bg:     section.style.backgroundColor,
+            shadow: section.style.boxShadow,
+            pt:     section.style.paddingTop,
+            pb:     section.style.paddingBottom
+        };
+
         // Apply sticky positioning
         section.classList.add(STICKY_CLASS);
         section.style.zIndex = zIndex;
@@ -91,10 +101,11 @@
 
     function removeScrolled(section) {
         section.classList.remove(SCROLLED_CLASS);
-        section.style.backgroundColor = '';
-        section.style.boxShadow       = '';
-        section.style.paddingTop      = '';
-        section.style.paddingBottom   = '';
+        var o = section._pshOrig || {};
+        section.style.backgroundColor = o.bg     || '';
+        section.style.boxShadow       = o.shadow || '';
+        section.style.paddingTop      = o.pt     || '';
+        section.style.paddingBottom   = o.pb     || '';
     }
 
     // ── Bootstrap ─────────────────────────────────────────────────────────────

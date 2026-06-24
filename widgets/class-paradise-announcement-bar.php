@@ -404,10 +404,20 @@ class Paradise_Announcement_Bar_Widget extends Paradise_Widget_Base {
         $duration = $settings['dismiss_duration'] ?? 'session';
         $days     = absint( $settings['dismiss_days'] ?? 7 );
 
-        // CTA link
+        // CTA link — collect rel tokens into a single rel attribute (two separate
+        // rel="" attributes would make the browser ignore all but the first, so
+        // an external + nofollow link would silently drop the nofollow).
         $cta_url    = $settings['cta_url']['url'] ?? '';
-        $cta_target = ! empty( $settings['cta_url']['is_external'] ) ? ' target="_blank" rel="noopener noreferrer"' : '';
-        $cta_nofollow = ! empty( $settings['cta_url']['nofollow'] ) ? ' rel="nofollow"' : '';
+        $cta_target = ! empty( $settings['cta_url']['is_external'] ) ? ' target="_blank"' : '';
+        $cta_rel_tokens = [];
+        if ( ! empty( $settings['cta_url']['is_external'] ) ) {
+            $cta_rel_tokens[] = 'noopener';
+            $cta_rel_tokens[] = 'noreferrer';
+        }
+        if ( ! empty( $settings['cta_url']['nofollow'] ) ) {
+            $cta_rel_tokens[] = 'nofollow';
+        }
+        $cta_nofollow = $cta_rel_tokens ? ' rel="' . esc_attr( implode( ' ', $cta_rel_tokens ) ) . '"' : '';
 
         // Data attrs for JS
         $data = sprintf(

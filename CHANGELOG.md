@@ -35,6 +35,11 @@ and a fresh empty `## [Unreleased]` replaces it.
 
 ### Fixed
 
+- **Off-Canvas Menu — keyboard accessibility.** The slide-in panel is now `inert` and `aria-hidden` while closed (keyboard users can no longer Tab into the hidden menu), focus moves into the panel on open and returns to the trigger on close, and Tab is trapped within the open panel.
+- **Sticky Header — no longer wipes the section's own inline styles.** The original inline background, box-shadow, and padding are snapshotted on init and restored when scrolling back to top, instead of being blanked after the first scroll cycle.
+- **Announcement Bar — CTA `rel` attribute.** External + nofollow links emitted two separate `rel` attributes (so the browser dropped the `nofollow`); the tokens are now merged into a single `rel`.
+- **Google Map — URL parameter separator.** Zoom/map-type params are appended with a `?`/`&` separator check so a custom (non-Google) embed URL without a query string isn't corrupted.
+
 - **LocalBusiness Schema — JSON-LD `</script>` breakout / invalid markup.** The inline `<script type="application/ld+json">` was encoded with `JSON_UNESCAPED_SLASHES`, so a business name, description, or `sameAs` URL containing the literal substring `</script>` would close the script element early (broken schema, potential injection). Dropped `JSON_UNESCAPED_SLASHES` — slashes are now escaped as `\/`, which is still valid JSON-LD and cannot break out.
 - **Business Hours — "Open Now / Closed" badge wrong for visitors in another timezone.** The JS built a site-timezone timestamp but then read it with `getHours()`/`getDay()` (the *visitor's* local accessors), double-applying the offset. Now uses `getUTC*` accessors so the badge and "today" highlight reflect the site's timezone for everyone.
 - **Business Hours — overnight ranges (e.g. 22:00 → 02:00) always showed "Closed".** Both the JS badge and `Paradise_Site_Info::is_open_now()` used `time >= from && time <= to`, which is never true across midnight. Added overnight-aware comparison (`from > to` ⇒ open if `time >= from || time <= to`) and a check for a still-open span that began the previous day.
