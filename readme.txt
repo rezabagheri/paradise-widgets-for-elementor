@@ -144,6 +144,7 @@ The badge is computed in the visitor's browser using the site's timezone (from W
 5. Bottom Navigation Bar on mobile — icons, labels, and a floating Speed Dial center button.
 6. Announcement Bar — a dismissible promo banner with a call-to-action.
 7. Author Card — photo, bio, credentials, and a custom profile field.
+8. Phone widgets — a contact card with Phone Link, tel + WhatsApp Phone Buttons, and the floating Call Button.
 
 == Changelog ==
 

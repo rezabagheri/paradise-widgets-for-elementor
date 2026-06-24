@@ -2,47 +2,48 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Paradise Widgets for Elementor 3.0.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/paradise-widgets-for-elementor\n"
+"Project-Id-Version: Paradise Widgets for Elementor 3.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pw\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-17T10:40:26+00:00\n"
+"POT-Creation-Date: 2026-06-24T20:23:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: paradise-widgets-for-elementor\n"
 
 #. Plugin Name of the plugin
-#: paradise-elementor-widgets.php
-#: admin/views/page-settings.php:107
+#: paradise-widgets-for-elementor.php
+#: admin/views/page-dashboard.php:34
 msgid "Paradise Widgets for Elementor"
 msgstr ""
 
 #. Plugin URI of the plugin
-#: paradise-elementor-widgets.php
+#: paradise-widgets-for-elementor.php
 msgid "https://www.paradisecyber.com/elementor-widgets"
 msgstr ""
 
 #. Description of the plugin
-#: paradise-elementor-widgets.php
+#: paradise-widgets-for-elementor.php
 msgid "Advanced custom Elementor widgets by Paradise. Phone Link, Bottom Navigation Bar, and more."
 msgstr ""
 
 #. Author of the plugin
-#: paradise-elementor-widgets.php
+#: paradise-widgets-for-elementor.php
 msgid "Reza Bagheri"
 msgstr ""
 
 #. Author URI of the plugin
-#: paradise-elementor-widgets.php
+#: paradise-widgets-for-elementor.php
 msgid "https://www.paradisecyber.com"
 msgstr ""
 
 #: admin/class-paradise-custom-fields-admin.php:31
 #: admin/class-paradise-custom-fields-admin.php:32
-#: admin/views/page-custom-fields.php:284
+#: admin/class-paradise-ew-admin.php:442
+#: admin/views/page-custom-fields.php:286
 #: widgets/class-paradise-author-card.php:289
 #: widgets/class-paradise-author-card.php:687
 msgid "Custom Fields"
@@ -50,112 +51,112 @@ msgstr ""
 
 #: admin/class-paradise-custom-fields-admin.php:73
 #: admin/class-paradise-import-export.php:44
-#: admin/class-paradise-import-export.php:72
+#: admin/class-paradise-import-export.php:73
 #: admin/class-paradise-site-info-admin.php:79
 msgid "Unauthorized"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:49
+#: admin/class-paradise-ew-admin.php:51
 msgid "Phone Link"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:50
+#: admin/class-paradise-ew-admin.php:52
 msgid "Clickable phone number with icon, prefix, and formatting options."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:53
+#: admin/class-paradise-ew-admin.php:55
 msgid "Bottom Navigation Bar"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:54
+#: admin/class-paradise-ew-admin.php:56
 msgid "Fixed mobile bottom bar with icons, labels, badges, and speed dial."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:58
+#: admin/class-paradise-ew-admin.php:60
 #: widgets/class-paradise-author-card.php:35
 msgid "Author Card"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:59
+#: admin/class-paradise-ew-admin.php:61
 msgid "Author profile card with photo, credentials, bio, custom fields, and CTA button."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:62
+#: admin/class-paradise-ew-admin.php:64
 msgid "Phone Button"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:63
+#: admin/class-paradise-ew-admin.php:65
 msgid "Fully-styled CTA button for phone calls or WhatsApp. Supports custom text, icon, colors, hover, and border radius."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:66
+#: admin/class-paradise-ew-admin.php:68
 msgid "Floating Call Button"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:67
+#: admin/class-paradise-ew-admin.php:69
 msgid "Fixed-position call/WhatsApp button that stays visible while scrolling. Supports icon, optional label, pulse animation, and corner positioning."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:70
+#: admin/class-paradise-ew-admin.php:72
 #: widgets/class-paradise-announcement-bar.php:21
-#: widgets/class-paradise-announcement-bar.php:465
+#: widgets/class-paradise-announcement-bar.php:475
 msgid "Announcement Bar"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:71
+#: admin/class-paradise-ew-admin.php:73
 msgid "Fixed full-width banner for announcements, promotions, or alerts. Supports icon, message, CTA button, and dismissal with session/days/permanent memory."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:75
+#: admin/class-paradise-ew-admin.php:77
 #: widgets/class-paradise-cookie-consent-bar.php:20
 #: widgets/class-paradise-cookie-consent-bar.php:491
 msgid "Cookie Consent Bar"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:76
+#: admin/class-paradise-ew-admin.php:78
 msgid "GDPR/cookie consent bar with Accept and Decline buttons. Stores user choice in localStorage with configurable expiry. Dispatches consent events for analytics integration."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:80
+#: admin/class-paradise-ew-admin.php:82
 #: widgets/class-paradise-back-to-top.php:19
 msgid "Back to Top"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:81
+#: admin/class-paradise-ew-admin.php:83
 msgid "Fixed-position button that appears after scrolling past a threshold and smoothly returns the user to the top of the page."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:85
+#: admin/class-paradise-ew-admin.php:87
 #: widgets/class-paradise-off-canvas-menu.php:24
 #: widgets/class-paradise-off-canvas-menu.php:570
 msgid "Off-Canvas Menu"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:86
+#: admin/class-paradise-ew-admin.php:88
 msgid "Slide-in panel with a WordPress menu. Triggered by an inline button or the Paradise.openOffCanvas() JS API (e.g. from Bottom Nav)."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:90
+#: admin/class-paradise-ew-admin.php:92
 #: widgets/class-paradise-sticky-header.php:22
 msgid "Sticky Header"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:91
+#: admin/class-paradise-ew-admin.php:93
 msgid "Place inside any Elementor section to make it sticky. Applies scroll effects (shadow, background change, shrink) when scrolling past a threshold."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:95
+#: admin/class-paradise-ew-admin.php:97
 #: widgets/class-paradise-google-map.php:17
 msgid "Google Map"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:96
+#: admin/class-paradise-ew-admin.php:98
 msgid "Embeds a Google Map via iframe. Source can be a Site Info address (Map URL field) or a manually entered URL. Supports border radius, shadow, and height controls."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:99
+#: admin/class-paradise-ew-admin.php:101
 #: admin/class-paradise-user-profile.php:157
-#: admin/views/page-site-info.php:274
+#: admin/views/page-site-info.php:276
 #: widgets/class-paradise-author-card.php:357
 #: widgets/class-paradise-author-card.php:774
 #: widgets/class-paradise-social-links.php:17
@@ -163,90 +164,190 @@ msgstr ""
 msgid "Social Links"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:100
+#: admin/class-paradise-ew-admin.php:102
 msgid "Row or column of social media icon links. Source: Site Info socials or custom list. Supports brand/uniform colors, hover animations, icon shapes, and icon+label display modes."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:103
-#: admin/views/page-site-info.php:162
+#: admin/class-paradise-ew-admin.php:105
+#: admin/views/page-site-info.php:164
 #: widgets/class-paradise-business-hours.php:16
 msgid "Business Hours"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:104
+#: admin/class-paradise-ew-admin.php:106
 msgid "Displays business hours from Site Info with a live Open Now / Closed badge. Highlights today's row and supports 12/24-hour format."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:108
+#: admin/class-paradise-ew-admin.php:110
 #: widgets/class-paradise-local-business-schema.php:18
-#: widgets/class-paradise-local-business-schema.php:197
+#: widgets/class-paradise-local-business-schema.php:200
 msgid "LocalBusiness Schema"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:109
+#: admin/class-paradise-ew-admin.php:111
 msgid "Invisible widget that outputs Schema.org JSON-LD markup using Site Info data (name, phone, address, hours, social links). Helps Google display rich results."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:112
+#: admin/class-paradise-ew-admin.php:114
 #: widgets/class-paradise-faq-accordion.php:14
 msgid "FAQ Accordion"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:113
+#: admin/class-paradise-ew-admin.php:115
 msgid "Collapsible Q&A list with accordion or multi-expand mode. Supports Schema.org FAQPage markup for Google rich results."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:123
+#: admin/class-paradise-ew-admin.php:125
 #: widgets/class-paradise-feature-card-example.php:75
 msgid "Feature Card (Example)"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:124
+#: admin/class-paradise-ew-admin.php:126
 msgid "Heavily-commented reference widget for developers — read widgets/class-paradise-feature-card-example.php to learn every Paradise widget pattern (controls, render, asset handles, base-class usage). Shows in the \"Paradise Examples\" editor category. Disabled by default."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:138
+#: admin/class-paradise-ew-admin.php:140
+msgid "Developer Mode"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:141
+msgid "Surfaces developer-oriented tools: reference widgets in the \"Developer Examples\" section, and additional details aimed at people extending or theming this plugin. Off by default — turn on if you are building with Paradise rather than just using it."
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:144
 msgid "Social Links fields on user profiles"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:139
+#: admin/class-paradise-ew-admin.php:145
 msgid "Shows the Paradise Social Links section on the WordPress user profile edit page (wp-admin → Users → Edit). Disable if you manage social links elsewhere."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:142
+#: admin/class-paradise-ew-admin.php:148
 #: widgets/class-paradise-faq-accordion.php:42
 msgid "FAQ Post Type"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:143
+#: admin/class-paradise-ew-admin.php:149
 msgid "Registers a \"FAQs\" post type so you can manage Q&A items centrally and use them in the FAQ Accordion widget. Disable if you only use static FAQ items."
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:168
-#: admin/class-paradise-ew-admin.php:169
+#: admin/class-paradise-ew-admin.php:183
+#: admin/class-paradise-ew-admin.php:184
 msgid "Paradise"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:180
-#: admin/class-paradise-ew-admin.php:181
+#: admin/class-paradise-ew-admin.php:196
+#: admin/class-paradise-ew-admin.php:197
+msgid "Dashboard"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:206
+#: admin/class-paradise-ew-admin.php:207
+#: admin/class-paradise-ew-admin.php:424
+#: admin/views/page-widgets.php:33
 msgid "Elementor Widgets"
 msgstr ""
 
-#: admin/class-paradise-ew-admin.php:302
+#: admin/class-paradise-ew-admin.php:216
+#: admin/class-paradise-ew-admin.php:217
+#: admin/class-paradise-ew-admin.php:430
+#: admin/views/page-settings.php:20
+#: widgets/class-paradise-google-map.php:158
+msgid "Settings"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:388
+#: admin/class-paradise-ew-admin.php:396
+#: admin/class-paradise-ew-admin.php:404
 msgid "You do not have permission to access this page."
 msgstr ""
 
+#: admin/class-paradise-ew-admin.php:425
+msgid "Manage which Paradise widgets appear in the Elementor editor."
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:431
+msgid "Configure plugin-wide feature flags and developer options."
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:436
+#: admin/class-paradise-site-info-admin.php:29
+#: admin/class-paradise-site-info-admin.php:30
+#: admin/views/page-site-info.php:223
+#: widgets/class-paradise-social-links.php:42
+msgid "Site Info"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:437
+msgid "Business name, phone, address, hours, and social links shared across widgets."
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:443
+msgid "Define typed fields that widgets and shortcodes can pull dynamic data from."
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:448
 #: admin/class-paradise-import-export.php:32
 #: admin/class-paradise-import-export.php:33
-#: admin/views/page-import-export.php:21
+#: admin/views/page-import-export.php:23
 msgid "Import / Export"
 msgstr ""
 
-#: admin/class-paradise-site-info-admin.php:29
-#: admin/class-paradise-site-info-admin.php:30
-#: admin/views/page-site-info.php:221
-#: widgets/class-paradise-social-links.php:42
-msgid "Site Info"
+#: admin/class-paradise-ew-admin.php:449
+msgid "Back up Paradise settings or migrate them between sites."
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:477
+msgid "PHP Version"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:486
+msgid "WordPress Version"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:495
+msgid "Elementor Version"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:502
+msgid "Elementor"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:503
+msgid "Not active"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:513
+msgid "Memory Limit"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:523
+msgid "WP_DEBUG"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:525
+#: admin/views/partials/render-toggle-card.php:56
+msgid "Enabled"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:526
+msgid "Disabled"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:546
+msgid "Documentation"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:551
+msgid "Get Support"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:556
+msgid "Rate this Plugin"
+msgstr ""
+
+#: admin/class-paradise-ew-admin.php:561
+msgid "Changelog"
 msgstr ""
 
 #: admin/class-paradise-user-profile.php:33
@@ -357,87 +458,87 @@ msgstr ""
 msgid "Role or position shown as a subtitle below the name in the Author Card widget."
 msgstr ""
 
-#: admin/views/page-custom-fields.php:37
+#: admin/views/page-custom-fields.php:39
 msgid "e.g. © 2026 Acme Inc."
 msgstr ""
 
-#: admin/views/page-custom-fields.php:47
+#: admin/views/page-custom-fields.php:49
 msgid "Multi-line text…"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:76
+#: admin/views/page-custom-fields.php:78
 msgid "Change Image"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:76
+#: admin/views/page-custom-fields.php:78
 msgid "Choose Image"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:79
+#: admin/views/page-custom-fields.php:81
 #: includes/class-paradise-faq-cpt.php:85
 #: includes/class-paradise-faq-cpt.php:183
 msgid "Remove"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:147
+#: admin/views/page-custom-fields.php:149
 msgid "Min"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:156
+#: admin/views/page-custom-fields.php:158
 msgid "Max"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:191
-#: admin/views/page-custom-fields.php:237
-#: admin/views/page-site-info.php:47
-#: admin/views/page-site-info.php:79
-#: admin/views/page-site-info.php:108
-#: admin/views/page-site-info.php:289
-#: admin/views/page-site-info.php:343
-#: admin/views/page-site-info.php:364
-#: admin/views/page-site-info.php:376
+#: admin/views/page-custom-fields.php:193
+#: admin/views/page-custom-fields.php:239
+#: admin/views/page-site-info.php:49
+#: admin/views/page-site-info.php:81
+#: admin/views/page-site-info.php:110
+#: admin/views/page-site-info.php:291
+#: admin/views/page-site-info.php:345
+#: admin/views/page-site-info.php:366
+#: admin/views/page-site-info.php:378
 msgid "Drag to reorder"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:196
+#: admin/views/page-custom-fields.php:198
 msgid "unique_key"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:202
+#: admin/views/page-custom-fields.php:204
 msgid "Human-readable label"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:215
-#: admin/views/page-site-info.php:83
-#: admin/views/page-site-info.php:112
-#: admin/views/page-site-info.php:302
-#: admin/views/page-site-info.php:356
+#: admin/views/page-custom-fields.php:217
+#: admin/views/page-site-info.php:85
+#: admin/views/page-site-info.php:114
+#: admin/views/page-site-info.php:304
+#: admin/views/page-site-info.php:358
 msgid "Copy shortcode"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:216
+#: admin/views/page-custom-fields.php:218
 msgid "Remove this field"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:241
+#: admin/views/page-custom-fields.php:243
 msgid "Group label (e.g. Footer)"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:245
+#: admin/views/page-custom-fields.php:247
 msgid "slug"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:249
+#: admin/views/page-custom-fields.php:251
 msgid "Remove this group"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:257
+#: admin/views/page-custom-fields.php:259
 msgid "Key"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:258
-#: admin/views/page-site-info.php:71
-#: admin/views/page-site-info.php:100
+#: admin/views/page-custom-fields.php:260
+#: admin/views/page-site-info.php:73
+#: admin/views/page-site-info.php:102
 #: widgets/class-paradise-author-card.php:302
 #: widgets/class-paradise-bottom-nav.php:161
 #: widgets/class-paradise-bottom-nav.php:323
@@ -446,186 +547,185 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:259
+#: admin/views/page-custom-fields.php:261
 msgid "Type"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:260
+#: admin/views/page-custom-fields.php:262
 msgid "Value"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:272
+#: admin/views/page-custom-fields.php:274
 msgid "Add Field"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:287
-#: admin/views/page-settings.php:112
-#: admin/views/page-site-info.php:224
+#: admin/views/page-custom-fields.php:289
+#: admin/views/page-settings.php:25
+#: admin/views/page-site-info.php:226
+#: admin/views/page-widgets.php:38
 msgid "Unsaved changes"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:292
+#: admin/views/page-custom-fields.php:294
 msgid "Define your own static fields once, then reuse them anywhere — via shortcode or (coming soon) Elementor Dynamic Tags. Field keys are globally unique; groups are just for organisation."
 msgstr ""
 
-#: admin/views/page-custom-fields.php:295
+#: admin/views/page-custom-fields.php:297
 msgid "Shortcode:"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:297
+#: admin/views/page-custom-fields.php:299
 msgid "— or for images:"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:304
+#: admin/views/page-custom-fields.php:306
 msgid "Custom fields saved."
 msgstr ""
 
-#: admin/views/page-custom-fields.php:319
+#: admin/views/page-custom-fields.php:321
 msgid "Add Group"
 msgstr ""
 
-#: admin/views/page-custom-fields.php:325
-#: admin/views/page-site-info.php:332
+#: admin/views/page-custom-fields.php:327
+#: admin/views/page-site-info.php:334
 msgid "Save Changes"
 msgstr ""
 
-#: admin/views/page-import-export.php:12
-msgid "No file was uploaded. Please choose a JSON file and try again."
+#: admin/views/page-dashboard.php:40
+msgid "Welcome — manage which widgets and features are active on your site."
 msgstr ""
 
-#: admin/views/page-import-export.php:13
-msgid "The file must be a .json file. Please upload the correct file."
+#: admin/views/page-dashboard.php:47
+msgid "At a glance"
+msgstr ""
+
+#: admin/views/page-dashboard.php:50
+msgid "Quick snapshot of what is currently active."
+msgstr ""
+
+#. translators: %d = total number of widgets
+#: admin/views/page-dashboard.php:61
+#, php-format
+msgid "of %d widgets enabled"
+msgstr ""
+
+#. translators: %d = total number of features
+#: admin/views/page-dashboard.php:71
+#, php-format
+msgid "of %d features enabled"
+msgstr ""
+
+#: admin/views/page-dashboard.php:83
+msgid "Quick Links"
+msgstr ""
+
+#: admin/views/page-dashboard.php:86
+msgid "Jump straight to any Paradise admin page."
+msgstr ""
+
+#: admin/views/page-dashboard.php:110
+msgid "Useful Links"
+msgstr ""
+
+#: admin/views/page-dashboard.php:113
+msgid "Help, feedback, and what is new."
+msgstr ""
+
+#: admin/views/page-dashboard.php:137
+msgid "System Status"
+msgstr ""
+
+#: admin/views/page-dashboard.php:140
+msgid "Environment checks for the plugin requirements."
+msgstr ""
+
+#. translators: %s = minimum required version, e.g. "8.0+"
+#: admin/views/page-dashboard.php:165
+#, php-format
+msgid "required %s"
 msgstr ""
 
 #: admin/views/page-import-export.php:14
-msgid "The file could not be read. Please check file permissions and try again."
+msgid "No file was uploaded. Please choose a JSON file and try again."
 msgstr ""
 
 #: admin/views/page-import-export.php:15
+msgid "The file must be a .json file. Please upload the correct file."
+msgstr ""
+
+#: admin/views/page-import-export.php:16
+msgid "The file could not be read. Please check file permissions and try again."
+msgstr ""
+
+#: admin/views/page-import-export.php:17
 msgid "The file does not contain valid JSON. It may be corrupt or not a Paradise export file."
 msgstr ""
 
-#: admin/views/page-import-export.php:27
+#: admin/views/page-import-export.php:29
 msgid "Import complete. Your data has been restored successfully."
 msgstr ""
 
-#: admin/views/page-import-export.php:31
+#: admin/views/page-import-export.php:33
 msgid "Import failed. Please try again."
 msgstr ""
 
-#: admin/views/page-import-export.php:38
+#: admin/views/page-import-export.php:40
 msgid "Export"
 msgstr ""
 
-#: admin/views/page-import-export.php:41
-msgid "Download a backup of your Site Info (locations, phones, emails, addresses, social links, business hours) and widget settings as a JSON file."
+#: admin/views/page-import-export.php:43
+msgid "Download a backup of your Site Info (locations, phones, emails, addresses, social links, business hours), Custom Fields (groups and field values), and widget settings as a JSON file."
 msgstr ""
 
-#: admin/views/page-import-export.php:46
+#: admin/views/page-import-export.php:48
 msgid "Export Data"
 msgstr ""
 
-#: admin/views/page-import-export.php:55
+#: admin/views/page-import-export.php:57
 msgid "Import"
 msgstr ""
 
-#: admin/views/page-import-export.php:58
+#: admin/views/page-import-export.php:60
 msgid "Upload a previously exported Paradise JSON file to restore your data."
 msgstr ""
 
-#: admin/views/page-import-export.php:60
-msgid "This will overwrite your current Site Info and widget settings. Export first if you want to keep the existing data."
+#: admin/views/page-import-export.php:62
+msgid "This will overwrite your current Site Info, Custom Fields, and widget settings. Export first if you want to keep the existing data."
 msgstr ""
 
-#: admin/views/page-import-export.php:68
+#: admin/views/page-import-export.php:70
 msgid "JSON File"
 msgstr ""
 
-#: admin/views/page-import-export.php:76
+#: admin/views/page-import-export.php:78
 msgid "Import Data"
 msgstr ""
 
-#: admin/views/page-settings.php:49
-msgid "Enable all"
-msgstr ""
-
-#: admin/views/page-settings.php:54
-msgid "Disable all"
-msgstr ""
-
-#: admin/views/page-settings.php:62
-#: widgets/class-paradise-author-card.php:584
-msgid "Name"
-msgstr ""
-
-#: admin/views/page-settings.php:63
-#: widgets/class-paradise-feature-card-example.php:206
-#: widgets/class-paradise-feature-card-example.php:391
-#: widgets/class-paradise-local-business-schema.php:66
-msgid "Description"
-msgstr ""
-
-#: admin/views/page-settings.php:64
-msgid "Enabled"
-msgstr ""
-
-#: admin/views/page-settings.php:77
-msgid "This entry is disabled by default — enable it explicitly to use it on this site."
-msgstr ""
-
-#: admin/views/page-settings.php:78
-msgid "Off by default"
-msgstr ""
-
-#: admin/views/page-settings.php:120
-msgid "Filter widgets and features"
-msgstr ""
-
-#: admin/views/page-settings.php:126
-msgid "Filter — type to narrow widgets and features…"
-msgstr ""
-
-#: admin/views/page-settings.php:137
-msgid "Widgets"
-msgstr ""
-
-#: admin/views/page-settings.php:138
-msgid "Enable or disable individual widgets. Disabled widgets are not registered with Elementor and will not appear in the widget panel."
-msgstr ""
-
-#: admin/views/page-settings.php:146
-msgid "Developer Examples"
-msgstr ""
-
-#: admin/views/page-settings.php:147
-msgid "Reference widgets shipped to help developers learn the Paradise widget patterns. They live in a separate \"Paradise Examples\" category in the editor and are disabled by default — enable them when you want to inspect the reference inside Elementor."
-msgstr ""
-
-#: admin/views/page-settings.php:155
+#: admin/views/page-settings.php:40
 msgid "Features"
 msgstr ""
 
-#: admin/views/page-settings.php:156
+#: admin/views/page-settings.php:41
 msgid "Enable or disable optional plugin features."
 msgstr ""
 
-#: admin/views/page-settings.php:162
+#: admin/views/page-settings.php:47
 msgid "Save Settings"
 msgstr ""
 
-#: admin/views/page-site-info.php:53
+#: admin/views/page-site-info.php:55
 msgid "e.g. Main Branch"
 msgstr ""
 
-#: admin/views/page-site-info.php:58
+#: admin/views/page-site-info.php:60
 msgid "Remove this location"
 msgstr ""
 
-#: admin/views/page-site-info.php:66
+#: admin/views/page-site-info.php:68
 msgid "Phone Numbers"
 msgstr ""
 
-#: admin/views/page-site-info.php:72
+#: admin/views/page-site-info.php:74
 #: includes/class-paradise-dynamic-tags.php:74
 #: widgets/class-paradise-floating-call-btn.php:70
 #: widgets/class-paradise-phone-button.php:56
@@ -635,156 +735,212 @@ msgstr ""
 msgid "Phone Number"
 msgstr ""
 
-#: admin/views/page-site-info.php:80
-#: admin/views/page-site-info.php:365
+#: admin/views/page-site-info.php:82
+#: admin/views/page-site-info.php:367
 msgid "e.g. Main Office"
 msgstr ""
 
-#: admin/views/page-site-info.php:83
-#: admin/views/page-site-info.php:112
-#: admin/views/page-site-info.php:302
-#: admin/views/page-site-info.php:356
-#: admin/views/page-site-info.php:368
-#: admin/views/page-site-info.php:380
+#: admin/views/page-site-info.php:85
+#: admin/views/page-site-info.php:114
+#: admin/views/page-site-info.php:304
+#: admin/views/page-site-info.php:358
+#: admin/views/page-site-info.php:370
+#: admin/views/page-site-info.php:382
 msgid "Copy shortcode for this entry"
 msgstr ""
 
-#: admin/views/page-site-info.php:84
-#: admin/views/page-site-info.php:113
-#: admin/views/page-site-info.php:303
-#: admin/views/page-site-info.php:357
-#: admin/views/page-site-info.php:369
-#: admin/views/page-site-info.php:381
+#: admin/views/page-site-info.php:86
+#: admin/views/page-site-info.php:115
+#: admin/views/page-site-info.php:305
+#: admin/views/page-site-info.php:359
+#: admin/views/page-site-info.php:371
+#: admin/views/page-site-info.php:383
 msgid "Remove this row"
 msgstr ""
 
-#: admin/views/page-site-info.php:90
+#: admin/views/page-site-info.php:92
 msgid "Add Phone"
 msgstr ""
 
-#: admin/views/page-site-info.php:95
+#: admin/views/page-site-info.php:97
 msgid "Email Addresses"
 msgstr ""
 
-#: admin/views/page-site-info.php:101
+#: admin/views/page-site-info.php:103
 #: includes/class-paradise-dynamic-tags.php:122
 msgid "Email Address"
 msgstr ""
 
-#: admin/views/page-site-info.php:109
-#: admin/views/page-site-info.php:377
+#: admin/views/page-site-info.php:111
+#: admin/views/page-site-info.php:379
 msgid "e.g. Support"
 msgstr ""
 
-#: admin/views/page-site-info.php:119
+#: admin/views/page-site-info.php:121
 msgid "Add Email"
 msgstr ""
 
-#: admin/views/page-site-info.php:124
+#: admin/views/page-site-info.php:126
 msgid "Address & Map"
 msgstr ""
 
-#: admin/views/page-site-info.php:128
+#: admin/views/page-site-info.php:130
 #: includes/class-paradise-dynamic-tags.php:168
 msgid "Address"
 msgstr ""
 
-#: admin/views/page-site-info.php:133
+#: admin/views/page-site-info.php:135
 msgid "123 Main St, New York, NY 10001"
 msgstr ""
 
-#: admin/views/page-site-info.php:138
+#: admin/views/page-site-info.php:140
 #: widgets/class-paradise-google-map.php:87
 msgid "Map URL"
 msgstr ""
 
-#: admin/views/page-site-info.php:145
+#: admin/views/page-site-info.php:147
 msgid "Google Maps → Share → Embed a map → copy the src URL from the iframe code."
 msgstr ""
 
-#: admin/views/page-site-info.php:166
+#: admin/views/page-site-info.php:168
 msgid "Day"
 msgstr ""
 
-#: admin/views/page-site-info.php:167
-#: admin/views/page-site-info.php:190
+#: admin/views/page-site-info.php:169
+#: admin/views/page-site-info.php:192
 msgid "Open"
 msgstr ""
 
-#: admin/views/page-site-info.php:168
+#: admin/views/page-site-info.php:170
 msgid "From"
 msgstr ""
 
-#: admin/views/page-site-info.php:169
+#: admin/views/page-site-info.php:171
 msgid "To"
 msgstr ""
 
-#: admin/views/page-site-info.php:190
+#: admin/views/page-site-info.php:192
 #: widgets/class-paradise-business-hours.php:71
-#: widgets/class-paradise-business-hours.php:180
-#: widgets/class-paradise-business-hours.php:206
+#: widgets/class-paradise-business-hours.php:181
+#: widgets/class-paradise-business-hours.php:207
 msgid "Closed"
 msgstr ""
 
-#: admin/views/page-site-info.php:229
+#: admin/views/page-site-info.php:231
 msgid "Store your business details here once, then reuse them anywhere on the site — two equally good ways:"
 msgstr ""
 
-#: admin/views/page-site-info.php:233
+#: admin/views/page-site-info.php:235
 msgid "In Elementor (recommended):"
 msgstr ""
 
-#: admin/views/page-site-info.php:234
+#: admin/views/page-site-info.php:236
 msgid "open the ⚡ Dynamic Tags menu on any text or URL control and pick a Paradise tag (Phone, Email, Address, Social URL, …). Paradise registers one Dynamic Tag per Site Info type — Elementor handles location and label selection in the tag UI."
 msgstr ""
 
-#: admin/views/page-site-info.php:237
+#: admin/views/page-site-info.php:239
 msgid "Outside Elementor:"
 msgstr ""
 
-#: admin/views/page-site-info.php:238
+#: admin/views/page-site-info.php:240
 msgid "paste the [paradise_site_info] shortcode anywhere WordPress runs shortcodes. Click the"
 msgstr ""
 
-#: admin/views/page-site-info.php:240
+#: admin/views/page-site-info.php:242
 msgid "icon next to any entry below to copy a ready-to-paste shortcode for that specific entry."
 msgstr ""
 
-#: admin/views/page-site-info.php:246
+#: admin/views/page-site-info.php:248
 msgid "Site info saved."
 msgstr ""
 
-#: admin/views/page-site-info.php:256
+#: admin/views/page-site-info.php:258
 #: widgets/class-paradise-local-business-schema.php:36
 msgid "Business Name"
 msgstr ""
 
-#: admin/views/page-site-info.php:265
+#: admin/views/page-site-info.php:267
 msgid "e.g. Acme Corp"
 msgstr ""
 
-#: admin/views/page-site-info.php:281
+#: admin/views/page-site-info.php:283
 #: widgets/class-paradise-social-links.php:56
 msgid "Platform"
 msgstr ""
 
-#: admin/views/page-site-info.php:282
+#: admin/views/page-site-info.php:284
 #: includes/class-paradise-custom-fields.php:112
 #: widgets/class-paradise-author-card.php:417
 #: widgets/class-paradise-social-links.php:63
 msgid "URL"
 msgstr ""
 
-#: admin/views/page-site-info.php:309
+#: admin/views/page-site-info.php:311
 msgid "Add Social Link"
 msgstr ""
 
-#: admin/views/page-site-info.php:316
+#: admin/views/page-site-info.php:318
 msgid "Locations"
 msgstr ""
 
-#: admin/views/page-site-info.php:325
+#: admin/views/page-site-info.php:327
 msgid "Add Location"
+msgstr ""
+
+#: admin/views/page-widgets.php:46
+msgid "Filter widgets"
+msgstr ""
+
+#: admin/views/page-widgets.php:52
+msgid "Filter — type to narrow widgets…"
+msgstr ""
+
+#: admin/views/page-widgets.php:67
+msgid "Widgets"
+msgstr ""
+
+#: admin/views/page-widgets.php:68
+msgid "Enable or disable individual widgets. Disabled widgets are not registered with Elementor and will not appear in the widget panel."
+msgstr ""
+
+#: admin/views/page-widgets.php:77
+msgid "Developer Examples"
+msgstr ""
+
+#: admin/views/page-widgets.php:78
+msgid "Reference widgets shipped to help developers learn the Paradise widget patterns. They live in a separate \"Paradise Examples\" category in the editor and are disabled by default — enable them when you want to inspect the reference inside Elementor."
+msgstr ""
+
+#: admin/views/page-widgets.php:85
+msgid "Save Widgets"
+msgstr ""
+
+#: admin/views/partials/render-toggle-card.php:41
+msgid "Enable all"
+msgstr ""
+
+#: admin/views/partials/render-toggle-card.php:46
+msgid "Disable all"
+msgstr ""
+
+#: admin/views/partials/render-toggle-card.php:54
+#: widgets/class-paradise-author-card.php:584
+msgid "Name"
+msgstr ""
+
+#: admin/views/partials/render-toggle-card.php:55
+#: widgets/class-paradise-feature-card-example.php:206
+#: widgets/class-paradise-feature-card-example.php:391
+#: widgets/class-paradise-local-business-schema.php:66
+msgid "Description"
+msgstr ""
+
+#: admin/views/partials/render-toggle-card.php:69
+msgid "This entry is disabled by default — enable it explicitly to use it on this site."
+msgstr ""
+
+#: admin/views/partials/render-toggle-card.php:70
+msgid "Off by default"
 msgstr ""
 
 #: includes/class-paradise-custom-fields-dynamic-tags.php:37
@@ -864,8 +1020,8 @@ msgstr ""
 #: widgets/class-paradise-off-canvas-menu.php:185
 #: widgets/class-paradise-off-canvas-menu.php:208
 #: widgets/class-paradise-off-canvas-menu.php:454
-#: widgets/class-paradise-phone-button.php:388
-#: widgets/class-paradise-phone-button.php:403
+#: widgets/class-paradise-phone-button.php:413
+#: widgets/class-paradise-phone-button.php:428
 #: widgets/class-paradise-phone-link.php:283
 #: widgets/class-paradise-phone-link.php:314
 #: widgets/class-paradise-phone-link.php:348
@@ -989,7 +1145,7 @@ msgid "— Select FAQ Set —"
 msgstr ""
 
 #: includes/class-paradise-site-info.php:71
-#: includes/class-paradise-site-info.php:385
+#: includes/class-paradise-site-info.php:403
 msgid "Main"
 msgstr ""
 
@@ -1035,21 +1191,21 @@ msgstr ""
 msgid "Sunday"
 msgstr ""
 
-#: paradise-elementor-widgets.php:128
+#: paradise-widgets-for-elementor.php:135
 msgid "Paradise Widgets for Elementor requires Elementor to be installed and active."
 msgstr ""
 
 #. translators: %s: required Elementor version
-#: paradise-elementor-widgets.php:141
+#: paradise-widgets-for-elementor.php:148
 #, php-format
 msgid "Paradise Widgets for Elementor requires Elementor %s or greater."
 msgstr ""
 
-#: paradise-elementor-widgets.php:159
+#: paradise-widgets-for-elementor.php:166
 msgid "Paradise Widgets"
 msgstr ""
 
-#: paradise-elementor-widgets.php:168
+#: paradise-widgets-for-elementor.php:175
 msgid "Paradise Examples"
 msgstr ""
 
@@ -1074,9 +1230,9 @@ msgstr ""
 #: widgets/class-paradise-floating-call-btn.php:156
 #: widgets/class-paradise-floating-call-btn.php:425
 #: widgets/class-paradise-off-canvas-menu.php:55
-#: widgets/class-paradise-phone-button.php:146
-#: widgets/class-paradise-phone-button.php:150
-#: widgets/class-paradise-phone-button.php:353
+#: widgets/class-paradise-phone-button.php:171
+#: widgets/class-paradise-phone-button.php:175
+#: widgets/class-paradise-phone-button.php:378
 #: widgets/class-paradise-phone-link.php:122
 #: widgets/class-paradise-phone-link.php:340
 msgid "Icon"
@@ -1158,7 +1314,7 @@ msgstr ""
 #: widgets/class-paradise-announcement-bar.php:141
 #: widgets/class-paradise-cookie-consent-bar.php:146
 #: widgets/class-paradise-floating-call-btn.php:196
-#: widgets/class-paradise-phone-button.php:156
+#: widgets/class-paradise-phone-button.php:181
 msgid "Position"
 msgstr ""
 
@@ -1208,8 +1364,8 @@ msgstr ""
 #: widgets/class-paradise-off-canvas-menu.php:305
 #: widgets/class-paradise-off-canvas-menu.php:388
 #: widgets/class-paradise-off-canvas-menu.php:406
-#: widgets/class-paradise-phone-button.php:251
-#: widgets/class-paradise-phone-button.php:271
+#: widgets/class-paradise-phone-button.php:276
+#: widgets/class-paradise-phone-button.php:296
 #: widgets/class-paradise-phone-link.php:405
 #: widgets/class-paradise-social-links.php:248
 msgid "Background"
@@ -1228,7 +1384,7 @@ msgstr ""
 #: widgets/class-paradise-floating-call-btn.php:353
 #: widgets/class-paradise-off-canvas-menu.php:222
 #: widgets/class-paradise-off-canvas-menu.php:311
-#: widgets/class-paradise-phone-button.php:295
+#: widgets/class-paradise-phone-button.php:320
 #: widgets/class-paradise-phone-link.php:430
 msgid "Padding"
 msgstr ""
@@ -1247,7 +1403,7 @@ msgstr ""
 #: widgets/class-paradise-faq-accordion.php:151
 #: widgets/class-paradise-feature-card-example.php:256
 #: widgets/class-paradise-off-canvas-menu.php:95
-#: widgets/class-paradise-phone-button.php:217
+#: widgets/class-paradise-phone-button.php:242
 #: widgets/class-paradise-phone-link.php:264
 #: widgets/class-paradise-social-links.php:115
 msgid "Left"
@@ -1256,7 +1412,7 @@ msgstr ""
 #: widgets/class-paradise-announcement-bar.php:194
 #: widgets/class-paradise-author-card.php:514
 #: widgets/class-paradise-feature-card-example.php:260
-#: widgets/class-paradise-phone-button.php:218
+#: widgets/class-paradise-phone-button.php:243
 #: widgets/class-paradise-phone-link.php:265
 #: widgets/class-paradise-social-links.php:116
 msgid "Center"
@@ -1267,7 +1423,7 @@ msgstr ""
 #: widgets/class-paradise-faq-accordion.php:150
 #: widgets/class-paradise-feature-card-example.php:264
 #: widgets/class-paradise-off-canvas-menu.php:96
-#: widgets/class-paradise-phone-button.php:219
+#: widgets/class-paradise-phone-button.php:244
 #: widgets/class-paradise-phone-link.php:266
 #: widgets/class-paradise-social-links.php:117
 msgid "Right"
@@ -1280,7 +1436,7 @@ msgstr ""
 #: widgets/class-paradise-back-to-top.php:75
 #: widgets/class-paradise-feature-card-example.php:428
 #: widgets/class-paradise-floating-call-btn.php:252
-#: widgets/class-paradise-phone-button.php:207
+#: widgets/class-paradise-phone-button.php:232
 msgid "Button"
 msgstr ""
 
@@ -1295,8 +1451,8 @@ msgstr ""
 #: widgets/class-paradise-floating-call-btn.php:279
 #: widgets/class-paradise-off-canvas-menu.php:175
 #: widgets/class-paradise-off-canvas-menu.php:377
-#: widgets/class-paradise-phone-button.php:247
-#: widgets/class-paradise-phone-button.php:384
+#: widgets/class-paradise-phone-button.php:272
+#: widgets/class-paradise-phone-button.php:409
 #: widgets/class-paradise-social-links.php:179
 msgid "Normal"
 msgstr ""
@@ -1316,8 +1472,8 @@ msgstr ""
 #: widgets/class-paradise-feature-card-example.php:477
 #: widgets/class-paradise-off-canvas-menu.php:381
 #: widgets/class-paradise-off-canvas-menu.php:400
-#: widgets/class-paradise-phone-button.php:258
-#: widgets/class-paradise-phone-button.php:277
+#: widgets/class-paradise-phone-button.php:283
+#: widgets/class-paradise-phone-button.php:302
 msgid "Text Color"
 msgstr ""
 
@@ -1329,8 +1485,8 @@ msgstr ""
 #: widgets/class-paradise-floating-call-btn.php:302
 #: widgets/class-paradise-off-canvas-menu.php:198
 #: widgets/class-paradise-off-canvas-menu.php:396
-#: widgets/class-paradise-phone-button.php:267
-#: widgets/class-paradise-phone-button.php:399
+#: widgets/class-paradise-phone-button.php:292
+#: widgets/class-paradise-phone-button.php:424
 #: widgets/class-paradise-social-links.php:195
 msgid "Hover"
 msgstr ""
@@ -1349,7 +1505,7 @@ msgstr ""
 #: widgets/class-paradise-floating-call-btn.php:331
 #: widgets/class-paradise-google-map.php:202
 #: widgets/class-paradise-off-canvas-menu.php:234
-#: widgets/class-paradise-phone-button.php:307
+#: widgets/class-paradise-phone-button.php:332
 #: widgets/class-paradise-phone-link.php:420
 msgid "Border Radius"
 msgstr ""
@@ -1364,14 +1520,14 @@ msgstr ""
 #: widgets/class-paradise-feature-card-example.php:320
 #: widgets/class-paradise-floating-call-btn.php:257
 #: widgets/class-paradise-floating-call-btn.php:430
-#: widgets/class-paradise-phone-button.php:359
+#: widgets/class-paradise-phone-button.php:384
 #: widgets/class-paradise-phone-link.php:366
 msgid "Size"
 msgstr ""
 
 #: widgets/class-paradise-announcement-bar.php:344
 #: widgets/class-paradise-floating-call-btn.php:442
-#: widgets/class-paradise-phone-button.php:371
+#: widgets/class-paradise-phone-button.php:396
 msgid "Gap"
 msgstr ""
 
@@ -1386,16 +1542,16 @@ msgstr ""
 msgid "Hover Color"
 msgstr ""
 
-#: widgets/class-paradise-announcement-bar.php:448
+#: widgets/class-paradise-announcement-bar.php:458
 msgid "Close announcement"
 msgstr ""
 
-#: widgets/class-paradise-announcement-bar.php:467
+#: widgets/class-paradise-announcement-bar.php:477
 #: widgets/class-paradise-cookie-consent-bar.php:493
 msgid "displayed at the"
 msgstr ""
 
-#: widgets/class-paradise-announcement-bar.php:469
+#: widgets/class-paradise-announcement-bar.php:479
 #: widgets/class-paradise-cookie-consent-bar.php:495
 msgid "of the page"
 msgstr ""
@@ -1673,6 +1829,7 @@ msgid "Display"
 msgstr ""
 
 #: widgets/class-paradise-author-card.php:374
+#: widgets/class-paradise-phone-button.php:149
 #: widgets/class-paradise-social-links.php:93
 msgid "Icon Only"
 msgstr ""
@@ -1731,7 +1888,7 @@ msgstr ""
 
 #: widgets/class-paradise-author-card.php:509
 #: widgets/class-paradise-feature-card-example.php:252
-#: widgets/class-paradise-phone-button.php:214
+#: widgets/class-paradise-phone-button.php:239
 #: widgets/class-paradise-phone-link.php:261
 #: widgets/class-paradise-social-links.php:112
 msgid "Alignment"
@@ -2172,7 +2329,7 @@ msgstr ""
 msgid "Row Padding"
 msgstr ""
 
-#: widgets/class-paradise-business-hours.php:206
+#: widgets/class-paradise-business-hours.php:207
 msgid "Open Now"
 msgstr ""
 
@@ -2436,58 +2593,58 @@ msgid "Open WhatsApp"
 msgstr ""
 
 #: widgets/class-paradise-floating-call-btn.php:118
-#: widgets/class-paradise-phone-button.php:173
+#: widgets/class-paradise-phone-button.php:198
 #: widgets/class-paradise-phone-link.php:172
 msgid "Phone Format"
 msgstr ""
 
 #: widgets/class-paradise-floating-call-btn.php:122
-#: widgets/class-paradise-phone-button.php:178
+#: widgets/class-paradise-phone-button.php:203
 #: widgets/class-paradise-phone-link.php:176
 msgid "Display Format"
 msgstr ""
 
 #: widgets/class-paradise-floating-call-btn.php:126
-#: widgets/class-paradise-phone-button.php:182
+#: widgets/class-paradise-phone-button.php:207
 msgid "Raw (as entered)"
 msgstr ""
 
 #: widgets/class-paradise-floating-call-btn.php:127
-#: widgets/class-paradise-phone-button.php:183
+#: widgets/class-paradise-phone-button.php:208
 msgid "International  e.g. +1 888 780 0904"
 msgstr ""
 
 #: widgets/class-paradise-floating-call-btn.php:128
-#: widgets/class-paradise-phone-button.php:184
+#: widgets/class-paradise-phone-button.php:209
 msgid "Local  e.g. (888) 780-0904"
 msgstr ""
 
 #: widgets/class-paradise-floating-call-btn.php:129
-#: widgets/class-paradise-phone-button.php:185
+#: widgets/class-paradise-phone-button.php:210
 msgid "Dashes  e.g. 888-780-0904"
 msgstr ""
 
 #: widgets/class-paradise-floating-call-btn.php:130
-#: widgets/class-paradise-phone-button.php:186
+#: widgets/class-paradise-phone-button.php:211
 msgid "Dots  e.g. 888.780.0904"
 msgstr ""
 
 #: widgets/class-paradise-floating-call-btn.php:131
 #: widgets/class-paradise-floating-call-btn.php:136
-#: widgets/class-paradise-phone-button.php:187
-#: widgets/class-paradise-phone-button.php:192
+#: widgets/class-paradise-phone-button.php:212
+#: widgets/class-paradise-phone-button.php:217
 #: widgets/class-paradise-phone-link.php:190
 msgid "Custom Mask"
 msgstr ""
 
 #: widgets/class-paradise-floating-call-btn.php:138
-#: widgets/class-paradise-phone-button.php:194
+#: widgets/class-paradise-phone-button.php:219
 #: widgets/class-paradise-phone-link.php:192
 msgid "(###) ###-####"
 msgstr ""
 
 #: widgets/class-paradise-floating-call-btn.php:139
-#: widgets/class-paradise-phone-button.php:195
+#: widgets/class-paradise-phone-button.php:220
 #: widgets/class-paradise-phone-link.php:193
 msgid "Use # for each digit. Example: (###) ###-####"
 msgstr ""
@@ -2514,7 +2671,7 @@ msgid "Custom Label"
 msgstr ""
 
 #: widgets/class-paradise-floating-call-btn.php:183
-#: widgets/class-paradise-floating-call-btn.php:490
+#: widgets/class-paradise-floating-call-btn.php:494
 msgid "Call Us"
 msgstr ""
 
@@ -2555,21 +2712,23 @@ msgid "Speed (seconds)"
 msgstr ""
 
 #: widgets/class-paradise-floating-call-btn.php:465
-#: widgets/class-paradise-phone-button.php:428
+#: widgets/class-paradise-phone-button.php:453
 #: widgets/class-paradise-phone-link.php:453
 msgid "Set the phone number in the widget settings."
 msgstr ""
 
+#. translators: %s: the displayed phone number or contact label
 #. translators: %s = phone number
 #: widgets/class-paradise-floating-call-btn.php:477
-#: widgets/class-paradise-phone-button.php:448
+#: widgets/class-paradise-phone-button.php:473
 #, php-format
 msgid "WhatsApp %s"
 msgstr ""
 
+#. translators: %s: the displayed phone number or contact label
 #. translators: %s = phone number
-#: widgets/class-paradise-floating-call-btn.php:478
-#: widgets/class-paradise-phone-button.php:449
+#: widgets/class-paradise-floating-call-btn.php:479
+#: widgets/class-paradise-phone-button.php:474
 #, php-format
 msgid "Call %s"
 msgstr ""
@@ -2670,10 +2829,6 @@ msgstr ""
 msgid "Transit"
 msgstr ""
 
-#: widgets/class-paradise-google-map.php:158
-msgid "Settings"
-msgstr ""
-
 #: widgets/class-paradise-google-map.php:163
 msgid "Height"
 msgstr ""
@@ -2743,7 +2898,7 @@ msgstr ""
 msgid "Include Business Hours"
 msgstr ""
 
-#: widgets/class-paradise-local-business-schema.php:198
+#: widgets/class-paradise-local-business-schema.php:201
 msgid "JSON-LD is injected here on the live page. Invisible to visitors."
 msgstr ""
 
@@ -2887,34 +3042,51 @@ msgid "Text shown before the number (e.g. \"CALL \", \"TEL: \")."
 msgstr ""
 
 #: widgets/class-paradise-phone-button.php:133
-#: widgets/class-paradise-phone-button.php:439
+#: widgets/class-paradise-phone-button.php:464
 msgid "Call Now"
 msgstr ""
 
-#: widgets/class-paradise-phone-button.php:160
+#: widgets/class-paradise-phone-button.php:144
+#: widgets/class-paradise-phone-link.php:91
+msgid "Layout Mode"
+msgstr ""
+
+#: widgets/class-paradise-phone-button.php:148
+msgid "Icon + Text"
+msgstr ""
+
+#: widgets/class-paradise-phone-button.php:150
+msgid "Text Only"
+msgstr ""
+
+#: widgets/class-paradise-phone-button.php:152
+msgid "Set per-device. Useful for showing only the icon on smaller screens."
+msgstr ""
+
+#: widgets/class-paradise-phone-button.php:185
 #: widgets/class-paradise-phone-link.php:139
 msgid "Before"
 msgstr ""
 
-#: widgets/class-paradise-phone-button.php:161
+#: widgets/class-paradise-phone-button.php:186
 #: widgets/class-paradise-phone-link.php:143
 msgid "After"
 msgstr ""
 
-#: widgets/class-paradise-phone-button.php:227
+#: widgets/class-paradise-phone-button.php:252
 msgid "Full Width"
 msgstr ""
 
-#: widgets/class-paradise-phone-button.php:283
+#: widgets/class-paradise-phone-button.php:308
 #: widgets/class-paradise-social-links.php:211
 msgid "Hover Animation"
 msgstr ""
 
-#: widgets/class-paradise-phone-button.php:323
+#: widgets/class-paradise-phone-button.php:348
 msgid "Border Hover Color"
 msgstr ""
 
-#: widgets/class-paradise-phone-button.php:335
+#: widgets/class-paradise-phone-button.php:360
 #: widgets/class-paradise-sticky-header.php:109
 msgid "Transition Duration (ms)"
 msgstr ""
@@ -2941,10 +3113,6 @@ msgstr ""
 
 #: widgets/class-paradise-phone-link.php:66
 msgid "HTML Tag"
-msgstr ""
-
-#: widgets/class-paradise-phone-link.php:91
-msgid "Layout Mode"
 msgstr ""
 
 #: widgets/class-paradise-phone-link.php:108
