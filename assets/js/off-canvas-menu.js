@@ -43,6 +43,12 @@
         // No interaction in editor
         if (isEditor) return;
 
+        // Closed panels are inert + hidden from the a11y tree so keyboard users
+        // can't Tab into a visually-hidden menu. openPanel() reverses this.
+        panel.setAttribute('inert', '');
+        panel.setAttribute('aria-hidden', 'true');
+        if (!panel.hasAttribute('tabindex')) panel.setAttribute('tabindex', '-1');
+
         if (trigger) {
             trigger.addEventListener('click', function () { openPanel(id); });
         }
@@ -70,15 +76,42 @@
         return inst && inst.panel.classList.contains(OPEN_CLASS);
     }
 
+    var FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    var lastFocus = null;
+    var trapHandlers = {};
+
+    function getFocusable(panel) {
+        return Array.prototype.slice.call(panel.querySelectorAll(FOCUSABLE))
+            .filter(function (el) { return el.offsetWidth || el.offsetHeight || el.getClientRects().length; });
+    }
+
     function openPanel(id) {
         var inst = instances[id];
         if (!inst) return;
 
+        lastFocus = document.activeElement;
+        inst.panel.removeAttribute('inert');
+        inst.panel.setAttribute('aria-hidden', 'false');
         inst.panel.classList.add(OPEN_CLASS);
         if (inst.overlay) inst.overlay.classList.add(OPEN_CLASS);
         if (inst.trigger) inst.trigger.setAttribute('aria-expanded', 'true');
 
         document.body.classList.add(BODY_LOCK);
+
+        // Move focus into the panel and trap Tab within it.
+        var f = getFocusable(inst.panel);
+        (f[0] || inst.panel).focus();
+
+        var trap = function (e) {
+            if (e.key !== 'Tab') return;
+            var items = getFocusable(inst.panel);
+            if (!items.length) return;
+            var first = items[0], last = items[items.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        };
+        trapHandlers[id] = trap;
+        inst.panel.addEventListener('keydown', trap);
     }
 
     function closePanel(id) {
@@ -88,6 +121,13 @@
         inst.panel.classList.remove(OPEN_CLASS);
         if (inst.overlay) inst.overlay.classList.remove(OPEN_CLASS);
         if (inst.trigger) inst.trigger.setAttribute('aria-expanded', 'false');
+        inst.panel.setAttribute('aria-hidden', 'true');
+        inst.panel.setAttribute('inert', '');
+
+        if (trapHandlers[id]) {
+            inst.panel.removeEventListener('keydown', trapHandlers[id]);
+            delete trapHandlers[id];
+        }
 
         // Only remove body lock when no other panels remain open
         var anyOpen = Object.keys(instances).some(function (k) {
@@ -96,6 +136,10 @@
         if (!anyOpen) {
             document.body.classList.remove(BODY_LOCK);
         }
+
+        // Return focus to the trigger (or wherever it was before opening).
+        if (inst.trigger) { inst.trigger.focus(); }
+        else if (lastFocus && lastFocus.focus) { lastFocus.focus(); }
     }
 
     // ── Public API ────────────────────────────────────────────────────────────

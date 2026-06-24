@@ -309,13 +309,13 @@ class Paradise_Google_Map_Widget extends Paradise_Widget_Base {
             $zoom     = (int) ( $settings['zoom']['size'] ?? 15 );
             $has_zoom = strpos( $embed_url, 'z=' ) !== false || strpos( $embed_url, '/maps/embed?pb=' ) !== false;
             if ( $zoom > 0 && ! $has_zoom ) {
-                $embed_url .= '&z=' . $zoom;
+                $embed_url .= ( strpos( $embed_url, '?' ) !== false ? '&' : '?' ) . 'z=' . $zoom;
             }
         }
 
         // Append map type (skip for pb= blobs — type is encoded inside).
         if ( $map_type && 'm' !== $map_type && strpos( $embed_url, '/maps/embed?pb=' ) === false ) {
-            $embed_url .= '&t=' . $map_type;
+            $embed_url .= ( strpos( $embed_url, '?' ) !== false ? '&' : '?' ) . 't=' . $map_type;
         }
 
         if ( empty( $embed_url ) ) {
