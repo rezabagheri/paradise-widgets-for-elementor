@@ -97,15 +97,16 @@ class Paradise_Announcement_Bar_Widget extends Paradise_Widget_Base {
         ] );
 
         $this->add_control( 'dismiss_duration', [
-            'label'     => esc_html__( 'Remember Dismissal', 'paradise-widgets-for-elementor' ),
-            'type'      => Controls_Manager::SELECT,
-            'default'   => 'session',
-            'options'   => [
+            'label'       => esc_html__( 'Remember Dismissal', 'paradise-widgets-for-elementor' ),
+            'type'        => Controls_Manager::SELECT,
+            'default'     => 'session',
+            'options'     => [
                 'session' => esc_html__( 'Until browser closes (session)', 'paradise-widgets-for-elementor' ),
                 'days'    => esc_html__( 'For X days', 'paradise-widgets-for-elementor' ),
                 'forever' => esc_html__( 'Forever', 'paradise-widgets-for-elementor' ),
             ],
-            'condition' => [ 'show_close' => 'yes' ],
+            'condition'   => [ 'show_close' => 'yes' ],
+            'description' => esc_html__( 'How long a visitor’s close stays remembered. This is stored in their own browser (localStorage), per device — clearing browser data or using another device shows the bar again.', 'paradise-widgets-for-elementor' ),
         ] );
 
         $this->add_control( 'dismiss_days', [

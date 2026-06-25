@@ -107,11 +107,12 @@ class Paradise_Off_Canvas_Menu_Widget extends Paradise_Widget_Base {
         }
 
         $this->add_control( 'nav_menu', [
-            'label'     => esc_html__( 'Menu', 'paradise-widgets-for-elementor' ),
-            'type'      => Controls_Manager::SELECT,
-            'options'   => $menu_options,
-            'default'   => '0',
-            'separator' => 'before',
+            'label'       => esc_html__( 'Menu', 'paradise-widgets-for-elementor' ),
+            'type'        => Controls_Manager::SELECT,
+            'options'     => $menu_options,
+            'default'     => '0',
+            'separator'   => 'before',
+            'description' => esc_html__( 'Which WordPress menu fills the sliding panel. Build menus under Appearance → Menus. Tip: this widget also exposes Paradise.toggleOffCanvas("id") so other elements (e.g. a Bottom Navigation item) can open it.', 'paradise-widgets-for-elementor' ),
         ] );
 
         $this->add_control( 'panel_title', [

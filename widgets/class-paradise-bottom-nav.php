@@ -190,15 +190,16 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
         ]);
 
         $repeater->add_control('badge_source', [
-            'label'     => __( 'Badge Value Source', 'paradise-widgets-for-elementor' ),
-            'type'      => Controls_Manager::SELECT,
-            'default'   => 'static',
-            'options'   => [
+            'label'       => __( 'Badge Value Source', 'paradise-widgets-for-elementor' ),
+            'type'        => Controls_Manager::SELECT,
+            'default'     => 'static',
+            'options'     => [
                 'static' => 'Static Number',
                 'woo'    => 'WooCommerce Cart',
                 'js'     => 'JS-driven (Paradise.setBadge)',
             ],
-            'condition' => [ 'badge_enabled' => 'yes' ],
+            'condition'   => [ 'badge_enabled' => 'yes' ],
+            'description' => esc_html__( 'Where the badge number comes from. Static Number: a fixed value set below. WooCommerce Cart: live cart item count (auto-updates). JS-driven: update it from your own script — set a “CSS ID” on this item, then call Paradise.setBadge("your-id", 3) in JavaScript.', 'paradise-widgets-for-elementor' ),
         ]);
 
         $repeater->add_control('badge_value', [
