@@ -29,3 +29,6 @@ Thumbs.db
 
 # Claude Code context
 CLAUDE.md
+
+# Local Claude Code working memory (never ship)
+/memory/
