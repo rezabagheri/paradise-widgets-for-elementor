@@ -302,7 +302,6 @@ Current version: **3.1.0**. The full, per-release changelog (1.0.0 → 3.1.0) li
 ## Support & Contact
 
 - **Issues**: [GitHub Issues](https://github.com/rezabagheri/paradise-widgets-for-elementor/issues)
-- **Website**: [https://paradisecyber.com](https://paradisecyber.com)
 - **Email**: rezabagheri@gmail.com
 
 ---

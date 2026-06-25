@@ -549,7 +549,7 @@ class Paradise_EW_Admin {
             [
                 'icon'  => 'dashicons-welcome-learn-more',
                 'title' => __( 'Documentation', 'paradise-widgets-for-elementor' ),
-                'url'   => 'https://www.paradisecyber.com/elementor-widgets',
+                'url'   => 'https://github.com/rezabagheri/paradise-widgets-for-elementor#readme',
             ],
             [
                 'icon'  => 'dashicons-sos',
@@ -558,8 +558,8 @@ class Paradise_EW_Admin {
             ],
             [
                 'icon'  => 'dashicons-star-filled',
-                'title' => __( 'Rate this Plugin', 'paradise-widgets-for-elementor' ),
-                'url'   => 'https://wordpress.org/support/plugin/paradise-widgets-for-elementor/reviews/',
+                'title' => __( 'Star on GitHub', 'paradise-widgets-for-elementor' ),
+                'url'   => 'https://github.com/rezabagheri/paradise-widgets-for-elementor',
             ],
             [
                 'icon'  => 'dashicons-clipboard',

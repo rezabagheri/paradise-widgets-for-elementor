@@ -27,6 +27,8 @@ and a fresh empty `## [Unreleased]` replaces it.
 
 ### Changed
 
+- **Author / Plugin / dashboard links now point to GitHub** instead of the not-yet-live paradisecyber.com (Plugin URI, Author URI, and the admin Dashboard's Documentation + "Star on GitHub" links). Switch them to paradisecyber.com in a later update once the site is live.
+
 - **Plugin slug aligned with the rename to "Paradise Widgets for Elementor"** — the main plugin file is now `paradise-widgets-for-elementor.php` (was `paradise-elementor-widgets.php`). The local install directory should also be renamed to `paradise-widgets-for-elementor/` to match the WordPress.org submission slug. No data migration required (option keys, class names, constants are unchanged).
 - **Admin menu icon redesigned** — replaced the placeholder `<text>P</text>` SVG with the brand swoosh-P silhouette derived from `.wordpress-org/icon.svg`. Single-colour (WP admin unfocused-icon grey `#a7aaad`) so it follows the Dashicons convention. Same shape as the public-facing icon and banner, just monochrome for the admin context.
 - **Admin menu split into two pages** — the former combined settings page is now "Elementor Widgets" (per-widget enable/disable toggles) and a new "Settings" submenu (plugin-wide feature flags such as the FAQ post type and user-profile social fields).
