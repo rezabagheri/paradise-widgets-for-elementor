@@ -75,10 +75,10 @@ class Paradise_Floating_Call_Btn_Widget extends Paradise_Widget_Base
         ]);
 
         $this->add_control('country_code', [
-            'label'   => esc_html__('Country Code', 'paradise-widgets-for-elementor'),
-            'type'    => Controls_Manager::SELECT,
-            'default' => '1',
-            'options' => [
+            'label'       => esc_html__('Country Code', 'paradise-widgets-for-elementor'),
+            'type'        => Controls_Manager::SELECT,
+            'default'     => '1',
+            'options'     => [
                 '1'      => '🇺🇸 US (+1)',
                 '44'     => '🇬🇧 UK (+44)',
                 '49'     => '🇩🇪 DE (+49)',
@@ -86,6 +86,7 @@ class Paradise_Floating_Call_Btn_Widget extends Paradise_Widget_Base
                 '971'    => '🇦🇪 UAE (+971)',
                 'custom' => esc_html__('Custom', 'paradise-widgets-for-elementor'),
             ],
+            'description' => esc_html__( 'Dialing prefix used to build the tel:/WhatsApp link (not shown in the visible number). Enter your phone number without the country code above — it is added here automatically. If your number already starts with the code, it will not be added twice.', 'paradise-widgets-for-elementor' ),
         ]);
 
         $this->add_control('country_code_custom', [
@@ -119,10 +120,10 @@ class Paradise_Floating_Call_Btn_Widget extends Paradise_Widget_Base
         ]);
 
         $this->add_control('display_format', [
-            'label'   => esc_html__('Display Format', 'paradise-widgets-for-elementor'),
-            'type'    => Controls_Manager::SELECT,
-            'default' => 'raw',
-            'options' => [
+            'label'       => esc_html__('Display Format', 'paradise-widgets-for-elementor'),
+            'type'        => Controls_Manager::SELECT,
+            'default'     => 'raw',
+            'options'     => [
                 'raw'           => esc_html__('Raw (as entered)', 'paradise-widgets-for-elementor'),
                 'international' => esc_html__('International  e.g. +1 888 780 0904', 'paradise-widgets-for-elementor'),
                 'local'         => esc_html__('Local  e.g. (888) 780-0904', 'paradise-widgets-for-elementor'),
@@ -130,6 +131,7 @@ class Paradise_Floating_Call_Btn_Widget extends Paradise_Widget_Base
                 'dots'          => esc_html__('Dots  e.g. 888.780.0904', 'paradise-widgets-for-elementor'),
                 'custom_mask'   => esc_html__('Custom Mask', 'paradise-widgets-for-elementor'),
             ],
+            'description' => esc_html__( 'How the number appears in the button label (shown only when “Show Label” is on) — the tel:/WhatsApp link is always built correctly regardless. Choose Custom Mask to define your own pattern with # for each digit.', 'paradise-widgets-for-elementor' ),
         ]);
 
         $this->add_control('custom_mask', [

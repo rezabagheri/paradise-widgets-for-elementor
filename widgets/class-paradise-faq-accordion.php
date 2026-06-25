@@ -34,13 +34,14 @@ class Paradise_Faq_Accordion_Widget extends Paradise_Widget_Base {
         $cpt_active = Paradise_EW_Admin::feature_enabled( 'faq_cpt' );
 
         $this->add_control( 'source', [
-            'label'   => esc_html__( 'Source', 'paradise-widgets-for-elementor' ),
-            'type'    => \Elementor\Controls_Manager::SELECT,
-            'default' => 'static',
-            'options' => array_filter( [
+            'label'       => esc_html__( 'Source', 'paradise-widgets-for-elementor' ),
+            'type'        => \Elementor\Controls_Manager::SELECT,
+            'default'     => 'static',
+            'options'     => array_filter( [
                 'static'  => esc_html__( 'Static (enter manually)', 'paradise-widgets-for-elementor' ),
                 'cpt'     => $cpt_active ? esc_html__( 'FAQ Post Type', 'paradise-widgets-for-elementor' ) : null,
             ] ),
+            'description' => esc_html__( 'Where the questions come from. Static: type the Q&A pairs right here in the “Items” repeater below. FAQ Post Type: reuse a saved FAQ set from Paradise → FAQs (create one there first, then pick it in “FAQ Set”).', 'paradise-widgets-for-elementor' ),
         ] );
 
         if ( $cpt_active ) {

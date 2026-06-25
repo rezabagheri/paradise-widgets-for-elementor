@@ -62,10 +62,10 @@ class Paradise_Phone_Button_Widget extends Paradise_Widget_Base {
         ] );
 
         $this->add_control( 'country_code', [
-            'label'   => esc_html__( 'Country Code', 'paradise-widgets-for-elementor' ),
-            'type'    => Controls_Manager::SELECT,
-            'default' => '1',
-            'options' => [
+            'label'       => esc_html__( 'Country Code', 'paradise-widgets-for-elementor' ),
+            'type'        => Controls_Manager::SELECT,
+            'default'     => '1',
+            'options'     => [
                 '1'      => '🇺🇸 US (+1)',
                 '44'     => '🇬🇧 UK (+44)',
                 '49'     => '🇩🇪 DE (+49)',
@@ -73,6 +73,7 @@ class Paradise_Phone_Button_Widget extends Paradise_Widget_Base {
                 '971'    => '🇦🇪 UAE (+971)',
                 'custom' => esc_html__( 'Custom', 'paradise-widgets-for-elementor' ),
             ],
+            'description' => esc_html__( 'Dialing prefix used to build the tel:/WhatsApp link (not shown in the visible number). Enter your phone number without the country code above — it is added here automatically. If your number already starts with the code, it will not be added twice.', 'paradise-widgets-for-elementor' ),
         ] );
 
         $this->add_control( 'country_code_custom', [
@@ -105,13 +106,14 @@ class Paradise_Phone_Button_Widget extends Paradise_Widget_Base {
         ] );
 
         $this->add_control( 'text_mode', [
-            'label'   => esc_html__( 'Text Mode', 'paradise-widgets-for-elementor' ),
-            'type'    => Controls_Manager::SELECT,
-            'default' => 'auto',
-            'options' => [
+            'label'       => esc_html__( 'Text Mode', 'paradise-widgets-for-elementor' ),
+            'type'        => Controls_Manager::SELECT,
+            'default'     => 'auto',
+            'options'     => [
                 'auto'   => esc_html__( 'Prefix + Number', 'paradise-widgets-for-elementor' ),
                 'custom' => esc_html__( 'Custom Text', 'paradise-widgets-for-elementor' ),
             ],
+            'description' => esc_html__( 'What the button label shows. Prefix + Number: a prefix (e.g. “CALL ”) followed by the formatted phone number. Custom Text: your own wording — switch to this to reveal the “Button Text” field (otherwise typing your own text has no effect).', 'paradise-widgets-for-elementor' ),
         ] );
 
         // ── Auto mode ──
@@ -200,10 +202,10 @@ class Paradise_Phone_Button_Widget extends Paradise_Widget_Base {
         ] );
 
         $this->add_control( 'display_format', [
-            'label'   => esc_html__( 'Display Format', 'paradise-widgets-for-elementor' ),
-            'type'    => Controls_Manager::SELECT,
-            'default' => 'local',
-            'options' => [
+            'label'       => esc_html__( 'Display Format', 'paradise-widgets-for-elementor' ),
+            'type'        => Controls_Manager::SELECT,
+            'default'     => 'local',
+            'options'     => [
                 'raw'           => esc_html__( 'Raw (as entered)', 'paradise-widgets-for-elementor' ),
                 'international' => esc_html__( 'International  e.g. +1 888 780 0904', 'paradise-widgets-for-elementor' ),
                 'local'         => esc_html__( 'Local  e.g. (888) 780-0904', 'paradise-widgets-for-elementor' ),
@@ -211,6 +213,7 @@ class Paradise_Phone_Button_Widget extends Paradise_Widget_Base {
                 'dots'          => esc_html__( 'Dots  e.g. 888.780.0904', 'paradise-widgets-for-elementor' ),
                 'custom_mask'   => esc_html__( 'Custom Mask', 'paradise-widgets-for-elementor' ),
             ],
+            'description' => esc_html__( 'How the number is shown on the button only — the underlying tel:/WhatsApp link is always built correctly regardless. This applies in “Prefix + Number” mode; choose Custom Mask to define your own pattern with # for each digit.', 'paradise-widgets-for-elementor' ),
         ] );
 
         $this->add_control( 'custom_mask', [

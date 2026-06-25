@@ -173,10 +173,10 @@ class Paradise_Phone_Link_Widget extends Paradise_Widget_Base {
         ] );
 
         $this->add_control( 'display_format', [
-            'label'   => __( 'Display Format', 'paradise-widgets-for-elementor' ),
-            'type'    => \Elementor\Controls_Manager::SELECT,
-            'default' => 'raw',
-            'options' => [
+            'label'       => __( 'Display Format', 'paradise-widgets-for-elementor' ),
+            'type'        => \Elementor\Controls_Manager::SELECT,
+            'default'     => 'raw',
+            'options'     => [
                 'raw'           => 'Raw (as entered)',
                 'international' => 'International  e.g. +1 212 555 1234',
                 'local'         => 'Local  e.g. (212) 555-1234',
@@ -184,6 +184,7 @@ class Paradise_Phone_Link_Widget extends Paradise_Widget_Base {
                 'dots'          => 'Dots  e.g. 212.555.1234',
                 'custom_mask'   => 'Custom Mask',
             ],
+            'description' => esc_html__( 'How the number is shown on screen only — the underlying tel:/WhatsApp link is always built correctly regardless. Choose Custom Mask to define your own pattern with # for each digit.', 'paradise-widgets-for-elementor' ),
         ] );
 
         $this->add_control( 'custom_mask', [
@@ -224,10 +225,10 @@ class Paradise_Phone_Link_Widget extends Paradise_Widget_Base {
         ] );
 
         $this->add_control( 'country_code', [
-            'label'     => __( 'Country Code', 'paradise-widgets-for-elementor' ),
-            'type'      => \Elementor\Controls_Manager::SELECT,
-            'default'   => '1',
-            'options'   => [
+            'label'       => __( 'Country Code', 'paradise-widgets-for-elementor' ),
+            'type'        => \Elementor\Controls_Manager::SELECT,
+            'default'     => '1',
+            'options'     => [
                 '1'      => '🇺🇸 US (+1)',
                 '44'     => '🇬🇧 UK (+44)',
                 '49'     => '🇩🇪 DE (+49)',
@@ -235,6 +236,7 @@ class Paradise_Phone_Link_Widget extends Paradise_Widget_Base {
                 '971'    => '🇦🇪 UAE (+971)',
                 'custom' => 'Custom',
             ],
+            'description' => esc_html__( 'Dialing prefix used to build the tel:/WhatsApp link (not shown in the visible number). Enter your phone number without the country code above — it is added here automatically. If your number already starts with the code, it will not be added twice.', 'paradise-widgets-for-elementor' ),
         ] );
 
         $this->add_control( 'country_code_custom', [
