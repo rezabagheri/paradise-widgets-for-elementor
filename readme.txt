@@ -127,13 +127,17 @@ Use the public API: `Paradise.setBadge('your-widget-css-id', count);`
 Setting count to 0 hides the badge. Count above 99 displays as "99+".
 
 = How do I trigger the Off-Canvas Menu from Bottom Navigation? =
-Set a Bottom Nav center button (or item) action to **JS Hook** and enter a hook name (e.g. `openMenu`). In the Off-Canvas Menu widget, set the JS trigger to the same hook name. The menu will open when the button is tapped.
+Set the Bottom Nav **center button** action to **JS Hook** and enter a hook name (e.g. `openMenu`). This fires the event `ebn:hook:openMenu` on the document. Listen for it and open the panel by its element ID:
+`document.addEventListener('ebn:hook:openMenu', function () { Paradise.toggleOffCanvas('your-offcanvas-id'); });`
 
 = Does the Bottom Navigation Bar work with WooCommerce? =
 Yes. Set the badge type to **WooCommerce Cart** and it will display the live cart item count automatically.
 
 = How accurate is the Business Hours "Open Now" badge? =
 The badge is computed in the visitor's browser using the site's timezone (from WordPress Settings → General). It does not depend on the visitor's device timezone, so it always reflects your business's local time.
+
+= Where is the full documentation? =
+A complete usage guide — every widget, its key controls, the JavaScript API, ready-made recipes, and a troubleshooting section — is available at: https://github.com/rezabagheri/paradise-widgets-for-elementor/blob/main/docs/USAGE.md
 
 == Screenshots ==
 
