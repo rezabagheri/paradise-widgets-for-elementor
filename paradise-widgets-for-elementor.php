@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name:       Paradise Widgets for Elementor
- * Plugin URI:        https://www.paradisecyber.com/elementor-widgets
+ * Plugin URI:        https://github.com/rezabagheri/paradise-widgets-for-elementor
  * Description:       Advanced custom Elementor widgets by Paradise. Phone Link, Bottom Navigation Bar, and more.
  * Version:           3.1.0
  * Requires at least: 6.1
@@ -10,7 +10,7 @@
  * Requires PHP:      8.0
  * Requires Plugins:  elementor
  * Author:            Reza Bagheri
- * Author URI:        https://www.paradisecyber.com
+ * Author URI:        https://github.com/rezabagheri
  * License:           GPL-2.0+
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       paradise-widgets-for-elementor
