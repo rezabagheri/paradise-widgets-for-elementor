@@ -82,7 +82,7 @@ class Paradise_Site_Info_Admin {
         check_admin_referer( self::NONCE );
 
         $raw = isset( $_POST['paradise_site_info'] ) && is_array( $_POST['paradise_site_info'] )
-            ? wp_unslash( $_POST['paradise_site_info'] )
+            ? wp_unslash( $_POST['paradise_site_info'] ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- raw value is sanitized per-field in the save handler below
             : [];
 
         Paradise_Site_Info::save( $raw );

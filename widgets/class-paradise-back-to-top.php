@@ -262,11 +262,11 @@ class Paradise_Back_To_Top_Widget extends Paradise_Widget_Base {
 
         ?>
         <button class="paradise-btt-btn"
-                <?php echo $data; ?>
+                <?php echo $data; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>
                 aria-label="<?php echo esc_attr( $aria ); ?>"
                 title="<?php echo esc_attr( $aria ); ?>"
                 type="button">
-            <?php echo $icon_html; ?>
+            <?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor-rendered icon HTML ?>
         </button>
 
         <?php if ( $is_editor ) : ?>

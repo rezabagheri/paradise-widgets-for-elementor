@@ -6,7 +6,7 @@
  * Description:       Advanced custom Elementor widgets by Paradise. Phone Link, Bottom Navigation Bar, and more.
  * Version:           3.1.0
  * Requires at least: 6.1
- * Tested up to:      6.9
+ * Tested up to:      7.0
  * Requires PHP:      8.0
  * Requires Plugins:  elementor
  * Author:            Reza Bagheri
@@ -103,7 +103,7 @@ final class Paradise_Elementor_Widgets
 
     public function load_textdomain(): void
     {
-        load_plugin_textdomain(
+        load_plugin_textdomain( // phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- loads local /languages during development; WordPress.org auto-loads once hosted.
             'paradise-widgets-for-elementor',
             false,
             dirname(plugin_basename(__FILE__)) . '/languages'

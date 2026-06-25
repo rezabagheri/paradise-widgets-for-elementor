@@ -406,7 +406,7 @@ class Paradise_Faq_Accordion_Widget extends Paradise_Widget_Base {
                 $msg = 'cpt' === $source
                     ? esc_html__( 'No items found in this FAQ Set. Add some under Paradise → FAQs.', 'paradise-widgets-for-elementor' )
                     : esc_html__( 'Add FAQ items in the widget settings.', 'paradise-widgets-for-elementor' );
-                echo '<div class="paradise-faq-placeholder">' . $msg . '</div>';
+                echo '<div class="paradise-faq-placeholder">' . esc_html( $msg ) . '</div>';
             }
             return;
         }

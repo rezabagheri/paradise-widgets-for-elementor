@@ -489,13 +489,13 @@ class Paradise_Phone_Button_Widget extends Paradise_Widget_Base {
         <div class="paradise-pbn-wrapper">
             <a href="<?php echo esc_url( $href ); ?>"
                class="paradise-pbn-btn"
-               aria-label="<?php echo esc_attr( $aria ); ?>"<?php echo $target_attr; ?>>
+               aria-label="<?php echo esc_attr( $aria ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>"<?php echo $target_attr; ?>>
                 <?php if ( $icon_html && 'before' === $icon_pos ) : ?>
-                    <?php echo $icon_html; ?>
+                    <?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor-rendered icon HTML ?>
                 <?php endif; ?>
                 <span class="paradise-pbn-text"><?php echo esc_html( $label ); ?></span>
                 <?php if ( $icon_html && 'after' === $icon_pos ) : ?>
-                    <?php echo $icon_html; ?>
+                    <?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor-rendered icon HTML ?>
                 <?php endif; ?>
             </a>
         </div>

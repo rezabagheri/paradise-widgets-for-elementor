@@ -504,9 +504,9 @@ class Paradise_Off_Canvas_Menu_Widget extends Paradise_Widget_Base {
                     aria-controls="<?php echo esc_attr( $panel_element_id ); ?>"
                     aria-label="<?php esc_attr_e( 'Open menu', 'paradise-widgets-for-elementor' ); ?>"
                     type="button">
-                <?php if ( 'before' === $trigger_label_pos ) echo $label_html; ?>
-                <?php echo $icon_html; ?>
-                <?php if ( 'after' === $trigger_label_pos ) echo $label_html; ?>
+                <?php if ( 'before' === $trigger_label_pos ) echo $label_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>
+                <?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor-rendered icon HTML ?>
+                <?php if ( 'after' === $trigger_label_pos ) echo $label_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>
             </button>
 
             <!-- Overlay (fixed) -->

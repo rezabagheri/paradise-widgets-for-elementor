@@ -404,10 +404,20 @@ class Paradise_Announcement_Bar_Widget extends Paradise_Widget_Base {
         $duration = $settings['dismiss_duration'] ?? 'session';
         $days     = absint( $settings['dismiss_days'] ?? 7 );
 
-        // CTA link
+        // CTA link — collect rel tokens into a single rel attribute (two separate
+        // rel="" attributes would make the browser ignore all but the first, so
+        // an external + nofollow link would silently drop the nofollow).
         $cta_url    = $settings['cta_url']['url'] ?? '';
-        $cta_target = ! empty( $settings['cta_url']['is_external'] ) ? ' target="_blank" rel="noopener noreferrer"' : '';
-        $cta_nofollow = ! empty( $settings['cta_url']['nofollow'] ) ? ' rel="nofollow"' : '';
+        $cta_target = ! empty( $settings['cta_url']['is_external'] ) ? ' target="_blank"' : '';
+        $cta_rel_tokens = [];
+        if ( ! empty( $settings['cta_url']['is_external'] ) ) {
+            $cta_rel_tokens[] = 'noopener';
+            $cta_rel_tokens[] = 'noreferrer';
+        }
+        if ( ! empty( $settings['cta_url']['nofollow'] ) ) {
+            $cta_rel_tokens[] = 'nofollow';
+        }
+        $cta_nofollow = $cta_rel_tokens ? ' rel="' . esc_attr( implode( ' ', $cta_rel_tokens ) ) . '"' : '';
 
         // Data attrs for JS
         $data = sprintf(
@@ -430,16 +440,16 @@ class Paradise_Announcement_Bar_Widget extends Paradise_Widget_Base {
         $bar_position = $settings['bar_position'] ?? 'top';
 
         ?>
-        <div class="paradise-ab-wrap"<?php echo $data; ?>>
+        <div class="paradise-ab-wrap"<?php echo $data; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>>
             <div class="paradise-ab-inner">
 
-                <?php echo $icon_html; ?>
+                <?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor-rendered icon HTML ?>
 
                 <span class="paradise-ab-message"><?php echo wp_kses_post( $message ); ?></span>
 
                 <?php if ( $cta_text && $cta_url ) : ?>
                 <a href="<?php echo esc_url( $cta_url ); ?>"
-                   class="paradise-ab-cta"<?php echo $cta_target . $cta_nofollow; ?>>
+                   class="paradise-ab-cta"<?php echo $cta_target . $cta_nofollow; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>>
                     <?php echo esc_html( $cta_text ); ?>
                 </a>
                 <?php endif; ?>

@@ -132,7 +132,7 @@ class Paradise_CF_Tag_Text extends \Elementor\Core\DynamicTags\Tag {
         if ( $key === '' ) {
             return;
         }
-        echo Paradise_Custom_Fields::render( $key, 'raw' ); // phpcs:ignore — render() escapes per type
+        echo Paradise_Custom_Fields::render( $key, 'raw' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- render() escapes per field type
     }
 }
 
@@ -157,7 +157,7 @@ class Paradise_CF_Tag_URL extends \Elementor\Core\DynamicTags\Tag {
         if ( $key === '' ) {
             return;
         }
-        echo Paradise_Custom_Fields::render( $key ); // phpcs:ignore — render() escapes via esc_url
+        echo Paradise_Custom_Fields::render( $key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- render() escapes via esc_url
     }
 }
 

@@ -559,7 +559,7 @@ class Paradise_EW_Admin {
             [
                 'icon'  => 'dashicons-star-filled',
                 'title' => __( 'Rate this Plugin', 'paradise-widgets-for-elementor' ),
-                'url'   => 'https://wordpress.org/support/plugin/paradise-widgets-for-elementor/reviews/?filter=5#new-post',
+                'url'   => 'https://wordpress.org/support/plugin/paradise-widgets-for-elementor/reviews/',
             ],
             [
                 'icon'  => 'dashicons-clipboard',

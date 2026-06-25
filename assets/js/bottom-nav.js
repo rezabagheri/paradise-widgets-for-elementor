@@ -27,6 +27,12 @@
     }
 
     function initBar(wrapper) {
+        // Guard against double-init: init() runs on DOMContentLoaded AND the
+        // Elementor `element_ready` hook fires for the same node (and re-fires on
+        // editor re-render). Without this, listeners/overlays are bound twice.
+        if (wrapper.dataset.paradiseBnInit) return;
+        wrapper.dataset.paradiseBnInit = '1';
+
         var cfg = parseConfig(wrapper);
 
         if (cfg.isEditMode) {
@@ -171,7 +177,7 @@
 
     function clearActive(item) {
         item.classList.remove('paradise-bn-item--active');
-        item.setAttribute('aria-current', 'false');
+        item.removeAttribute('aria-current');
     }
 
     /* ── Sliding indicator ──────────────────────────────────── */
@@ -235,7 +241,7 @@
         btn.addEventListener('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            toggle(true);
+            toggle(); // flip open/closed — re-tapping the button now closes it
         });
 
         overlay.addEventListener('click', function () { toggle(false); });

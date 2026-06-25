@@ -1,8 +1,8 @@
 === Paradise Widgets for Elementor ===
 Contributors: rezabagheri
-Tags: elementor, widgets, bottom navigation, phone link, google map, social links, business hours, schema, local seo, announcement bar, cookie consent, sticky header, off canvas menu, back to top
+Tags: elementor, mobile navigation, business hours, local seo, schema
 Requires at least: 6.1
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 8.0
 Stable tag: 3.1.0
 License: GPL-2.0+
@@ -137,13 +137,14 @@ The badge is computed in the visitor's browser using the site's timezone (from W
 
 == Screenshots ==
 
-1. Site Info admin page — phones, addresses, social links, and business hours
-2. Google Map widget — Place mode with satellite type
-3. Social Links widget — brand color icon row
-4. Business Hours widget with live Open Now badge
-5. Bottom Navigation Bar — frontend on mobile
-6. Announcement Bar with dismiss button
-7. Widget panel — Paradise Widgets category
+1. A real landing page — the Announcement Bar, a gradient hero, and a WhatsApp Phone Button working together.
+2. Google Map widget — a live map pulled automatically from Site Info (no embed code to paste).
+3. Social Links widget — a brand-coloured social icon row.
+4. Business Hours widget — the weekly schedule with a live "Open Now / Closed" badge and today highlighted.
+5. Bottom Navigation Bar on mobile — icons, labels, and a floating Speed Dial center button.
+6. Announcement Bar — a dismissible promo banner with a call-to-action.
+7. Author Card — photo, bio, credentials, and a custom profile field.
+8. Phone widgets — a contact card with Phone Link, tel + WhatsApp Phone Buttons, and the floating Call Button.
 
 == Changelog ==
 

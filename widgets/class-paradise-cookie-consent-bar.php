@@ -451,7 +451,7 @@ class Paradise_Cookie_Consent_Bar_Widget extends Paradise_Widget_Base {
         );
 
         ?>
-        <div class="paradise-ccb-wrap"<?php echo $data; ?>>
+        <div class="paradise-ccb-wrap"<?php echo $data; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>>
             <div class="paradise-ccb-inner">
 
                 <div class="paradise-ccb-text">
@@ -459,7 +459,7 @@ class Paradise_Cookie_Consent_Bar_Widget extends Paradise_Widget_Base {
 
                     <?php if ( $privacy_text && $privacy_url ) : ?>
                     <a href="<?php echo esc_url( $privacy_url ); ?>"
-                       class="paradise-ccb-privacy"<?php echo $privacy_target; ?>>
+                       class="paradise-ccb-privacy"<?php echo $privacy_target; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pre-escaped markup assembled above ?>>
                         <?php echo esc_html( $privacy_text ); ?>
                     </a>
                     <?php elseif ( $privacy_text ) : ?>

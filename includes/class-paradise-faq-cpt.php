@@ -135,8 +135,8 @@ class Paradise_FAQ_CPT {
             return;
         }
 
-        $questions = isset( $_POST['paradise_faq_q'] ) ? (array) wp_unslash( $_POST['paradise_faq_q'] ) : [];
-        $answers   = isset( $_POST['paradise_faq_a'] ) ? (array) wp_unslash( $_POST['paradise_faq_a'] ) : [];
+        $questions = isset( $_POST['paradise_faq_q'] ) ? (array) wp_unslash( $_POST['paradise_faq_q'] ) : []; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- raw value is sanitized per-field in the save handler below
+        $answers   = isset( $_POST['paradise_faq_a'] ) ? (array) wp_unslash( $_POST['paradise_faq_a'] ) : []; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- raw value is sanitized per-field in the save handler below
 
         $items = [];
         foreach ( $questions as $i => $q ) {
