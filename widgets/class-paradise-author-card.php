@@ -65,13 +65,14 @@ class Paradise_Author_Card_Widget extends Paradise_Widget_Base {
         ] );
 
         $this->add_control( 'author_source', [
-            'label'   => esc_html__( 'Author Source', 'paradise-widgets-for-elementor' ),
-            'type'    => Controls_Manager::SELECT,
-            'default' => 'current',
-            'options' => [
+            'label'       => esc_html__( 'Author Source', 'paradise-widgets-for-elementor' ),
+            'type'        => Controls_Manager::SELECT,
+            'default'     => 'current',
+            'options'     => [
                 'current'  => esc_html__( 'Current Post Author', 'paradise-widgets-for-elementor' ),
                 'specific' => esc_html__( 'Specific User', 'paradise-widgets-for-elementor' ),
             ],
+            'description' => esc_html__( 'Whose profile to display. Current Post Author: auto-detects the author of the post being viewed (use this inside a single-post template). Specific User: always show one chosen user — reveals the “User ID” field below.', 'paradise-widgets-for-elementor' ),
         ] );
 
         $this->add_control( 'user_id', [

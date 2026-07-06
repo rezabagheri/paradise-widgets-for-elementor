@@ -8,6 +8,8 @@
 [![Version](https://img.shields.io/badge/Version-3.1.0-green.svg)](https://github.com/rezabagheri/paradise-widgets-for-elementor/releases)
 [![License](https://img.shields.io/badge/License-GPL--2.0%2B-green.svg)](LICENSE)
 
+📖 **[Read the full Usage Guide →](docs/USAGE.md)** — every widget, its key controls, the JavaScript API, recipes, and troubleshooting.
+
 ---
 
 ### Features at a Glance

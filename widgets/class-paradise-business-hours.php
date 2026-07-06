@@ -46,6 +46,7 @@ class Paradise_Business_Hours_Widget extends Paradise_Widget_Base {
             'type'         => \Elementor\Controls_Manager::SWITCHER,
             'default'      => 'yes',
             'return_value' => 'yes',
+            'description'  => esc_html__( 'Shows a live “Open now / Closed” badge. It is calculated in your site’s timezone (Settings → General → Timezone), not the visitor’s — so set that correctly. Overnight ranges (e.g. 22:00–02:00) are supported.', 'paradise-widgets-for-elementor' ),
         ] );
 
         $this->add_control( 'highlight_today', [

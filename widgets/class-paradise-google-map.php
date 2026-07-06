@@ -34,13 +34,14 @@ class Paradise_Google_Map_Widget extends Paradise_Widget_Base {
         ] );
 
         $this->add_control( 'mode', [
-            'label'   => esc_html__( 'Mode', 'paradise-widgets-for-elementor' ),
-            'type'    => \Elementor\Controls_Manager::SELECT,
-            'default' => 'place',
-            'options' => [
+            'label'       => esc_html__( 'Mode', 'paradise-widgets-for-elementor' ),
+            'type'        => \Elementor\Controls_Manager::SELECT,
+            'default'     => 'place',
+            'options'     => [
                 'place'      => esc_html__( 'Place', 'paradise-widgets-for-elementor' ),
                 'directions' => esc_html__( 'Directions', 'paradise-widgets-for-elementor' ),
             ],
+            'description' => esc_html__( 'Place: show a single pinned location (the “Place” tab below). Directions: show a route between two points (the “Directions” tab below). Switching this changes which tab appears.', 'paradise-widgets-for-elementor' ),
         ] );
 
         $this->add_control( 'map_type', [
@@ -66,13 +67,14 @@ class Paradise_Google_Map_Widget extends Paradise_Widget_Base {
         ] );
 
         $this->add_control( 'source', [
-            'label'   => esc_html__( 'Source', 'paradise-widgets-for-elementor' ),
-            'type'    => \Elementor\Controls_Manager::SELECT,
-            'default' => 'manual',
-            'options' => [
+            'label'       => esc_html__( 'Source', 'paradise-widgets-for-elementor' ),
+            'type'        => \Elementor\Controls_Manager::SELECT,
+            'default'     => 'manual',
+            'options'     => [
                 'site_info' => esc_html__( 'Site Info Address', 'paradise-widgets-for-elementor' ),
                 'manual'    => esc_html__( 'Manual URL', 'paradise-widgets-for-elementor' ),
             ],
+            'description' => esc_html__( 'Where the map address comes from. Site Info Address: uses an address you saved under Paradise → Site Info (fill that first, then pick it in “Location”). Manual URL: paste your own Google Maps link in the field below.', 'paradise-widgets-for-elementor' ),
         ] );
 
         $this->add_control( 'location_index', [
@@ -112,13 +114,14 @@ class Paradise_Google_Map_Widget extends Paradise_Widget_Base {
         ] );
 
         $this->add_control( 'dir_dest_source', [
-            'label'   => esc_html__( 'Destination Source', 'paradise-widgets-for-elementor' ),
-            'type'    => \Elementor\Controls_Manager::SELECT,
-            'default' => 'site_info',
-            'options' => [
+            'label'       => esc_html__( 'Destination Source', 'paradise-widgets-for-elementor' ),
+            'type'        => \Elementor\Controls_Manager::SELECT,
+            'default'     => 'site_info',
+            'options'     => [
                 'site_info' => esc_html__( 'Site Info Address', 'paradise-widgets-for-elementor' ),
                 'manual'    => esc_html__( 'Manual', 'paradise-widgets-for-elementor' ),
             ],
+            'description' => esc_html__( 'Where the route ends. Site Info Address: a location saved under Paradise → Site Info. Manual: type any address below. (The “From” origin is left blank by default so Google uses the visitor’s own location.)', 'paradise-widgets-for-elementor' ),
         ] );
 
         $this->add_control( 'dir_dest_location', [

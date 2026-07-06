@@ -35,13 +35,14 @@ class Paradise_Social_Links_Widget extends Paradise_Widget_Base {
         ] );
 
         $this->add_control( 'source', [
-            'label'   => esc_html__( 'Source', 'paradise-widgets-for-elementor' ),
-            'type'    => \Elementor\Controls_Manager::SELECT,
-            'default' => 'site_info',
-            'options' => [
+            'label'       => esc_html__( 'Source', 'paradise-widgets-for-elementor' ),
+            'type'        => \Elementor\Controls_Manager::SELECT,
+            'default'     => 'site_info',
+            'options'     => [
                 'site_info' => esc_html__( 'Site Info', 'paradise-widgets-for-elementor' ),
                 'custom'    => esc_html__( 'Custom', 'paradise-widgets-for-elementor' ),
             ],
+            'description' => esc_html__( 'Which set of social profiles to show. Site Info: the accounts saved once under Paradise → Site Info (recommended — edit them in one place site-wide). Custom: define links here for this widget only.', 'paradise-widgets-for-elementor' ),
         ] );
 
         $platforms = Paradise_Site_Info::social_platforms();

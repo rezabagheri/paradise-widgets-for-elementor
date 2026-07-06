@@ -102,13 +102,14 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
         ]);
 
         $this->add_control('items_source', [
-            'label'   => __( 'Source', 'paradise-widgets-for-elementor' ),
-            'type'    => Controls_Manager::SELECT,
-            'default' => 'repeater',
-            'options' => [
+            'label'       => __( 'Source', 'paradise-widgets-for-elementor' ),
+            'type'        => Controls_Manager::SELECT,
+            'default'     => 'repeater',
+            'options'     => [
                 'repeater' => 'Manual (Repeater)',
                 'wp_menu'  => 'WordPress Menu',
             ],
+            'description' => esc_html__( 'Where the nav items come from. Manual (Repeater): add each item by hand below (icon + label + link) — best for a small mobile bar. WordPress Menu: pull items from an existing menu under Appearance → Menus.', 'paradise-widgets-for-elementor' ),
         ]);
 
         $this->end_controls_section();
@@ -189,15 +190,16 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
         ]);
 
         $repeater->add_control('badge_source', [
-            'label'     => __( 'Badge Value Source', 'paradise-widgets-for-elementor' ),
-            'type'      => Controls_Manager::SELECT,
-            'default'   => 'static',
-            'options'   => [
+            'label'       => __( 'Badge Value Source', 'paradise-widgets-for-elementor' ),
+            'type'        => Controls_Manager::SELECT,
+            'default'     => 'static',
+            'options'     => [
                 'static' => 'Static Number',
                 'woo'    => 'WooCommerce Cart',
                 'js'     => 'JS-driven (Paradise.setBadge)',
             ],
-            'condition' => [ 'badge_enabled' => 'yes' ],
+            'condition'   => [ 'badge_enabled' => 'yes' ],
+            'description' => esc_html__( 'Where the badge number comes from. Static Number: a fixed value set below. WooCommerce Cart: live cart item count (auto-updates). JS-driven: update it from your own script — set a “CSS ID” on this item, then call Paradise.setBadge("your-id", 3) in JavaScript.', 'paradise-widgets-for-elementor' ),
         ]);
 
         $repeater->add_control('badge_value', [
@@ -399,14 +401,15 @@ class Paradise_Bottom_Nav_Widget extends Paradise_Widget_Base
         ]);
 
         $this->add_control('active_detection', [
-            'label'   => __( 'Detection Method', 'paradise-widgets-for-elementor' ),
-            'type'    => Controls_Manager::SELECT,
-            'default' => 'both',
-            'options' => [
+            'label'       => __( 'Detection Method', 'paradise-widgets-for-elementor' ),
+            'type'        => Controls_Manager::SELECT,
+            'default'     => 'both',
+            'options'     => [
                 'url'    => 'URL Match Only',
                 'manual' => 'Manual Only',
                 'both'   => 'URL Match + Manual Fallback',
             ],
+            'description' => esc_html__( 'How the highlighted (current) item is chosen. URL Match Only: highlight the item whose link matches the page being viewed. Manual Only: always highlight the item set in “Default Active Item”. URL Match + Manual Fallback: match the URL, and if none matches, fall back to the manual item.', 'paradise-widgets-for-elementor' ),
         ]);
 
         $this->add_control('active_manual_index', [
