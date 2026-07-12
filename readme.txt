@@ -108,6 +108,19 @@ A collapsible Q&A list with accordion mode (one item open at a time) or multi-ex
 4. Configure business details under **Paradise → Elementor Widgets → Site Info**.
 5. Open Elementor editor — the **Paradise Widgets** category will appear in the widget panel.
 
+== External services ==
+
+This plugin includes an optional **Google Map** widget. When you add that widget to a page, the plugin embeds a Google Maps map using an `<iframe>` served by Google. No map is loaded unless you place the Google Map widget on a page.
+
+What the service is and what it is used for: Google Maps, used to display an interactive map of a location (a place pin or driving directions) inside the widget.
+
+What data is sent and when: the map is loaded directly by the visitor's browser from Google whenever a page containing the Google Map widget is viewed. As with any embedded third-party resource, Google receives the request — including the visitor's IP address, user agent, and the map location/URL you configured. The plugin itself does not collect, store, or transmit any personal data, and makes no other outbound requests.
+
+This service is provided by Google. Please review Google's terms and privacy policy:
+- Google Terms of Service: https://policies.google.com/terms
+- Google Maps/Google Earth Additional Terms: https://www.google.com/help/terms_maps/
+- Google Privacy Policy: https://policies.google.com/privacy
+
 == Frequently Asked Questions ==
 
 = Does this require Elementor Pro? =

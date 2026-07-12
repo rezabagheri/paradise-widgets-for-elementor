@@ -328,6 +328,21 @@
         }, 0 );
     }
 
+    // ── Import/Export: enable the Import button once a file is chosen ─────────
+
+    function initImportButton() {
+        var fileInput = document.getElementById( 'paradise_import_file' );
+        if ( ! fileInput ) {
+            return; // not on the Import/Export page
+        }
+        fileInput.addEventListener( 'change', function () {
+            var btn = document.getElementById( 'paradise-import-btn' );
+            if ( btn ) {
+                btn.disabled = ! this.files.length;
+            }
+        } );
+    }
+
     // ── Boot ─────────────────────────────────────────────────────────────────
 
     function init() {
@@ -336,6 +351,7 @@
         initCopyShortcode();
         initDirtyTracking();
         initScrollOnSave();
+        initImportButton();
     }
 
     if ( document.readyState === 'loading' ) {

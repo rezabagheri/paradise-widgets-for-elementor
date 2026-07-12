@@ -40,7 +40,6 @@ final class Paradise_Elementor_Widgets
 
     private function __construct()
     {
-        add_action('plugins_loaded', [ $this, 'load_textdomain' ]);
         add_action('plugins_loaded', [ $this, 'load_site_info' ]);
         add_action('plugins_loaded', [ $this, 'load_custom_fields' ]);
         add_action('plugins_loaded', [ $this, 'load_admin' ]);
@@ -101,14 +100,8 @@ final class Paradise_Elementor_Widgets
         }
     }
 
-    public function load_textdomain(): void
-    {
-        load_plugin_textdomain( // phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- loads local /languages during development; WordPress.org auto-loads once hosted.
-            'paradise-widgets-for-elementor',
-            false,
-            dirname(plugin_basename(__FILE__)) . '/languages'
-        );
-    }
+    // Note: no load_plugin_textdomain() call — WordPress.org auto-loads translations
+    // for hosted plugins (since WP 4.6), and this plugin requires WP 6.1+.
 
     public function init(): void
     {
@@ -122,6 +115,7 @@ final class Paradise_Elementor_Widgets
         add_action('elementor/widgets/register', [ $this, 'register_widgets' ]);
         add_action('elementor/frontend/after_enqueue_styles', [ $this, 'enqueue_assets' ]);
         add_action('elementor/editor/after_enqueue_styles', [ $this, 'enqueue_assets' ]);
+        add_action('elementor/preview/enqueue_styles', [ $this, 'enqueue_editor_placeholder_style' ]);
         add_action('elementor/dynamic_tags/register', [ $this, 'register_dynamic_tags' ]);
     }
 
@@ -186,6 +180,22 @@ final class Paradise_Elementor_Widgets
      * Elementor calls each widget's get_style_depends() / get_script_depends() and enqueues
      * only the handles needed for widgets actually on the page — keeping registration cheap.
      */
+    /**
+     * Enqueue the empty-widget placeholder stylesheet into the Elementor editor
+     * preview iframe only. The placeholder markup is emitted by
+     * Paradise_Widget_Base::render_editor_placeholder() during edit mode; this
+     * keeps its CSS in a proper stylesheet instead of an inline <style> block.
+     */
+    public function enqueue_editor_placeholder_style(): void
+    {
+        wp_enqueue_style(
+            'paradise-editor-placeholder',
+            PARADISE_EW_URL . 'assets/css/editor-placeholder.css',
+            [],
+            PARADISE_EW_VERSION
+        );
+    }
+
     public function enqueue_assets(): void
     {
         foreach ( Paradise_EW_Admin::get_widget_registry() as $key => $config ) {

@@ -109,25 +109,8 @@ abstract class Paradise_Widget_Base extends \Elementor\Widget_Base {
             return;
         }
 
-        static $style_emitted = false;
-        if ( ! $style_emitted ) {
-            echo '<style>'
-               . '.paradise-widget-placeholder{'
-               .   'box-sizing:border-box;display:block;padding:24px 16px;'
-               .   'text-align:center;border:1px dashed #c3c4c7;border-radius:4px;'
-               .   'background:transparent;color:#50575e;'
-               .   'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;'
-               . '}'
-               . '.paradise-widget-placeholder__title{'
-               .   'font-size:14px;font-weight:600;margin-bottom:4px;color:#2c3338;'
-               . '}'
-               . '.paradise-widget-placeholder__hint{'
-               .   'font-size:12px;line-height:1.5;color:#646970;'
-               . '}'
-               . '</style>';
-            $style_emitted = true;
-        }
-
+        // Styling lives in assets/css/editor-placeholder.css, enqueued into the
+        // editor preview via the elementor/preview/enqueue_styles hook.
         printf(
             '<div class="paradise-widget-placeholder" role="status">'
               . '<div class="paradise-widget-placeholder__title">%s</div>'

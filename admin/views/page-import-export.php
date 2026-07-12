@@ -78,11 +78,6 @@ $error_messages = [
                     <?php esc_html_e( 'Import Data', 'paradise-widgets-for-elementor' ); ?>
                 </button>
             </form>
-            <script>
-            document.getElementById('paradise_import_file').addEventListener('change', function () {
-                document.getElementById('paradise-import-btn').disabled = !this.files.length;
-            });
-            </script>
         </div>
     </div>
 
