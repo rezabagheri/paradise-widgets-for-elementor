@@ -1,0 +1,29 @@
+/**
+ * Placeholder shown inside the Elementor editor preview when a Paradise widget
+ * has nothing to render yet (e.g. a required setting is empty). Enqueued only in
+ * the editor preview iframe — never on the front end.
+ */
+.paradise-widget-placeholder {
+	box-sizing: border-box;
+	display: block;
+	padding: 24px 16px;
+	text-align: center;
+	border: 1px dashed #c3c4c7;
+	border-radius: 4px;
+	background: transparent;
+	color: #50575e;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.paradise-widget-placeholder__title {
+	font-size: 14px;
+	font-weight: 600;
+	margin-bottom: 4px;
+	color: #2c3338;
+}
+
+.paradise-widget-placeholder__hint {
+	font-size: 12px;
+	line-height: 1.5;
+	color: #646970;
+}

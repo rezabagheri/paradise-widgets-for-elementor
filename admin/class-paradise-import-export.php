@@ -54,7 +54,10 @@ class Paradise_Import_Export {
             'ew_settings'   => get_option( Paradise_EW_Admin::OPTION_KEY, [] ),
         ];
 
-        $json     = wp_json_encode( $payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
+        // No JSON_UNESCAPED_SLASHES: this is a downloadable .json file (not inline
+        // HTML), so escaping "/" as "\/" is harmless and keeps the codebase free of
+        // that flag entirely. Still valid JSON that re-imports identically.
+        $json     = wp_json_encode( $payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE );
         $sitename = sanitize_file_name( strtolower( str_replace( ' ', '-', get_bloginfo( 'name' ) ) ) );
         $filename = 'paradise-' . $sitename . '-' . gmdate( 'Y-m-d' ) . '.json';
 

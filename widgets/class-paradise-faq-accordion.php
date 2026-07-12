@@ -498,8 +498,11 @@ class Paradise_Faq_Accordion_Widget extends Paradise_Widget_Base {
                     '@type'      => 'FAQPage',
                     'mainEntity' => $schema_items,
                 ];
+                // Do NOT use JSON_UNESCAPED_SLASHES here. Escaping "/" as "\/" keeps a
+                // literal "</script>" inside any question or answer from breaking out of
+                // this inline <script> block. Still valid JSON-LD.
                 echo '<script type="application/ld+json">'
-                   . wp_json_encode( $schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES )
+                   . wp_json_encode( $schema, JSON_UNESCAPED_UNICODE ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_json_encode() output, slashes escaped
                    . '</script>';
             }
         }
