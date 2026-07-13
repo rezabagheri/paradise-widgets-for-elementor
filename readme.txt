@@ -4,7 +4,7 @@ Tags: elementor, mobile navigation, business hours, local seo, schema
 Requires at least: 6.1
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 3.1.0
+Stable tag: 3.2.0
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
