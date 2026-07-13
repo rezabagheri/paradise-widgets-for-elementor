@@ -18,6 +18,10 @@ Section gets renamed to `## [X.Y.Z] - YYYY-MM-DD` at release time
 and a fresh empty `## [Unreleased]` replaces it.
 -->
 
+## [3.2.0] - 2026-07-13
+
+First public release on the WordPress.org Plugin Directory.
+
 ### Added
 
 - **Phone Button widget — responsive `layout_mode` control** — adds a per-breakpoint SELECT under the Button Text section with three modes: `Icon + Text` (default, unchanged behaviour), `Icon Only`, `Text Only`. Implementation uses two CSS custom properties (`--paradise-pbn-text-display`, `--paradise-pbn-icon-display`) set on the widget wrapper via `selectors_dictionary`, consumed by static `display: var(...)` rules in `assets/css/phone-button.css`. Elementor wraps the variable assignments in `@media` queries per breakpoint, so a value of `icon_only` on Tablet hides only the text on tablet viewports while desktop keeps the full button — no JS, no class-toggle. Backwards-compatible: existing phone-button widgets without the new control default to `icon_text` and render identically. Accessibility preserved: `aria-label="Call <number>"` on the `<a>` stays present even when the visible text is hidden, so screen readers still announce the button purpose. Companion follow-up planned for `paradise_phone_link` to mirror this pattern.
