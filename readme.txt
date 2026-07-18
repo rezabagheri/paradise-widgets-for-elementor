@@ -1,6 +1,6 @@
 === Paradise Widgets for Elementor ===
 Contributors: rezabagheri
-Tags: elementor, mobile navigation, business hours, local seo, schema
+Tags: click to call, business hours, bottom navigation, whatsapp, local seo
 Requires at least: 6.1
 Tested up to: 7.0
 Requires PHP: 8.0
@@ -8,7 +8,7 @@ Stable tag: 3.2.0
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Advanced custom Elementor widgets for mobile UX, contact, local SEO, and business info — all powered by a centralized Site Info store.
+Elementor widgets for local businesses: click-to-call & WhatsApp buttons, business hours, LocalBusiness schema, and a mobile bottom nav.
 
 == Description ==
 
